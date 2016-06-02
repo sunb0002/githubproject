@@ -24,7 +24,12 @@
 	<bean id="DBManager" class="com.ufinity.ott.dao.DBManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>	
-
+	
+	<!-- PMP DBManager beans -->
+	<bean id="PMP_DBManager" class="com.ufinity.ott.dao.PMP_DBManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>	
+		
 	<!-- PlatformTransactionManager beans -->
 	<bean id="platformTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>

@@ -50,6 +50,6 @@
 	<context:annotation-config />
 	
 
-	<import resource="./database/Spring-Datasource.xml"/>
+<!--	<import resource="./database/Spring-Datasource.xml"/>-->
 
 </beans>

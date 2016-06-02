@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ufinity</groupId>
-	<artifactId>ok</artifactId>
-	<name>ok</name>
+	<artifactId>ott</artifactId>
+	<name>ott</name>
 	<packaging>war</packaging>
-	<version>Ufinity-2016-Mar</version>
+	<version>Madoka-2016-June</version>
 	<properties>
 		<java-version>1.8</java-version>		
 		<org.springframework.version>4.2.0.RELEASE</org.springframework.version>
@@ -78,26 +78,9 @@
 
 		<!-- Logging -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${org.slf4j-version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${org.slf4j-version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
+			<version>1.2.17</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.mail</groupId>
@@ -138,13 +121,6 @@
 			<version>5.1.36</version>
 		</dependency>
 
-		<!-- Connection Pool Using C3PO -->
-		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.5.1</version>
-		</dependency>
-
 		<!-- Json dependency -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -167,72 +143,15 @@
 			<version>20140107</version>
 		</dependency>
 
-		<!-- Apache Commons Lang dependency -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.3.2</version>
-		</dependency>
-		
-		<!-- Apache Commons IO dependency For File Utilities-->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency>
-
-		<!-- Apache HTTP dependency -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.4.3</version>
-		</dependency>
-
-		<!-- Apache POI dependency for reading/writing Microsoft Office files (excel, word) -->
-		<dependency> 
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.10-FINAL</version>
-		</dependency> 
-
-		<!-- Apache POI dependency for reading/writing Open Office files -->
-		<dependency> 
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.10-FINAL</version>
-		</dependency> 
 
 		<!-- Servlet -->
-		<dependency>
+ 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
-
+ 
 
 		<!-- Maven Antrun plugin-->
 		<dependency>
