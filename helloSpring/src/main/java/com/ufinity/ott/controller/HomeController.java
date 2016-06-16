@@ -47,9 +47,9 @@ public class HomeController {
 		List<String> whitelist = new ArrayList<String>();
 		List<String> blacklist = new ArrayList<String>();
 
-		Device d1 = new Device("Mike2", "mobile");
-		Device d2 = new Device("92475300", "mobile");
-		Device d3 = new Device("Home", "broadband");
+		Device d1 = new Device("Mike2", "mobile", true);
+		Device d2 = new Device("92475300", "mobile", false);
+		Device d3 = new Device("Home", "broadband", true);
 
 		whitelist.add("www.kidssite.com");
 		whitelist.add("safewebsite.sg");

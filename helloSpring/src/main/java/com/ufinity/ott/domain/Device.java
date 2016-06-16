@@ -11,19 +11,15 @@ public class Device {
 	@JsonProperty
 	private String name, type;
 	@JsonProperty
+	private boolean is_active;
+	@JsonProperty
 	private List<String> restrict_sites, allow_sites;
 
-	public Device(String name, String type) {
-		this.name = name;
-		this.type = type;
-	}
-
-	public Device(String name, String type, List<String> restrict_sites, List<String> allow_sites) {
+	public Device(String name, String type, boolean is_active) {
 		super();
 		this.name = name;
 		this.type = type;
-		this.restrict_sites = restrict_sites;
-		this.allow_sites = allow_sites;
+		this.is_active = is_active;
 	}
 
 	public String getName() {
@@ -40,6 +36,14 @@ public class Device {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public boolean isIs_active() {
+		return is_active;
+	}
+
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
 	}
 
 	public List<String> getRestrict_sites() {
@@ -60,8 +64,8 @@ public class Device {
 
 	@Override
 	public String toString() {
-		return "Device [name=" + name + ", type=" + type + ", restrict_sites=" + restrict_sites + ", allow_sites="
-				+ allow_sites + "]";
+		return "Device [name=" + name + ", type=" + type + ", is_active=" + is_active + ", restrict_sites="
+				+ restrict_sites + ", allow_sites=" + allow_sites + "]";
 	}
 
 }
