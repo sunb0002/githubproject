@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.validation.constraints.NotNull;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Device {
 
 	@JsonProperty
+	@NotNull
 	private String name, type;
 	@JsonProperty
 	private boolean is_active;
@@ -16,7 +18,6 @@ public class Device {
 	private List<String> restrict_sites, allow_sites;
 
 	public Device(String name, String type, boolean is_active) {
-		super();
 		this.name = name;
 		this.type = type;
 		this.is_active = is_active;

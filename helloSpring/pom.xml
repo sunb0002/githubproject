@@ -9,11 +9,18 @@
 	<version>Madoka-2016-June</version>
 	<properties>
 		<java-version>1.8</java-version>		
-		<org.springframework.version>4.2.0.RELEASE</org.springframework.version>
+		<org.springframework.version>4.2.6.RELEASE</org.springframework.version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<org.slf4j-version>1.7.21</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -153,7 +160,7 @@
 		</dependency>
 
 		<!-- Javax Validator -->
-<!--		<dependency>
+		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
@@ -162,7 +169,8 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.3.1.Final</version>
-		</dependency>-->
+		</dependency>
+
 
 		<!-- Maven Antrun plugin-->
 		<dependency>
