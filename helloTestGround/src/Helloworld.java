@@ -25,11 +25,22 @@ public class Helloworld {
 
 	public static void testtemp() {
 
-		String url = "S 7YyLuTgDCLGRbbasScRj/BCmh7CB4fua83UHk3lEoROuBNoAQyQ/N0xn5m/PHJxgyqqntx4QQfpwDLomJHdwPHuAVx4BzRUmvrTy8J5ftPuzttnL34HS573JIRxvylqkw5rWSenSO4egsA4mcsaZ8FZ5hhEsO73D94gsaFBUQqqCzWBKpnbGRm rKCQbu6V4zlOiQUxeCBmuQZDJpIrCgqzvlEqyPzhzv0Vybl6RTces7nLm7RTzrsjz87nybUts2EtL/2xKSUD1Flhe6 gLeaHXTqTpK cQrczrU0E4fbWp1bMTV5H5EKCd5nmhSkdsHm5Jd7vTgaK2X0lz8QwrUiB66bm1QPS8gFL23PKbKpeErogO3CF2UnYuZK9CEUeuw9wDPbZsEbvJ6xFFhh3fMCAZYdCBXkkkTvJa/bGSzF6gOXHaI/X3YNP2gqiOgX";
-		String url2 = url.replaceAll(" ", "+");
+		List<String> blacklist = new ArrayList<String>();
+		
+		
+		POJO p1=new POJO();
+		POJO p2=new POJO();
+		
+		blacklist.add("www.blockedsite.com");
+		p1.setLb(blacklist);
 
-		System.out.println(url2);
+		List<String> blacklist2 = new ArrayList<String>(blacklist);
+		blacklist2.add("www.anotherblockedsite.com");
+		p2.setLb(blacklist2);
 
+		System.out.println(p1);
+		System.out.println(p2);
+		
 	}
 
 	public static <T> T getService(String key, String method, Class<T> clazz) {

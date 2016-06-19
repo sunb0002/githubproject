@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ufinity.ott.common.logging.LogHelper;
-import com.ufinity.ott.domain.Device;
-import com.ufinity.ott.domain.JPUser;
+import com.ufinity.ott.domain.DeviceProfile;
 import com.ufinity.ott.domain.JsonResponseGeneral;
+import com.ufinity.ott.domain.UserProfile;
 import com.ufinity.ott.domain.Uuid;
 
 /**
@@ -42,14 +42,14 @@ public class HomeController {
 
 	@RequestMapping(value = "/jp", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseBody
-	public ResponseEntity<JPUser> greeting1() {
+	public ResponseEntity<UserProfile> greeting1() {
 
 		List<String> whitelist = new ArrayList<String>();
 		List<String> blacklist = new ArrayList<String>();
 
-		Device d1 = new Device("Mike2", "mobile", true);
-		Device d2 = new Device("92475300", "mobile", false);
-		Device d3 = new Device("Home", "broadband", true);
+		DeviceProfile d1 = new DeviceProfile("Madoka", "mobile", true);
+		DeviceProfile d2 = new DeviceProfile("92475300", "mobile", false);
+		DeviceProfile d3 = new DeviceProfile("Homu", "broadband", true);
 
 		whitelist.add("www.kidssite.com");
 		whitelist.add("safewebsite.sg");
@@ -60,14 +60,21 @@ public class HomeController {
 		d3.setAllow_sites(whitelist);
 		d3.setRestrict_sites(blacklist);
 
-		blacklist.add("security-threat-content.com");
-		blacklist.add("www.adultsite.com");
-		whitelist.add("www.madoka.com");
+		List<String> whitelist2 = new ArrayList<String>(whitelist);
+		List<String> blacklist2 = new ArrayList<String>(blacklist);
+		blacklist2.add("security-threat-content.com");
+		blacklist2.add("www.adultsite.com");
+		whitelist2.add("www.madoka.com");
 
-		d1.setAllow_sites(whitelist);
-		d1.setRestrict_sites(blacklist);
-
-		JPUser sb = new JPUser("hubid@hotmail.com");
+		d1.setAllow_sites(whitelist2);
+		d1.setRestrict_sites(blacklist2);
+		
+		d1.setParent_access(true);
+		d3.setParent_access(false);
+		d1.setNumber("87654321");
+		d3.setNumber("12345678");
+		
+		UserProfile sb = new UserProfile("hubid@ufinity.com");
 		sb.setFull_name("Patricia Tan Siu Gek");
 		sb.setDevices(Arrays.asList(d1, d2, d3));
 

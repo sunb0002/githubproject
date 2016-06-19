@@ -6,19 +6,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class JPUser {
+public class UserProfile {
 
 	@JsonProperty
-	private String uuid, full_name;
+	private String uuid, full_name; // last_login
 
 	@JsonProperty
-	private List<Device> devices;
+	private List<DeviceProfile> devices;
 
-	public JPUser(String uuid) {
+	public UserProfile(String uuid) {
 		this.uuid = uuid;
 	}
 
-	public JPUser(String uuid, String full_name, List<Device> devices) {
+	public UserProfile(String uuid, String full_name, List<DeviceProfile> devices) {
 		this.uuid = uuid;
 		this.full_name = full_name;
 		this.devices = devices;
@@ -40,11 +40,11 @@ public class JPUser {
 		this.full_name = full_name;
 	}
 
-	public List<Device> getDevices() {
+	public List<DeviceProfile> getDevices() {
 		return devices;
 	}
 
-	public void setDevices(List<Device> devices) {
+	public void setDevices(List<DeviceProfile> devices) {
 		this.devices = devices;
 	}
 
