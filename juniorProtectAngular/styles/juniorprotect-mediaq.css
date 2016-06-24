@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* CSS Document */
+
+	
+@media only screen and (min-width: 0px) and (max-width: 992px) {
+	/* ------ start global styles ------ */
+	.acc-type {text-align:left; margin:15px 0;}
+	.acc-type .desc {margin:0;}
+	/* ------ end global styles ------ */
+	
+	/* ------ start Filter Settings ------ */
+	.category-filter .category-box {height:130px; text-align:center;}
+	.category-filter .category-wrapper {margin:15px auto;}
+	.category-filter .category-ico{ margin-right:0; margin-bottom:5px;width:50px; height:50px;}
+	.category-filter .ico-allages, .category-filter  .ico-teenager, .category-filter  .ico-custom {padding: 0 25px 50px 25px; background-size: 50px 50px;}
+	.category-filter .category-name {font-size:24px; line-height:28px; display:block;}
+	
+	.category-list-box {padding:20px 0; height:250px; overflow-y:scroll;}
+	.category-list-wrapper { -webkit-column-count: 1; -moz-column-count: 1; column-count: 1;-webkit-column-width: 100%;-moz-column-width: 100%; column-width: 100%;}
+	/* ------ end Filter Settings ------ */
+
+
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+	h1 {font-size:36px;line-height: 42px;}
+	h2 {font-size:32px;line-height: 40px;}
+	h3 {font-size:26px;line-height: 35px;}
+	h4 {font-size:26px;line-height: 35px;}
+	h5 {font-size:24px;line-height: 28px;}
+	h6 {font-size:18px;line-height: 24px;}
+
+	/* ------ start masthead ------ */
+	.masthead-graphic {margin-bottom:0;}
+	.masthead-graphic, .masthead-graphic .full-height {height:180px;}
+	.masthead-graphic .container {width:100%;}
+	#masthead-logo {width:250px; height:54px;}
+	.user-info {margin:0 auto; padding:12px 0;}
+	/* ------ end masthead ------ */
+	
+	/* ------ start global styles ------ */
+	.btn-edit-green { margin-left: 10px;background-size:16px 16px;padding: 0 8px 16px 8px; }
+
+	
+	/* User tab */
+	.nav-tabs.user-tab > li {width: 32.5%;margin-right:0.5%;}
+	.user-tab-content-wrapper .inner-wrapper .ico-profile{width:40px; height:40px; margin-right:8px;}
+	.user-tab-content.service-on .ico-profile, .user-tab-content.service-off .ico-profile{ background-size: 25px 24px;}
+	.tab-name {font-size:18px; line-height:20px;}
+	.tab-device {font-size:12px; line-height:14px;}
+	/* ------ end global styles ------ */
+	
+	/* ------ start overview ------ */
+	.category-name {font-size:24px; line-height:28px;}
+	/* ------ end overview ------ */
+
+
+}
+
+
+
+
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+	/* ------ start masthead ------ */
+	.masthead-graphic, .masthead-graphic .full-height {height:120px;}
+	#masthead-logo {width:200px; height:43px;}
+	/* ------ end masthead ------ */
+	
+	/* ------ start global styles ------ */
+	.right-button {float:none;}
+	/* ------ end global styles ------ */
+	
+	/* ------ start overview ------ */
+	.category-box {height:100px;}
+	.category-ico{width:50px; height:50px; margin-right:10px;}
+	.filter-settings-overview .ico-allages, .filter-settings-overview .ico-teenager, .filter-settings-overview .ico-custom {padding: 0 25px 50px 25px; background-size: 50px 50px;}
+	
+	.set-time-box .selected-day {font-size:16px; line-height:18px;}
+	.set-time-box .selected-time {font-size:16px; line-height:18px;}
+
+	.restricted-box, .allowed-box {height:auto;}
+	.box-title {font-size:16px; line-height:20px; padding:15px 15px;}
+	/* ------ end overview ------ */
+	
+	/* ------ start Filter Settings ------ */
+	.category-filter .category-box {height:105px;}
+	.category-filter .category-name {font-size:14px; line-height:18px;}
+	.category-filter .category-name:before {display:none;}
+
+	/* ------ end Filter Settings ------ */
+
+
+
+}
+

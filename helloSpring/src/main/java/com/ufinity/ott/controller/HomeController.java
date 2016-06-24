@@ -46,6 +46,7 @@ public class HomeController {
 
 		List<String> whitelist = new ArrayList<String>();
 		List<String> blacklist = new ArrayList<String>();
+		List<String> filters = new ArrayList<String>();
 
 		DeviceProfile d1 = new DeviceProfile("Madoka", "mobile", true);
 		DeviceProfile d2 = new DeviceProfile("92475300", "mobile", false);
@@ -56,18 +57,35 @@ public class HomeController {
 		blacklist.add("www.blockedsite.com");
 		blacklist.add("anotherblockedsite.com");
 		blacklist.add("violencecontent.net");
-
+		filters.add("Adult Content");
+		filters.add("Dating");
+		filters.add("Drugs & Alcohol");
+		filters.add("Gambling & Cheating");
+		filters.add("Hate & Intolerance");
+		filters.add("Internet Security Threats");
+		filters.add("Violence & Weapons");
+		
+		
 		d3.setAllow_sites(whitelist);
 		d3.setRestrict_sites(blacklist);
+		d3.setFilter_list(filters);
 
 		List<String> whitelist2 = new ArrayList<String>(whitelist);
 		List<String> blacklist2 = new ArrayList<String>(blacklist);
+		List<String> filters2 = new ArrayList<String>(filters);
+		
 		blacklist2.add("security-threat-content.com");
 		blacklist2.add("www.adultsite.com");
 		whitelist2.add("www.madoka.com");
+		filters2.remove("Dating");
+		filters2.remove("Drugs & Alcohol");
+		filters2.add("Forums & Newsgroups");
+		filters2.add("Politics & Government");
+		filters2.add("Religion");
 
 		d1.setAllow_sites(whitelist2);
 		d1.setRestrict_sites(blacklist2);
+		d1.setFilter_list(filters2);
 		
 		d1.setParent_access(true);
 		d3.setParent_access(false);
