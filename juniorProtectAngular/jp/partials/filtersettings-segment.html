@@ -1,0 +1,187 @@
+<div class="user-tab-content-wrapper border no-top-border">
+    <div class="user-tab-content user{{itemIndex+1}}" ng-class=" UserProfile.devices[itemIndex].is_active ? 'service-on' : 'service-off'">
+        <!-- User 1 -->
+        <div class="content-section head">
+            <!-- Header -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-18">
+                        <div class="ico-profile"></div>
+                        <div class="title">
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Filter Settings<a ng-if="UserProfile.devices[itemIndex].is_active" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit device name"></div></a></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="acc-type" ng-switch="UserProfile.devices[itemIndex].is_active">
+                            <span ng-switch-when="true" class="desc">Account Type: Basic Account
+                            <br /><a href="upgrade">Upgrade to Plus<div class="btn-arrow-green"></div></a></span>
+                            <a ng-switch-when="false" class="button" href="go-to-MAM">Activate Now
+                      <div class="btn-arrow-white"></div>
+                      </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-lighter-grey category-filter">
+            <!-- Category Filter -->
+            <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active" ng-controller="ElementCtrl_CategoryFilter">
+                <div class="row">
+                    <div class="col-md-24">
+                        <h5> Category Filter</h5>
+                        <div class="btn-toggle-collapse-wrapper">
+                            <a class="btn-toggle-collapse" data-target="#category-filter-content" data-toggle="collapse"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="category-filter-content" class="collapse in">
+                    <div class="row">
+                        <div class="col-md-24">
+                            <p>Select the categories to be blocked by JuniorProtect.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href="">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="category-box" ng-click="setCategoryFilter('medium')" ng-class="{'selected': checkCategoryFilter('medium')}">
+                                    <div class="category-wrapper">
+                                        <div class="category-ico">
+                                            <div class="ico-junior"></div>
+                                        </div>
+                                        <div class="category-name">Juniors</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="category-box" ng-click="setCategoryFilter('light')" ng-class="{'selected': checkCategoryFilter('light')}">
+                                    <div class="category-wrapper">
+                                        <div class="category-ico">
+                                            <div class="ico-teen"></div>
+                                        </div>
+                                        <div class="category-name">Teens</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="category-box" ng-class="{'selected': checkCategoryFilter('custom')}">
+                                    <div class="category-wrapper">
+                                        <div class="category-ico">
+                                            <div class="ico-custom"></div>
+                                        </div>
+                                        <div class="category-name">Custom</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-24">
+                            <div class="category-list-box">
+                                <div class="category-list-wrapper">
+                                    <ul>
+                                        <div class="category-list-column">
+                                            <li ng-repeat="(index, catflt) in allCategoryFilter">
+                                                <span class="checkbox" style="background-position: 0px {{selection.indexOf(catflt.name) > -1 ? -50 : 0}}px;" ng-click="toggleSelection(catflt.name)"></span>
+                                                <input type="checkbox" id="cat{{index+1}}" name="cat{{index+1}}" class="styled" value="{{catflt}}" ng-checked="selection.indexOf(catflt.name) > -1" ng-click="toggleSelection(catflt.name)" style="display:none">
+                                                <label for="cat{{index+1}}">{{catflt.description}}</label>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-24">
+                                <div class="right-button"> <a class="button" ng-click="postSelection(itemIndex)">Save Settings
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section bg-lighter-grey restricted-allowed-websites">
+                <!--Restricted and Allowed Websites -->
+                <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active" ng-controller="ElementCtrl_BlackWhiteDomainList">
+                    <div class="row">
+                        <div class="col-md-24">
+                            <h5>Personalized Filter</h5>
+                            <div class="btn-toggle-collapse-wrapper">
+                                <a class="btn-toggle-collapse collapsed" data-target="#personalized-filter-content" data-toggle="collapse"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="personalized-filter-content" class="collapse">
+                        <div class="row">
+                            <div class="col-md-24">
+                                <p>Enter a specific website to be blocked or allowed by JuniorProtect.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="restricted-box" id="add-restricted-site">
+                                    <div class="box-title">
+                                        <div class="ico-restricted"></div>
+                                        Restricted Websites</div>
+                                    <div class="box-content">
+                                        <ul class="restricted-list">
+                                            <li ng-repeat="black_site in thisDevice.restrict_sites">{{black_site}} <a href="" ng-click="removeItem($index, 'black')">remove</a></li>
+                                            <li>
+                                                <div class="add-url-input">
+                                                    <input id="new-restricted-url" type="text" name="new-restricted-url" placeholder="Enter URL" ng-model="addBlack" required>
+                                                    <input class="button save-url" type="button" value="Save" ng-click="addItem('black')">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="allowed-box" id="add-allowed-site">
+                                    <div class="box-title">
+                                        <div class="ico-allowed"></div>
+                                        Allowed Websites</div>
+                                    <div class="box-content">
+                                        <ul class="allowed-list">
+                                            <li ng-repeat="white_site in thisDevice.allow_sites">{{white_site}} <a href="" ng-click="removeItem($index, 'white')">remove</a></li>
+                                            <li>
+                                                <div class="add-url-input">
+                                                    <input id="new-restricted-url" type="text" name="new-restricted-url" placeholder="Enter URL" ng-model="addWhite" required>
+                                                    <input class="button save-url" type="button" value="Save" ng-click="addItem('white')">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-24">
+                                <div class="right-button"> <a class="button" ng-click="postListUpdates(itemIndex)">Save Settings
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section bg-light-blue">
+                    <!-- Upgrade to Plus Acc -->
+                    <div class="inner-wrapper">
+                        <div class="row">
+                            <div class="col-md-24">
+                                <div class="upgrade-box">
+                                    <h5>Get more control over your child&rsquo;s phone usage. </h5>
+                                    <p>Know their current location, set time-based restriction and more. Sign up for Junior Protect Plus now.</p>
+                                    <a href="#" class="button">{{ UserProfile.devices[itemIndex].is_active ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

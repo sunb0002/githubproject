@@ -1,0 +1,50 @@
+.firefox .main-content .main-graphic .blend-extend .extend .ex span {
+	left: -786px;
+	line-height: 114.2px;	
+}
+
+.firefox .main-content .main-graphic .mastheadSmTitle .blend-extend .ex span 
+{	
+	left: -505px;
+    line-height: 86.1px;
+}
+
+.firefox button.btn.btn-pri.btn-stn.btn-sky-blue {
+	height: 40px !important;
+}
+
+@-moz-document url-prefix() { 
+  button.btn.btn-pri {
+     padding: 4px 12px;
+  }
+}
+
+.safari .main-content .main-graphic .blend-extend .extend .ex span {
+	left: -787px;	
+}
+
+.safari .main-content .main-graphic .mastheadSmTitle .blend-extend .ex span {
+	left: -505px;
+}
+
+@media screen and (max-width: 991px) {
+	.firefox .main-content .main-graphic .bx-wrapper .bxslider .blend-extend .extend .ex span,
+	.safari .main-content .main-graphic .bx-wrapper .bxslider .blend-extend .extend .ex span,
+	.firefox .main-content .main-graphic.large .bx-wrapper .bxslider .blend-extend .extend .ex span,
+	.safari .main-content .main-graphic.large .bx-wrapper .bxslider .blend-extend .extend .ex span {
+		left: -492px;
+	}
+	.firefox .main-content .main-graphic .mastheadSmTitle .blend-extend .ex span,
+	.safari .main-content .main-graphic .mastheadSmTitle .blend-extend .ex span,
+	.firefox .main-content .main-graphic .bx-wrapper .bxslider .mastheadSmTitle .blend-extend .extend .ex span,
+	.safari .main-content .main-graphic .bx-wrapper .bxslider .mastheadSmTitle .blend-extend .extend .ex span,
+	.firefox .main-content .main-graphic.large .bx-wrapper .bxslider .mastheadSmTitle .blend-extend .extend .ex span,
+	.safari .main-content .main-graphic.large .bx-wrapper .bxslider .mastheadSmTitle .blend-extend .extend .ex span {
+		left: -506px;
+	}
+
+}
+
+.firefox .std-pager .pagination.pagination-sm {
+	margin-top: 0 !important;
+}

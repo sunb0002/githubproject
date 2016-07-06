@@ -1,0 +1,179 @@
+<div class="user-tab-content-wrapper border no-top-border">
+    <div class="user-tab-content user{{itemIndex+1}}" ng-class=" UserProfile.devices[itemIndex].is_active ? 'service-on' : 'service-off'">
+        <!-- User 1 -->
+        <div class="content-section head">
+            <!-- Header -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-18">
+                        <div class="ico-profile"></div>
+                        <div class="title">
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s JuniorProtect Profile<a ng-if="UserProfile.devices[itemIndex].is_active" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit device name"></div></a></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="acc-type" ng-switch="UserProfile.devices[itemIndex].is_active">
+                            <span ng-switch-when="true" class="desc">Account Type: Basic Account
+                            <br /><a href="upgrade">Upgrade to Plus<div class="btn-arrow-green"></div></a></span>
+                            <a ng-switch-when="false" class="button" href="go-to-MAM">Activate Now
+                      <div class="btn-arrow-white"></div>
+                      </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-lighter-grey filter-settings-overview">
+            <!-- Filter Settings -->
+            <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active">
+                <div class="row">
+                    <div class="col-md-24">
+                        <h5>Filter Settings</h5>
+                        <div class="btn-toggle-collapse-wrapper"> <a class="btn-toggle-collapse" data-target="#filter-settings-content" data-toggle="collapse" />
+                        </div>
+                    </div>
+                </div>
+                <div id="filter-settings-content" class="collapse in">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="category-box" ng-controller="ElementCtrl_CategoryFilter">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('light')">
+                                    <div class="category-ico">
+                                        <div class="ico-junior"></div>
+                                    </div>
+                                    <div class="category-name">Juniors</div>
+                                </div>
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
+                                    <div class="category-ico">
+                                        <div class="ico-teen"></div>
+                                    </div>
+                                    <div class="category-name">Teens</div>
+                                </div>
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('custom')">
+                                    <div class="category-ico">
+                                        <div class="ico-custom"></div>
+                                    </div>
+                                    <div class="category-name">Custom</div>
+                                </div>
+                            </div>
+                            <div class="set-time-box function-disabled" data-title="">
+                                <div class="filter-turned-off">
+                                    <div class="title">Filter is turned off</div>
+                                    <table class="schedule">
+                                        <tr>
+                                            <td class="selected-day">M, T, W, T</td>
+                                            <td class="selected-time">00:00 - 00:00</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="homework-time">
+                                    <div class="title">Homework time</div>
+                                    <table class="schedule">
+                                        <tr>
+                                            <td class="selected-day">All Week</td>
+                                            <td class="selected-time">00:00 - 00:00</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="restricted-box">
+                                <div class="box-title">
+                                    <div class="ico-restricted"></div>
+                                    Restricted Websites</div>
+                                <div class="box-content">
+                                    <ul>
+                                        <li ng-repeat="black_site in UserProfile.devices[itemIndex].restrict_sites">{{black_site}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="allowed-box">
+                                <div class="box-title">
+                                    <div class="ico-allowed"></div>
+                                    Allowed Websites</div>
+                                <div class="box-content">
+                                    <ul>
+                                        <li ng-repeat="white_site in UserProfile.devices[itemIndex].allow_sites">{{white_site}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-24">
+                            <div class="right-button"> <a class="button" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}">Manage Settings
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-lighter-grey account-settings-overview">
+            <!-- Account Settings -->
+            <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active">
+                <div class="row">
+                    <div class="col-md-24">
+                        <h5>Account Settings</h5>
+                        <div class="btn-toggle-collapse-wrapper">
+                            <a class="btn-toggle-collapse collapsed" data-target="#account-settings-content" data-toggle="collapse" />
+                        </div>
+                    </div>
+                </div>
+                <div id="account-settings-content" class="collapse">
+                    <div class="row">
+                        <div class="col-md-24">
+                            <div class="fullwidth-white-box">
+                                <table class="two-col-form">
+                                    <tr>
+                                        <td class="left">Plan Name</td>
+                                        <td class="right">{{UserProfile.devices[itemIndex].profile_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left">Device Number</td>
+                                        <td class="right">{{UserProfile.devices[itemIndex].number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left">Parent Access</td>
+                                        <td class="right">{{UserProfile.devices[itemIndex].parent_access?'Activated':'Not Activated'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left">Import Settings</td>
+                                        <td class="right"><a href="acount-settings.html#import-settings">Choose settings to import from
+                            <div class="btn-arrow-green"></div>
+                            </a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-24">
+                            <div class="right-button"> <a class="button" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}">Manage Settings
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-light-blue">
+            <!-- Upgrade to Plus Acc -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-24">
+                        <div class="upgrade-box">
+                            <h5>Get more control over your child&rsquo;s phone usage. </h5>
+                            <p>Know their current location, set time-based restriction and more. Sign up for Junior Protect Plus now.</p>
+                            <a href="#" class="button">{{ UserProfile.devices[itemIndex].is_active ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="content-wrapper container">
+    <!-- Content start here -->
+    <ul class="nav nav-tabs user-tab">
+        <!-- SB: Tenary ng-class seems not working for ng-class. -->
+        <li ng-repeat="(i, Device) in UserProfile.devices" class="user{{i+1}}" ng-class="{'service-on':Device.is_active, 'service-off':!Device.is_active, active: ('routeOverview' | routeSegmentStartsWith) && ('id' | routeSegmentParam) == i}">
+            <a href="#{{ 'routeOverview.seg' | routeSegmentUrl : {id: i} }} ">
+                <div class="tab-name ">{{Device.profile_name}}</div>
+                <div class="tab-device ">{{Device.type}}</div>
+            </a>
+        </li>
+    </ul>
+    <!-- Devices -->
+    <div app-view-segment="1"></div>
+    <!-- Content end here -->
+</div>
