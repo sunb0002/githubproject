@@ -1,0 +1,14 @@
+<div class="content-wrapper container">
+    <!-- Content start here -->
+    <ul class="nav nav-tabs user-tab">
+        <li ng-repeat="(i, Device) in UserProfile.devices" class="user{{i+1}}" ng-class="{'service-on':isDeviceVisible(i), 'service-off':!isDeviceVisible(i), active: ('routeAccountSettings' | routeSegmentStartsWith) && ('id' | routeSegmentParam) == i}">
+            <a href="#{{ 'routeAccountSettings.seg' | routeSegmentUrl : {id: i} }} ">
+                <div class="tab-name ">{{Device.profile_name}}</div>
+                <div class="tab-device ">{{Device.type}}</div>
+            </a>
+        </li>
+    </ul>
+    <!-- Accounts -->
+    <div app-view-segment="1"></div>
+    <!-- Content end here -->
+</div>

@@ -9,6 +9,19 @@ var app = angular.module('JuniorProtectWebApp', [
     'ngRoute', 'route-segment', 'view-segment'
 ]);
 
+
+app.constant('JP_REST_ENDPOINT', {
+    "GET_USER_PROFILE": "/stub/userprofile.madoka.json",
+    "GET_APP_CONFIG": "/stub/appconfig.json",
+    "POST_UPDATE_CATEGORY_FILTER_LIST": "/stub/ok.json",
+    "POST_UPDATE_BLACKWHITE_DOMAIN_LIST": "/stub/ok.json",
+    "POST_UPDATE_DEVICE_PROFILE_NAME": "/stub/ok.json",
+    "POST_UPDATE_PARENTACCESS_STATUS": "/stub/ok.json",
+    "POST_UPDATE_PARENTACCESS_PWD": "/stub/ok.json",
+    "POST_IMPORT_FILTER_SETTINGS": "/stub/ok.json"
+});
+
+
 /**
  * Configure the Routes
  */
@@ -24,7 +37,16 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         .segment('routeOverview', {
             'default': true,
             templateUrl: 'partials/overview.html',
-            controller: 'PageCtrl_Overview'
+            controller: 'PageCtrl_Overview',
+            resolve: {
+                initUserProfile: function(DataInitiator) {
+                    return DataInitiator.initAllwTest(true);
+                }
+            },
+            untilResolved: {
+                templateUrl: 'partials/template/loading.html'
+            },
+            resolveFailed: { redirectTo: '/error/503' }
         })
         .within()
         .segment('seg', {
@@ -39,7 +61,16 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         .when('/filtersettings/:id', 'routeFilterSettings.seg')
         .segment('routeFilterSettings', {
             templateUrl: 'partials/filtersettings.html',
-            controller: 'PageCtrl_FilterSettings'
+            controller: 'PageCtrl_FilterSettings',
+            resolve: {
+                initUserProfile: function(DataInitiator) {
+                    return DataInitiator.initAll(false);
+                }
+            },
+            untilResolved: {
+                templateUrl: 'partials/template/loading.html'
+            },
+            resolveFailed: { redirectTo: '/error/503' }
         })
         .within()
         .segment('seg', {
@@ -51,9 +82,25 @@ app.config(function($routeSegmentProvider, $routeProvider) {
 
     $routeSegmentProvider
         .when('/accountsettings', 'routeAccountSettings')
+        .when('/accountsettings/:id', 'routeAccountSettings.seg')
         .segment('routeAccountSettings', {
-            templateUrl: 'partials/error/404.html',
-            controller: ''
+            templateUrl: 'partials/accountsettings.html',
+            controller: 'PageCtrl_AccountSettings',
+            resolve: {
+                initUserProfile: function(DataInitiator) {
+                    return DataInitiator.initAll(false);
+                }
+            },
+            untilResolved: {
+                templateUrl: 'partials/template/loading.html'
+            },
+            resolveFailed: { redirectTo: '/error/503' }
+        })
+        .within()
+        .segment('seg', {
+            templateUrl: 'partials/accountsettings-segment.html',
+            controller: 'SegmentCtrl',
+            dependencies: ['id']
         });
 
 

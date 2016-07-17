@@ -1,0 +1,299 @@
+<div class="user-tab-content-wrapper border no-top-border">
+    <div class="user-tab-content user{{itemIndex+1}}" ng-class="isDeviceVisible(itemIndex) ? 'service-on' : 'service-off'">
+        <!-- User 1 -->
+        <div class="content-section head">
+            <!-- Header -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-18">
+                        <div class="ico-profile"></div>
+                        <div class="title">
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Account Settings<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="acc-type" ng-switch="isDeviceVisible(itemIndex)">
+                            <span ng-switch-when="true" class="desc">Account Type: Basic Account
+                            <br /><a href="upgrade">Upgrade to Plus<div class="btn-arrow-green"></div></a></span>
+                            <a ng-switch-when="false" class="button" href="go-to-MAM">Activate Now
+                      <div class="btn-arrow-white"></div>
+                      </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section alert-red" ng-if="deviceStatusCheck(itemIndex, 'SU')">
+            <!-- Alert - Suspended account -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-24">
+                        <div class="ico-alert"></div>
+                        <p>Your JuniorProtect account has been temporarily suspended.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-lighter-grey account-setting" ng-controller="ElementCtrl_Account">
+            <!--Account Settings -->
+            <div class="inner-wrapper" ng-if="isDeviceVisible(itemIndex)">
+                <div class="row">
+                    <div class="col-md-24">
+                        <h5> Account Settings</h5>
+                        <div class="btn-toggle-collapse-wrapper"> <a class="btn-toggle-collapse" data-target="#account-settings-content" data-toggle="collapse" />
+                        </div>
+                    </div>
+                </div>
+                <div id="account-settings-content" class="collapse in">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="acc-info-box" id="">
+                                <div class="box-title"> Account Info</div>
+                                <div class="box-content">
+                                    <div class="table-wrapper">
+                                        <table class="two-col-form">
+                                            <tr>
+                                                <td class="left">Plan Name</td>
+                                                <td class="right">{{virtualDevice.plan_name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">Device Number</td>
+                                                <td class="right">{{virtualDevice.number}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">Profile Name</td>
+                                                <td class="right">
+                                                    <input id="device-name" type="text" name="device-name" ng-model="virtualDevice.profile_name">
+                                                    <input class="button save-name" type="button" value="Save" ng-click="setDeviceProfileName()">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="parent-access-box disabled-parent-access" id="" ng-class="{'disabled-parent-access' : !virtualDevice.parent_access}">
+                                <div class="box-title"> Parent Access
+                                    <div class="switch">
+                                        <input id="parent-access-switch" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" ng-checked="virtualDevice.parent_access" ng-click="togglePAStatus()">
+                                        <label for="{{deviceStatusCheck(itemIndex, 'SU') ? 'madoka' : 'parent-access-switch'}}"></label>
+                                    </div>
+                                </div>
+                                <div class="box-content">
+                                    <div class="wrapper">
+                                        <p ng-if-start="virtualDevice.parent_access">Parent Access is currently turned on.</p>
+                                        <p ng-if-end>You can turn off Parent Access for this account or change your Parent Access password. </p>
+                                        <p ng-if-start="!virtualDevice.parent_access">Parent Access is currently turned off.</p>
+                                        <p ng-if-end>Turn on Parent Access for this account now to continue surfing the Internet without being blocked by JuniorProtect. </p>
+                                        <div class="password-wrapper" ng-if="UserProfile.devices[itemIndex].parent_access_pwd">
+                                            <div class="bold">Password</div>
+                                            <div class="password">******</div>
+                                            <a href="javascript:void(0)" class="button right-button change-password-btn" data-toggle="modal" data-target="#change-password-modal">Change Password</a>
+                                        </div>
+                                        <div class="password-wrapper" ng-if="!UserProfile.devices[itemIndex].parent_access_pwd">
+                                            <div class="bold">You have not set a password</div>
+                                            <a class="button right-button set-password-btn" id="pa-set-password-btn" data-toggle="modal" data-target="#set-password-modal">Set Password</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal: change password -->
+            <div id="change-password-modal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="closebt x-btn close" data-dismiss="modal"></div>
+                            <h5 class="modal-title">Change Password</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Change your password for Parent Access. This password applies to all accounts and will allow you to continue surfing without being blocked by JuniorProtect. </p>
+                            <div class="table-wrapper">
+                                <table class="two-col-form">
+                                    <tr>
+                                        <td class="left">New Password</td>
+                                        <td class="right">
+                                            <input id="new-password" type="password" name="new-password" ng-model="pa_set_pwd" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left">Confirm Password</td>
+                                        <td class="right">
+                                            <input id="confirm-new-password" type="password" name="confirm-new-password" ng-model="pa_confirm_pwd" required>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="button cancel papwd-cancel-btn" data-dismiss="modal"> Cancel </a> <a class="button confirm" ng-click="setPAPwd()"> Save </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--modal: set password -->
+            <div id="set-password-modal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="closebt x-btn close" data-dismiss="modal"></div>
+                            <h5 class="modal-title">Set Password</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Set your password for Parent Access. This password applies to all accounts and will allow you to continue surfing without being blocked by JuniorProtect.</p>
+                            <div class="table-wrapper">
+                                <table class="two-col-form">
+                                    <tr>
+                                        <td class="left">Set Password</td>
+                                        <td class="right">
+                                            <input id="set-password" type="password" name="set-password" ng-model="pa_set_pwd" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left">Confirm Password</td>
+                                        <td class="right">
+                                            <input id="confirm-password" type="password" name="confirm-password" ng-model="pa_confirm_pwd" required>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="button cancel papwd-cancel-btn" data-dismiss="modal"> Cancel </a> <a class="button confirm" ng-click="setPAPwd()"> Save </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-lighter-grey import-filter-settings" id="import-settings" ng-controller="ElementCtrl_ImportFilter">
+            <!--Import Filter Settings -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-24">
+                        <h5> Import Filter Settings</h5>
+                        <div class="btn-toggle-collapse-wrapper"> <a class="btn-toggle-collapse" data-target="#import-filter-content" data-toggle="collapse" />
+                        </div>
+                    </div>
+                </div>
+                <div id="import-filter-content" class="collapse">
+                    <div class="row">
+                        <div class="col-md-24">
+                            <div class="fullwidth-white-box">
+                                <p>Apply existing JuniorProtect account settings to {{sourceDevice.profile_name}}’s account.</p>
+                                <p style="display:inline; margin-right:10px;">The following settings will be saved to <strong>{{UserProfile.devices[itemIndex].profile_name}}</strong> from </p>
+                                <select class="account-list" ng-init="sourceDevice=UserProfile.devices[itemIndex]" ng-model="sourceDevice" ng-options="dvc.profile_name for dvc in UserProfile.devices"></select>
+                                <a class="button import-btn" href="javascript:void(0)" data-toggle="modal" data-target="#import-settings-modal">Import Settings
+                                    <div class="btn-arrow-white"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="category-box" ng-controller="ElementCtrl_CategoryFilter">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
+                                    <div class="category-ico">
+                                        <div class="ico-junior"></div>
+                                    </div>
+                                    <div class="category-name">Juniors</div>
+                                </div>
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('strict')">
+                                    <div class="category-ico">
+                                        <div class="ico-teen"></div>
+                                    </div>
+                                    <div class="category-name">Teens</div>
+                                </div>
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('custom')">
+                                    <div class="category-ico">
+                                        <div class="ico-custom"></div>
+                                    </div>
+                                    <div class="category-name">Custom</div>
+                                </div>
+                            </div>
+                            <div class="set-time-box function-disabled" data-title="">
+                                <div class="filter-turned-off">
+                                    <div class="title">Filter is turned off</div>
+                                    <table class="schedule">
+                                        <tr>
+                                            <td class="selected-day">M, T, W, T</td>
+                                            <td class="selected-time">00:00 - 00:00</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="homework-time">
+                                    <div class="title">Homework time</div>
+                                    <table class="schedule">
+                                        <tr>
+                                            <td class="selected-day">All Week</td>
+                                            <td class="selected-time">00:00 - 00:00</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="restricted-box">
+                                <div class="box-title">
+                                    <div class="ico-restricted"></div>
+                                    Restricted Websites</div>
+                                <div class="box-content">
+                                    <ul>
+                                        <li ng-repeat="black_site in UserProfile.devices[itemIndex].restrict_sites">{{black_site}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="allowed-box">
+                                <div class="box-title">
+                                    <div class="ico-allowed"></div>
+                                    Allowed Websites</div>
+                                <div class="box-content">
+                                    <ul>
+                                        <li ng-repeat="white_site in UserProfile.devices[itemIndex].allow_sites">{{white_site}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal: import settings -->
+            <div id="import-settings-modal" class="modal fade" role="dialog">
+                <div class="modal-dialog  modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="closebt x-btn close" data-dismiss="modal"></div>
+                            <h5 class="modal-title">Confirm Import</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{sourceDevice.profile_name}}'s Filter Settings will be imported to {{UserProfile.devices[itemIndex].profile_name}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="button cancel" data-dismiss="modal"> Cancel </a> <a class="button confirm" ng-click="importSourceDevice()" data-dismiss="modal"> Confirm </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-section bg-light-blue">
+            <!-- Upgrade to Plus Acc -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-24">
+                        <div class="upgrade-box">
+                            <h5>Get more control over your child&rsquo;s phone usage. </h5>
+                            <p>Know their current location, set time-based restriction and more. Sign up for Junior Protect Plus now.</p>
+                            <a href="#" class="button">{{ isDeviceVisible(itemIndex) ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
+                      <div class="btn-arrow-white"></div>
+                      </a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

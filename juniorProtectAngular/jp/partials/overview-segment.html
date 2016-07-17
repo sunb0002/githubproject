@@ -1,5 +1,5 @@
 <div class="user-tab-content-wrapper border no-top-border">
-    <div class="user-tab-content user{{itemIndex+1}}" ng-class=" UserProfile.devices[itemIndex].is_active ? 'service-on' : 'service-off'">
+    <div class="user-tab-content user{{itemIndex+1}}" ng-class="isDeviceVisible(itemIndex) ? 'service-on' : 'service-off'">
         <!-- User 1 -->
         <div class="content-section head">
             <!-- Header -->
@@ -8,11 +8,11 @@
                     <div class="col-md-18">
                         <div class="ico-profile"></div>
                         <div class="title">
-                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s JuniorProtect Profile<a ng-if="UserProfile.devices[itemIndex].is_active" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit device name"></div></a></h3>
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s JuniorProtect Profile<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="acc-type" ng-switch="UserProfile.devices[itemIndex].is_active">
+                        <div class="acc-type" ng-switch="isDeviceVisible(itemIndex)">
                             <span ng-switch-when="true" class="desc">Account Type: Basic Account
                             <br /><a href="upgrade">Upgrade to Plus<div class="btn-arrow-green"></div></a></span>
                             <a ng-switch-when="false" class="button" href="go-to-MAM">Activate Now
@@ -23,9 +23,20 @@
                 </div>
             </div>
         </div>
+        <div class="content-section alert-red" ng-if="deviceStatusCheck(itemIndex, 'SU')">
+            <!-- Alert - Suspended account -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-24">
+                        <div class="ico-alert"></div>
+                        <p>Your JuniorProtect account has been temporarily suspended.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="content-section bg-lighter-grey filter-settings-overview">
             <!-- Filter Settings -->
-            <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active">
+            <div class="inner-wrapper" ng-if="isDeviceVisible(itemIndex)">
                 <div class="row">
                     <div class="col-md-24">
                         <h5>Filter Settings</h5>
@@ -37,13 +48,13 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="category-box" ng-controller="ElementCtrl_CategoryFilter">
-                                <div class="category-wrapper" ng-if="checkCategoryFilter('light')">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
                                     <div class="category-ico">
                                         <div class="ico-junior"></div>
                                     </div>
                                     <div class="category-name">Juniors</div>
                                 </div>
-                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('strict')">
                                     <div class="category-ico">
                                         <div class="ico-teen"></div>
                                     </div>
@@ -114,7 +125,7 @@
         </div>
         <div class="content-section bg-lighter-grey account-settings-overview">
             <!-- Account Settings -->
-            <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active">
+            <div class="inner-wrapper" ng-if="isDeviceVisible(itemIndex)">
                 <div class="row">
                     <div class="col-md-24">
                         <h5>Account Settings</h5>
@@ -168,7 +179,7 @@
                         <div class="upgrade-box">
                             <h5>Get more control over your child&rsquo;s phone usage. </h5>
                             <p>Know their current location, set time-based restriction and more. Sign up for Junior Protect Plus now.</p>
-                            <a href="#" class="button">{{ UserProfile.devices[itemIndex].is_active ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
+                            <a href="#" class="button">{{ isDeviceVisible(itemIndex) ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
                       <div class="btn-arrow-white"></div>
                       </a> </div>
                     </div>

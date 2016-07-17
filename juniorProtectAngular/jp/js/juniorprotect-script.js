@@ -1,13 +1,13 @@
 // JavaScript Document
 
 // mobile menu
-$(document).ready(function(e){
+/*$(document).ready(function(e){
    $('#juniorprotect-toggle').on('click',function(){
       $('.mobile-nav-list').animate({'width': 'toggle'});
     $(".nav-overlay").fadeToggle("slow");
    });
 })
-
+*/
 
 //Checkbox & Radio button
 var checkboxHeight = "25";

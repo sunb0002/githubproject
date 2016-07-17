@@ -1,5 +1,5 @@
 <div class="user-tab-content-wrapper border no-top-border">
-    <div class="user-tab-content user{{itemIndex+1}}" ng-class=" UserProfile.devices[itemIndex].is_active ? 'service-on' : 'service-off'">
+    <div class="user-tab-content user{{itemIndex+1}}" ng-class="isDeviceVisible(itemIndex) ? 'service-on' : 'service-off'">
         <!-- User 1 -->
         <div class="content-section head">
             <!-- Header -->
@@ -8,14 +8,14 @@
                     <div class="col-md-18">
                         <div class="ico-profile"></div>
                         <div class="title">
-                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Filter Settings<a ng-if="UserProfile.devices[itemIndex].is_active" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit device name"></div></a></h3>
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Filter Settings<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="acc-type" ng-switch="UserProfile.devices[itemIndex].is_active">
-                            <span ng-switch-when="true" class="desc">Account Type: Basic Account
+                        <div class="acc-type" ng-switch="isDeviceVisible(itemIndex)">
+                            <span ng-switch-when="Y" class="desc">Account Type: Basic Account
                             <br /><a href="upgrade">Upgrade to Plus<div class="btn-arrow-green"></div></a></span>
-                            <a ng-switch-when="false" class="button" href="go-to-MAM">Activate Now
+                            <a ng-switch-when="N" class="button" href="go-to-MAM">Activate Now
                       <div class="btn-arrow-white"></div>
                       </a>
                         </div>
@@ -23,9 +23,20 @@
                 </div>
             </div>
         </div>
+        <div class="content-section alert-red" ng-if="deviceStatusCheck(itemIndex, 'SU')">
+            <!-- Alert - Suspended account -->
+            <div class="inner-wrapper">
+                <div class="row">
+                    <div class="col-md-24">
+                        <div class="ico-alert"></div>
+                        <p>Your JuniorProtect account has been temporarily suspended.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="content-section bg-lighter-grey category-filter">
             <!-- Category Filter -->
-            <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active" ng-controller="ElementCtrl_CategoryFilter">
+            <div class="inner-wrapper" ng-if="isDeviceVisible(itemIndex)" ng-controller="ElementCtrl_CategoryFilter">
                 <div class="row">
                     <div class="col-md-24">
                         <h5> Category Filter</h5>
@@ -43,7 +54,7 @@
                     <div class="row">
                         <a href="">
                             <div class="col-md-8 col-sm-8 col-xs-8">
-                                <div class="category-box" ng-click="setCategoryFilter('medium')" ng-class="{'selected': checkCategoryFilter('medium')}">
+                                <div class="category-box" ng-click="setCategoryFilter('strict')" ng-class="{'selected': checkCategoryFilter('strict')}">
                                     <div class="category-wrapper">
                                         <div class="category-ico">
                                             <div class="ico-junior"></div>
@@ -55,7 +66,7 @@
                         </a>
                         <a href="">
                             <div class="col-md-8 col-sm-8 col-xs-8">
-                                <div class="category-box" ng-click="setCategoryFilter('light')" ng-class="{'selected': checkCategoryFilter('light')}">
+                                <div class="category-box" ng-click="setCategoryFilter('medium')" ng-class="{'selected': checkCategoryFilter('medium')}">
                                     <div class="category-wrapper">
                                         <div class="category-ico">
                                             <div class="ico-teen"></div>
@@ -83,11 +94,11 @@
                             <div class="category-list-box">
                                 <div class="category-list-wrapper">
                                     <ul>
-                                        <div class="category-list-column">
-                                            <li ng-repeat="(index, catflt) in allCategoryFilter">
+                                        <div class="category-list-column" ng-repeat="(halfIndex, halfCatlf) in allCategoryFilter">
+                                            <li ng-repeat="(index, catflt) in halfCatlf">
                                                 <span class="checkbox" style="background-position: 0px {{selection.indexOf(catflt.name) > -1 ? -50 : 0}}px;" ng-click="toggleSelection(catflt.name)"></span>
-                                                <input type="checkbox" id="cat{{index+1}}" name="cat{{index+1}}" class="styled" value="{{catflt}}" ng-checked="selection.indexOf(catflt.name) > -1" ng-click="toggleSelection(catflt.name)" style="display:none">
-                                                <label for="cat{{index+1}}">{{catflt.description}}</label>
+                                                <input type="checkbox" id="cat{{index+1+halfIndex*half_length}}" name="cat{{index+1}}" class="styled" value="{{catflt}}" ng-checked="selection.indexOf(catflt.name) > -1" ng-click="toggleSelection(catflt.name)" style="display:none">
+                                                <label for="cat{{index+1+halfIndex*half_length}}">{{catflt.description}}</label>
                                             </li>
                                         </div>
                                     </ul>
@@ -106,7 +117,7 @@
             </div>
             <div class="content-section bg-lighter-grey restricted-allowed-websites">
                 <!--Restricted and Allowed Websites -->
-                <div class="inner-wrapper" ng-if="UserProfile.devices[itemIndex].is_active" ng-controller="ElementCtrl_BlackWhiteDomainList">
+                <div class="inner-wrapper" ng-if="isDeviceVisible(itemIndex)" ng-controller="ElementCtrl_BlackWhiteDomainList">
                     <div class="row">
                         <div class="col-md-24">
                             <h5>Personalized Filter</h5>
@@ -129,11 +140,11 @@
                                         Restricted Websites</div>
                                     <div class="box-content">
                                         <ul class="restricted-list">
-                                            <li ng-repeat="black_site in thisDevice.restrict_sites">{{black_site}} <a href="" ng-click="removeItem($index, 'black')">remove</a></li>
+                                            <li ng-repeat="black_site in virtualDevice.restrict_sites">{{black_site}} <a href="" ng-click="removeItem($index, 'black')">remove</a></li>
                                             <li>
                                                 <div class="add-url-input">
                                                     <input id="new-restricted-url" type="text" name="new-restricted-url" placeholder="Enter URL" ng-model="addBlack" required>
-                                                    <input class="button save-url" type="button" value="Save" ng-click="addItem('black')">
+                                                    <input class="button save-url" type="button" value="Add" ng-click="addItem('black')">
                                                 </div>
                                             </li>
                                         </ul>
@@ -147,11 +158,11 @@
                                         Allowed Websites</div>
                                     <div class="box-content">
                                         <ul class="allowed-list">
-                                            <li ng-repeat="white_site in thisDevice.allow_sites">{{white_site}} <a href="" ng-click="removeItem($index, 'white')">remove</a></li>
+                                            <li ng-repeat="white_site in virtualDevice.allow_sites">{{white_site}} <a href="" ng-click="removeItem($index, 'white')">remove</a></li>
                                             <li>
                                                 <div class="add-url-input">
                                                     <input id="new-restricted-url" type="text" name="new-restricted-url" placeholder="Enter URL" ng-model="addWhite" required>
-                                                    <input class="button save-url" type="button" value="Save" ng-click="addItem('white')">
+                                                    <input class="button save-url" type="button" value="Add" ng-click="addItem('white')">
                                                 </div>
                                             </li>
                                         </ul>
@@ -176,7 +187,7 @@
                                 <div class="upgrade-box">
                                     <h5>Get more control over your child&rsquo;s phone usage. </h5>
                                     <p>Know their current location, set time-based restriction and more. Sign up for Junior Protect Plus now.</p>
-                                    <a href="#" class="button">{{ UserProfile.devices[itemIndex].is_active ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
+                                    <a href="#" class="button">{{ isDeviceVisible(itemIndex) ? "Upgrade to Plus" : "Activate JuniorProtect Plus"}}
                       <div class="btn-arrow-white"></div>
                       </a> </div>
                             </div>
@@ -185,3 +196,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>

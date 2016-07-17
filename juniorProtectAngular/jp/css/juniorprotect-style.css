@@ -12,6 +12,8 @@ p {font-size:16px;line-height: 23px;color:#666666;font-family: 'DINWeb';}
 label {font-weight:normal; display:inline;}
 strong {font-style: "DINBold";}
 
+.copyright-starhub {color:#999999;}
+
 a, a:visited, a:active {text-decoration: none; color:#73c20e;border: 0; cursor:pointer;outline: 0; margin:0;}
 a:hover {color:#73c20e; text-decoration:underline;}
 img a {border:0;outline: 0;}
@@ -243,3 +245,13 @@ table.two-col-form .right {width:100%;}
 .modal-content .confirm {background:#73c20e;}
 
 /* ------ end Account Settings ------ */
+
+/* ------ Additional CSS ------ */
+.acc-suspended {pointer-events: none;opacity: 0.5;}
+.acc-suspended  .button, .acc-suspended  .button:visited, .acc-suspended  .button:active, .acc-suspended  .button:focus, .acc-suspended .button:hover {background-color: #cdcdcd;}
+
+.alert-red {background:#ef513e; border-top:1px solid #dddddd; border-bottom:1px solid #dddddd;}
+.alert-red .inner-wrapper {margin: 16px 30px;}
+.ico-alert {padding: 0 12px 24px 12px; background:url(../images/ico-alert.png) no-repeat center center;  background-size: 24px 24px; margin-right:20px; display:inline-block; vertical-align:middle;}
+.alert-red p {color:#ffffff; margin:0;  display:inline-block;  vertical-align:middle; width:-webkit-calc(100% - 50px);}
+h3 a:hover {text-decoration:none;}
