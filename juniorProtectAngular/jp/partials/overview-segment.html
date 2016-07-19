@@ -8,7 +8,7 @@
                     <div class="col-md-18">
                         <div class="ico-profile"></div>
                         <div class="title">
-                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s JuniorProtect Profile<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s JuniorProtect Profile<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}/{{itemIndex}}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -44,17 +44,17 @@
                         </div>
                     </div>
                 </div>
-                <div id="filter-settings-content" class="collapse in">
+                <div id="filter-settings-content" class="collapse in" ng-class="{'acc-suspended' : deviceStatusCheck(itemIndex, 'SU')}">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="category-box" ng-controller="ElementCtrl_CategoryFilter">
-                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('strict')">
                                     <div class="category-ico">
                                         <div class="ico-junior"></div>
                                     </div>
                                     <div class="category-name">Juniors</div>
                                 </div>
-                                <div class="category-wrapper" ng-if="checkCategoryFilter('strict')">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
                                     <div class="category-ico">
                                         <div class="ico-teen"></div>
                                     </div>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-24">
-                            <div class="right-button"> <a class="button" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}">Manage Settings
+                            <div class="right-button"> <a class="button" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}/{{itemIndex}}">Manage Settings
                       <div class="btn-arrow-white"></div>
                       </a> </div>
                         </div>
@@ -134,14 +134,14 @@
                         </div>
                     </div>
                 </div>
-                <div id="account-settings-content" class="collapse">
+                <div id="account-settings-content" class="collapse" ng-class="{'acc-suspended' : deviceStatusCheck(itemIndex, 'SU')}">
                     <div class="row">
                         <div class="col-md-24">
                             <div class="fullwidth-white-box">
                                 <table class="two-col-form">
                                     <tr>
                                         <td class="left">Plan Name</td>
-                                        <td class="right">{{UserProfile.devices[itemIndex].profile_name}}</td>
+                                        <td class="right">{{UserProfile.devices[itemIndex].plan_name}}</td>
                                     </tr>
                                     <tr>
                                         <td class="left">Device Number</td>
@@ -153,7 +153,7 @@
                                     </tr>
                                     <tr>
                                         <td class="left">Import Settings</td>
-                                        <td class="right"><a href="acount-settings.html#import-settings">Choose settings to import from
+                                        <td class="right"><a ng-click="gotoImportFilter()">Choose settings to import from
                             <div class="btn-arrow-green"></div>
                             </a></td>
                                     </tr>
@@ -163,7 +163,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-24">
-                            <div class="right-button"> <a class="button" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}">Manage Settings
+                            <div class="right-button"> <a class="button" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}/{{itemIndex}}">Manage Settings
                       <div class="btn-arrow-white"></div>
                       </a> </div>
                         </div>

@@ -8,7 +8,7 @@
                     <div class="col-md-18">
                         <div class="ico-profile"></div>
                         <div class="title">
-                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Filter Settings<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Filter Settings<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}/{{itemIndex}}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="category-filter-content" class="collapse in">
+                <div id="category-filter-content" class="collapse in" ng-class="{'acc-suspended' : deviceStatusCheck(itemIndex, 'SU')}">
                     <div class="row">
                         <div class="col-md-24">
                             <p>Select the categories to be blocked by JuniorProtect.</p>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="personalized-filter-content" class="collapse">
+                    <div id="personalized-filter-content" class="collapse" ng-class="{'acc-suspended' : deviceStatusCheck(itemIndex, 'SU')}">
                         <div class="row">
                             <div class="col-md-24">
                                 <p>Enter a specific website to be blocked or allowed by JuniorProtect.</p>

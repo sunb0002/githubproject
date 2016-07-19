@@ -8,7 +8,7 @@
 /**
  Some global utility functions
 */
-app.factory('Utils', function() {
+app.factory('Utils', function($rootScope, $location, $anchorScroll) {
 
     var obj = {};
     obj.compareArray = function(array1, array2) {
@@ -53,13 +53,36 @@ app.factory('Utils', function() {
         }
     };
 
+    obj.isValidDomainName = function(domain) {
+        return (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain));
+    };
+
+    obj.scrollTo = function(id) {
+        var old = $location.hash();
+        $location.hash(id);
+        $anchorScroll();
+        //reset to old to keep any additional routing logic from kicking in
+        $location.hash(old);
+    };
+
+    obj.showGlobalModalError = function(errmsg) {
+        obj.showGlobalModalMessage("Error Occurred", errmsg);
+    };
+
+    obj.showGlobalModalMessage = function(title, msg) {
+        $rootScope.globalErrorMessage = {};
+        $rootScope.globalErrorMessage.title = title;
+        $rootScope.globalErrorMessage.content = msg;
+        angular.element("#global-message-modal").modal('show');
+    };
+
     return obj;
 });
 
 /**
  Some global data loader.
 */
-app.factory("DataInitiator", function($q, $timeout, $http, $rootScope, JP_REST_ENDPOINT) {
+app.factory("DataInitiator", function($q, $timeout, $http, $rootScope, $location, $routeSegment, JP_REST_ENDPOINT) {
 
     var obj = {};
     obj.internalTest = function() {
@@ -81,6 +104,11 @@ app.factory("DataInitiator", function($q, $timeout, $http, $rootScope, JP_REST_E
         $http.get(JP_REST_ENDPOINT.GET_USER_PROFILE).success(function(data, status) {
             console.log(data);
             $rootScope.UserProfile = data;
+            // If no device under this user, redirect to nodevice page.
+            var deviceCount = (data == null) ? 0 : $rootScope.UserProfile.devices.length;
+            if (deviceCount < 1) {
+                $location.path($routeSegment.getSegmentUrl('routeErrorNoDevice'));
+            }
             deferred.resolve("UserProfile loaded successfully.");
         }).error(function(data, status) {
             console.log("error status: " + status + " data: " + data);
@@ -147,7 +175,6 @@ app.controller('IndexCtrl', function($scope, $rootScope) {
     $scope.isDeviceVisible = function(deviceIndex) {
         return ($scope.deviceStatusCheck(deviceIndex, 'Y') || $scope.deviceStatusCheck(deviceIndex, 'SU'));
     };
-
 });
 
 
@@ -159,7 +186,7 @@ app.controller('IndexCtrl', function($scope, $rootScope) {
 /**
  * Controls for "overview" pages.
  */
-app.controller('PageCtrl_Overview', function($scope, $routeSegment, $location) {
+app.controller('PageCtrl_Overview', function($scope, $routeSegment, $location, Utils) {
 
     console.log("PageCtrl_Overview reporting.");
 
@@ -171,13 +198,18 @@ app.controller('PageCtrl_Overview', function($scope, $routeSegment, $location) {
         $location.path($location.path() + '/0');
     }
 
+    $scope.gotoImportFilter = function() {
+        $location.path($routeSegment.getSegmentUrl('routeAccountSettings') + "/" + $routeSegment.$routeParams.id);
+        Utils.scrollTo("import-filter-content");
+    };
+
 });
 
 
 /**
  * Controls "filter settings" pages.
  */
-app.controller('PageCtrl_FilterSettings', function($scope, $rootScope, $routeSegment, $location) {
+app.controller('PageCtrl_FilterSettings', function($scope, $routeSegment, $location) {
 
     console.log("PageCtrl_FilterSettings reporting.");
     $scope.$routeSegment = $routeSegment;
@@ -191,7 +223,7 @@ app.controller('PageCtrl_FilterSettings', function($scope, $rootScope, $routeSeg
 /**
  * Controls "account settings" pages.
  */
-app.controller('PageCtrl_AccountSettings', function($scope, $rootScope, $routeSegment, $location) {
+app.controller('PageCtrl_AccountSettings', function($scope, $routeSegment, $location) {
 
     console.log("PageCtrl_AccountSettings reporting.");
     $scope.$routeSegment = $routeSegment;
@@ -210,7 +242,7 @@ app.controller('PageCtrl_AccountSettings', function($scope, $rootScope, $routeSe
 /**
  * Controls all segment sub-pages.
  */
-app.controller('SegmentCtrl', function($scope, $routeSegment, $rootScope) {
+app.controller('SegmentCtrl', function($scope, $routeSegment) {
     console.log("SegmentCtrl reporting.");
     $scope.itemIndex = $routeSegment.$routeParams.id;
 });
@@ -249,9 +281,12 @@ app.controller('ElementCtrl_BlackWhiteDomainList', function($scope, $rootScope, 
     };
 
     $scope.addItem = function(whichList) {
+
+        var isBlack = angular.equals("black", whichList);
+
         // thisList is bound with $scope.virtualDevice (HTML view) by reference.
         // newItem is bound by value. Be careful.
-        if ('black' == whichList) {
+        if (isBlack) {
             var thisList = $scope.virtualDevice.restrict_sites;
             var newItem = $scope.addBlack;
         } else {
@@ -260,7 +295,7 @@ app.controller('ElementCtrl_BlackWhiteDomainList', function($scope, $rootScope, 
         }
 
         if (newItem == null) {
-            alert('Empty input.');
+            Utils.showGlobalModalError('Empty input.');
             return;
         }
 
@@ -268,9 +303,14 @@ app.controller('ElementCtrl_BlackWhiteDomainList', function($scope, $rootScope, 
         newItem = newItem.toLowerCase();
         // Force convert to domain name.
         newItem = Utils.parseURLforDomain(newItem);
+        // Domain name validation
+        if (!Utils.isValidDomainName(newItem)) {
+            Utils.showGlobalModalError('Invalid domain name.');
+            return;
+        }
 
         if (thisList.indexOf(newItem) > -1) {
-            alert('Domain ' + newItem + ' is already in the list.');
+            Utils.showGlobalModalError('Domain ' + newItem + ' is already in the list.');
             return;
         }
 
@@ -278,10 +318,22 @@ app.controller('ElementCtrl_BlackWhiteDomainList', function($scope, $rootScope, 
         thisList.push(newItem);
         console.log('List after change: ' + thisList);
 
+        // Clear the input field
+        if (isBlack) {
+            $scope.addBlack = "";
+        } else {
+            $scope.addWhite = "";
+        }
+
     };
 
 
     $scope.postListUpdates = function postSelection() {
+
+        if ((Utils.compareArray($scope.virtualDevice.restrict_sites, realDevice.restrict_sites)) && (Utils.compareArray($scope.virtualDevice.allow_sites, realDevice.allow_sites))) {
+            Utils.showGlobalModalError('There is no change in Restricted and Allowed websites.');
+            return;
+        }
 
         var postData = {
             'device_number': $scope.virtualDevice.number,
@@ -300,7 +352,7 @@ app.controller('ElementCtrl_BlackWhiteDomainList', function($scope, $rootScope, 
                 realDevice.allow_sites = angular.copy($scope.virtualDevice.allow_sites);
             })
             .error(function myError(data, status) {
-                alert("Post Failed... status: " + status + " data: " + data);
+                Utils.showGlobalModalError("Post Failed... status: " + status + " data: " + data);
                 // Rollback $scope.virtualDevice
                 resetDevice();
             });
@@ -407,7 +459,7 @@ app.controller('ElementCtrl_CategoryFilter', function($scope, $rootScope, $route
 
         var postData = {
             'device_number': realDevice.number,
-            'profile_name': realDevice.profile_name,
+            'profile_name': realDevice.account_type + "-" + realDevice.profile_name,
             'category_type': cat_type,
             'category_list': $scope.selection
         };
@@ -420,7 +472,7 @@ app.controller('ElementCtrl_CategoryFilter', function($scope, $rootScope, $route
                 realDevice.filter_list = angular.copy($scope.selection);
             })
             .error(function myError(data, status) {
-                alert("Post Failed... status: " + status + " data: " + data);
+                Utils.showGlobalModalError("Post Failed... status: " + status + " data: " + data);
                 resetSelection();
             });
     };
@@ -434,7 +486,7 @@ app.controller('ElementCtrl_CategoryFilter', function($scope, $rootScope, $route
 /**
  * Controls the account setting section.
  */
-app.controller('ElementCtrl_ImportFilter', function($scope, $rootScope, $http, JP_REST_ENDPOINT) {
+app.controller('ElementCtrl_ImportFilter', function($scope, $rootScope, $http, Utils, JP_REST_ENDPOINT) {
     console.log("ElementCtrl_ImportFilter reporting.");
 
     var realDevice = $rootScope.UserProfile.devices[$scope.itemIndex];
@@ -446,13 +498,13 @@ app.controller('ElementCtrl_ImportFilter', function($scope, $rootScope, $http, J
     $scope.importSourceDevice = function() {
 
         if ($scope.sourceDevice.number == realDevice.number) {
-            console.log("Source device should be different.");
+            Utils.showGlobalModalError("Source device should be different.");
             return;
         }
 
         var postData = {
             'device_number': realDevice.number,
-            'profile_name': realDevice.profile_name,
+            'profile_name': realDevice.account_type + "-" + realDevice.profile_name,
             'import_device_number': $scope.sourceDevice.number
         };
 
@@ -467,7 +519,7 @@ app.controller('ElementCtrl_ImportFilter', function($scope, $rootScope, $http, J
                 $scope.$broadcast('reset-categoryfilter-selection');
             })
             .error(function myError(data, status) {
-                alert("Post Failed... status: " + status + " data: " + data);
+                Utils.showGlobalModalError("Post Failed... status: " + status + " data: " + data);
             });
     };
 
@@ -511,9 +563,15 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
             return deferred.promise;
         }
 
-        var postData = {
+        /*var postData = {
             'device_number': $scope.virtualDevice.number,
             'parent_access': newPAstatus
+        };*/
+        var postData = {
+            'parent_access_status': [{
+                "device_id": $scope.virtualDevice.number,
+                "status": (newPAstatus ? 1 : 0)
+            }]
         };
 
         console.log(postData);
@@ -526,7 +584,7 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
                 deferred.resolve("Update PA status scuceeded.");
             })
             .error(function myError(data, status) {
-                alert("Post Failed... status: " + status + " data: " + data);
+                Utils.showGlobalModalError("Post Failed... status: " + status + " data: " + data);
                 deferred.reject("Update PA status failed.");
             });
         //return the promise
@@ -549,16 +607,34 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
             'device_number': $scope.virtualDevice.number,
             'pa_pwd': pw
         };
+        var postEndPoint = JP_REST_ENDPOINT.POST_UPDATE_PARENTACCESS_PWD;
+
+        // ===Temporary start===
+        if (!$rootScope.UserProfile.parent_access_pwd) {
+            postEndPoint = JP_REST_ENDPOINT.POST_ADD_PARENTACCESS;
+            var postData = {
+                'pa_pwd': pw
+            };
+            var parent_access_statusArray = [];
+            angular.forEach($rootScope.UserProfile.devices, function(device, index) {
+                var tmpobj = {};
+                tmpobj.device_id = device.number;
+                tmpobj.status = 0;
+                parent_access_statusArray.push(tmpobj);
+            });
+            postData.parent_access_status = parent_access_statusArray;
+        }
+
+        // ===Temporary end ===
 
         console.log(postData);
-
-        $http.post(JP_REST_ENDPOINT.POST_UPDATE_PARENTACCESS_PWD, postData).success(function(data, status) {
+        $http.post(postEndPoint, postData).success(function(data, status) {
                 alert("Post Success! status: " + status + " data: " + data);
-                realDevice.parent_access_pwd = true;
+                $rootScope.UserProfile.parent_access_pwd = true;
                 deferred.resolve('request successful');
             })
             .error(function myError(data, status) {
-                alert("Post Failed... status: " + status + " data: " + data);
+                Utils.showGlobalModalError("Post Failed... status: " + status + " data: " + data);
                 deferred.reject('ERROR');
             });
         return deferred.promise;
@@ -568,7 +644,7 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
     $scope.togglePAStatus = function() {
 
         var pa_status = $scope.virtualDevice.parent_access;
-        var pa_pwd_status = realDevice.parent_access_pwd;
+        var pa_pwd_status = $rootScope.UserProfile.parent_access_pwd;
 
         $scope.virtualDevice.parent_access = !pa_status;
 
@@ -595,11 +671,11 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
 
         // Future upgrade: AngularJS validator; Javascript monitor.
         if (pw1 == null) {
-            alert('Empty password.');
+            Utils.showGlobalModalError('Empty password.');
             return;
         }
         if (!(pw1 == pw2)) {
-            alert('Not match.');
+            Utils.showGlobalModalError('Not match.');
             return;
         }
 
@@ -625,8 +701,8 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
 
         var postData = {
             'device_number': realDevice.number,
-            'old_profile_name': realDevice.profile_name,
-            'new_profile_name': newName
+            'old_profile_name': realDevice.account_type + "-" + realDevice.profile_name,
+            'new_profile_name': realDevice.account_type + "-" + newName
         };
 
         console.log(postData);
@@ -637,7 +713,7 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
                 realDevice.profile_name = angular.copy(newName);
             })
             .error(function myError(data, status) {
-                alert("Post Failed... status: " + status + " data: " + data);
+                Utils.showGlobalModalError("Post Failed... status: " + status + " data: " + data);
             }).finally(function() {
                 console.log("finally");
                 resetDevice();

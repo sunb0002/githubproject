@@ -5,9 +5,9 @@
                 <div class="row">
                     <div class="nav hidden-xs hidden-sm">
                         <ul>
-                            <li><a ng-class="{active: ('routeOverview' | routeSegmentStartsWith)}" href="#{{ 'routeOverview' | routeSegmentUrl }}">Overview</a></li>
-                            <li><a ng-class="{active: ('routeFilterSettings' | routeSegmentStartsWith)}" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}">Filter Settings</a></li>
-                            <li><a ng-class="{active: ('routeAccountSettings' | routeSegmentStartsWith)}" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}">Account Settings</a></li>
+                            <li><a ng-class="{active: ('routeOverview' | routeSegmentStartsWith)}" href="#{{ 'routeOverview' | routeSegmentUrl }}/0">Overview</a></li>
+                            <li><a ng-class="{active: ('routeFilterSettings' | routeSegmentStartsWith)}" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}/0">Filter Settings</a></li>
+                            <li><a ng-class="{active: ('routeAccountSettings' | routeSegmentStartsWith)}" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}/0">Account Settings</a></li>
                             <li><a class="function-disabled" data-title="">Track Locations</a></li>
                             <li><a class="function-disabled" data-title="">Activity Report</a></li>
                             <li><a class="function-disabled" data-title="">Manage Usage</a></li>
@@ -28,11 +28,11 @@
         <div class="row">
             <div class="col-md-24">
                 <div class="row">
-                    <div class="nav visible-xs visible-sm"><a ng-class="{active: ('routeOverview' | routeSegmentStartsWith)}" href="#{{ 'routeOverview' | routeSegmentUrl }}">Overview</a>
+                    <div class="nav visible-xs visible-sm"><a ng-class="{active: ('routeOverview' | routeSegmentStartsWith)}" href="#{{ 'routeOverview' | routeSegmentUrl }}/0">Overview</a>
                         <br />
-                        <a ng-class="{active: ('routeFilterSettings' | routeSegmentStartsWith)}" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}">Filter Settings</a>
+                        <a ng-class="{active: ('routeFilterSettings' | routeSegmentStartsWith)}" href="#{{ 'routeFilterSettings' | routeSegmentUrl }}/0">Filter Settings</a>
                         <br />
-                        <a ng-class="{active: ('routeAccountSettings' | routeSegmentStartsWith)}" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}">Account Settings</a>
+                        <a ng-class="{active: ('routeAccountSettings' | routeSegmentStartsWith)}" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}/0">Account Settings</a>
                         <br />
                         <a class="function-disabled">Track Locations</a>
                         <br />

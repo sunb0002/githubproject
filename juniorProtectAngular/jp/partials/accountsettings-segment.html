@@ -8,7 +8,7 @@
                     <div class="col-md-18">
                         <div class="ico-profile"></div>
                         <div class="title">
-                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Account Settings<a ng-if="isDeviceVisible(itemIndex)" href="#{{ 'routeAccountSettings' | routeSegmentUrl }}"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
+                            <h3>{{UserProfile.devices[itemIndex].profile_name}}'s Account Settings<a ng-if="isDeviceVisible(itemIndex)" data-target="#account-settings-content"><div class="btn-edit-green" title="Edit Profile Name"></div></a></h3>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="account-settings-content" class="collapse in">
+                <div id="account-settings-content" class="collapse in" ng-class="{'acc-suspended' : deviceStatusCheck(itemIndex, 'SU')}">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="acc-info-box" id="">
@@ -86,12 +86,12 @@
                                         <p ng-if-end>You can turn off Parent Access for this account or change your Parent Access password. </p>
                                         <p ng-if-start="!virtualDevice.parent_access">Parent Access is currently turned off.</p>
                                         <p ng-if-end>Turn on Parent Access for this account now to continue surfing the Internet without being blocked by JuniorProtect. </p>
-                                        <div class="password-wrapper" ng-if="UserProfile.devices[itemIndex].parent_access_pwd">
+                                        <div class="password-wrapper" ng-if="UserProfile.parent_access_pwd">
                                             <div class="bold">Password</div>
                                             <div class="password">******</div>
                                             <a href="javascript:void(0)" class="button right-button change-password-btn" data-toggle="modal" data-target="#change-password-modal">Change Password</a>
                                         </div>
-                                        <div class="password-wrapper" ng-if="!UserProfile.devices[itemIndex].parent_access_pwd">
+                                        <div class="password-wrapper" ng-if="!UserProfile.parent_access_pwd">
                                             <div class="bold">You have not set a password</div>
                                             <a class="button right-button set-password-btn" id="pa-set-password-btn" data-toggle="modal" data-target="#set-password-modal">Set Password</a>
                                         </div>
@@ -179,7 +179,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="import-filter-content" class="collapse">
+                <div id="import-filter-content" class="collapse" ng-class="{'acc-suspended' : deviceStatusCheck(itemIndex, 'SU')}">
                     <div class="row">
                         <div class="col-md-24">
                             <div class="fullwidth-white-box">

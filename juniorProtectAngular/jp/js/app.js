@@ -18,8 +18,21 @@ app.constant('JP_REST_ENDPOINT', {
     "POST_UPDATE_DEVICE_PROFILE_NAME": "/stub/ok.json",
     "POST_UPDATE_PARENTACCESS_STATUS": "/stub/ok.json",
     "POST_UPDATE_PARENTACCESS_PWD": "/stub/ok.json",
-    "POST_IMPORT_FILTER_SETTINGS": "/stub/ok.json"
+    "POST_IMPORT_FILTER_SETTINGS": "/stub/ok.json",
+    "POST_ADD_PARENTACCESS": "/stub/ok.json"
 });
+
+/*app.constant('JP_REST_ENDPOINT', {
+    "GET_USER_PROFILE": "/jprotect/portal/getUserProfile",
+    "GET_APP_CONFIG": "/jprotect/portal/getNominumConfig",
+    "POST_UPDATE_CATEGORY_FILTER_LIST": "/jprotect/portal/updateCustomBlackListCategories",
+    "POST_UPDATE_BLACKWHITE_DOMAIN_LIST": "/jprotect/portal/updatePersonalBlackListWhiteList",
+    "POST_UPDATE_DEVICE_PROFILE_NAME": "/jprotect/portal/updateDeviceProfileName",
+    "POST_UPDATE_PARENTACCESS_STATUS": "/jprotect/portal/updateParentAccessStatus",
+    "POST_UPDATE_PARENTACCESS_PWD": "/jprotect/portal/updateParentAccessPassword",
+    "POST_IMPORT_FILTER_SETTINGS": "/jprotect/portal/importSettings",
+    "POST_ADD_PARENTACCESS": "/jprotect/portal/addParentAccess"
+});*/
 
 
 /**
@@ -40,7 +53,7 @@ app.config(function($routeSegmentProvider, $routeProvider) {
             controller: 'PageCtrl_Overview',
             resolve: {
                 initUserProfile: function(DataInitiator) {
-                    return DataInitiator.initAllwTest(true);
+                    return DataInitiator.initAll(true);
                 }
             },
             untilResolved: {
@@ -112,6 +125,10 @@ app.config(function($routeSegmentProvider, $routeProvider) {
         .when('/error/503', 'routeError503')
         .segment('routeError503', {
             templateUrl: 'partials/error/503.html'
+        })
+        .when('/error/noDevice', 'routeErrorNoDevice')
+        .segment('routeErrorNoDevice', {
+            templateUrl: 'partials/error/nodevice.html'
         });
 
     $routeProvider.otherwise({ redirectTo: '/error/404' });

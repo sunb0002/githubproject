@@ -4,6 +4,10 @@
 @media only screen and (min-width: 768px) {
 	.modal-md {width:500px;}
 }
+
+@media only screen and (min-width: 992px) {
+	.nav-overlay, .mobile-nav-list {display:none!important;}
+}
 	
 @media only screen and (min-width: 0px) and (max-width: 992px) {
 	/* ------ start global styles ------ */
