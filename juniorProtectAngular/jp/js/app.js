@@ -34,6 +34,14 @@ app.constant('JP_REST_ENDPOINT', {
     "POST_ADD_PARENTACCESS": "/jprotect/portal/addParentAccess"
 });*/
 
+app.constant('JP_HYPERLINKS', {
+    "LOGOUT": "/jprotect/portal/logout",
+    "MAM": "https://www.starhub.com/mam"
+});
+
+app.run(function($rootScope, JP_HYPERLINKS) {
+    $rootScope.JP_HYPERLINKS = JP_HYPERLINKS;
+});
 
 /**
  * Configure the Routes

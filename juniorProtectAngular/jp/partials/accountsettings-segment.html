@@ -169,7 +169,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-section bg-lighter-grey import-filter-settings" id="import-settings" ng-controller="ElementCtrl_ImportFilter">
+        <div class="content-section bg-lighter-grey import-filter-settings" id="import-settings" ng-if="isDeviceVisible(itemIndex)" ng-controller="ElementCtrl_ImportFilter">
             <!--Import Filter Settings -->
             <div class="inner-wrapper">
                 <div class="row">
@@ -183,7 +183,7 @@
                     <div class="row">
                         <div class="col-md-24">
                             <div class="fullwidth-white-box">
-                                <p>Apply existing JuniorProtect account settings to {{sourceDevice.profile_name}}’s account.</p>
+                                <p>Apply existing JuniorProtect account settings to {{UserProfile.devices[itemIndex].profile_name}}’s account.</p>
                                 <p style="display:inline; margin-right:10px;">The following settings will be saved to <strong>{{UserProfile.devices[itemIndex].profile_name}}</strong> from </p>
                                 <select class="account-list" ng-init="sourceDevice=UserProfile.devices[itemIndex]" ng-model="sourceDevice" ng-options="dvc.profile_name for dvc in UserProfile.devices"></select>
                                 <a class="button import-btn" href="javascript:void(0)" data-toggle="modal" data-target="#import-settings-modal">Import Settings
@@ -195,13 +195,13 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="category-box" ng-controller="ElementCtrl_CategoryFilter">
-                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('strict')">
                                     <div class="category-ico">
                                         <div class="ico-junior"></div>
                                     </div>
                                     <div class="category-name">Juniors</div>
                                 </div>
-                                <div class="category-wrapper" ng-if="checkCategoryFilter('strict')">
+                                <div class="category-wrapper" ng-if="checkCategoryFilter('medium')">
                                     <div class="category-ico">
                                         <div class="ico-teen"></div>
                                     </div>

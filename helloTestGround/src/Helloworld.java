@@ -1,4 +1,5 @@
 import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,7 +16,7 @@ public class Helloworld {
 	public static void main(String[] args) {
 
 		// test9();
-		testtemp();
+		 testtemp();
 		// testRightsLockerPOST();
 		// testRightsLockerGET();
 
@@ -23,23 +24,15 @@ public class Helloworld {
 
 	}
 
-	public static void testtemp() {
+	public static void testtemp(){
 
-		List<String> blacklist = new ArrayList<String>();
-		
-		
-		POJO p1=new POJO();
-		POJO p2=new POJO();
-		
-		blacklist.add("www.blockedsite.com");
-		p1.setLb(blacklist);
-
-		List<String> blacklist2 = new ArrayList<String>(blacklist);
-		blacklist2.add("www.anotherblockedsite.com");
-		p2.setLb(blacklist2);
-
-		System.out.println(p1);
-		System.out.println(p2);
+	try {
+		String x = hashMD5("hubid+timestamp");
+		System.out.println(x);
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		
 	}
 
@@ -186,6 +179,31 @@ public class Helloworld {
 
 	}
 
+	public static String hashMD5(String originString)
+            throws UnsupportedEncodingException {
+        String result = "";
+        if (originString != null) {
+            try {
+                // Declare MD5
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                // Do hashing
+                byte bytes[] = md.digest(originString.getBytes("ISO8859-1"));
+                for (int i = 0; i < bytes.length; i++) {
+                    // Convert the Integers to Hex Strings, make sure the result is 32-bit
+                    String str = Integer.toHexString(bytes[i] & 0xFF);
+                    if (str.length() == 1) {
+                        str += "F";
+                    }
+                    result += str;
+                }
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+	
+	
 	public static void test6() {
 
 		HashMap hm = new HashMap<String, String>();

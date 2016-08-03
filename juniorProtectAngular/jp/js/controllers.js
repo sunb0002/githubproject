@@ -57,6 +57,10 @@ app.factory('Utils', function($rootScope, $location, $anchorScroll) {
         return (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(domain));
     };
 
+    obj.isStringAlphaNumeric = function(str) {
+        return !(/[^a-zA-Z0-9]/.test(str));
+    };
+
     obj.scrollTo = function(id) {
         var old = $location.hash();
         $location.hash(id);
@@ -694,8 +698,13 @@ app.controller('ElementCtrl_Account', function($scope, $rootScope, $routeSegment
     $scope.setDeviceProfileName = function() {
 
         var newName = $scope.virtualDevice.profile_name;
-        if (newName == null) {
-            console.log("Invalid new device profile name.");
+        if ((newName == null) || (!Utils.isStringAlphaNumeric(newName))) {
+            Utils.showGlobalModalError("Invalid new device profile name.");
+            return;
+        }
+
+        if (newName == realDevice.profile_name) {
+            Utils.showGlobalModalError("The new profile should be different from old profile name.");
             return;
         }
 
