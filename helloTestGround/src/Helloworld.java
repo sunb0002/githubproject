@@ -26,13 +26,16 @@ public class Helloworld {
 
 	public static void testtemp(){
 
-	try {
-		String x = hashMD5("hubid+timestamp");
-		System.out.println(x);
-	} catch (UnsupportedEncodingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		String coolString = "cool string alala";
+
+		byte[] byteArray = coolString.getBytes();
+
+		System.out.println(byteArray);
+		System.out.println(byteArray.toString());
+		
+		String reconstitutedString = new String(byteArray);
+
+		System.out.println(reconstitutedString);
 		
 	}
 
