@@ -7,11 +7,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 		
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://ottgwdevuat.ckrc1acwyyns.ap-southeast-1.rds.amazonaws.com:3306/ottgwdev" />
-		<property name="user" value="ottgw_db"/>
-	    <property name="password" value="password"/>
-	    <property name="maxPoolSize" value="20" />
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="" />
+		<property name="user" value=""/>
+	    <property name="password" value=""/>
+	    <property name="maxPoolSize" value="30" />
 	    <property name="minPoolSize" value="3" />
 	    <property name="maxStatements" value="100" />
 	    <property name="breakAfterAcquireFailure" value="false"/>
@@ -21,17 +21,12 @@
 	</bean>	
 		
 	<!-- DBManager beans -->
-	<bean id="DBManager" class="com.ufinity.ott.dao.DBManager">
+	<bean id="DBManager" class="com.ufinity.madoka.dao.DBManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>	
 	
-	<!-- PMP DBManager beans -->
-	<bean id="PMP_DBManager" class="com.ufinity.ott.dao.PMP_DBManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>	
-		
 	<!-- PlatformTransactionManager beans -->
-	<bean id="platformTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="mssoTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
 	</bean>
 </beans>

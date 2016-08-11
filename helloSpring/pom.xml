@@ -3,16 +3,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ufinity</groupId>
-	<artifactId>ott</artifactId>
-	<name>ott</name>
+	<artifactId>madoka</artifactId>
+	<name>madoka</name>
 	<packaging>war</packaging>
 	<version>Madoka-2016-June</version>
 	<properties>
 		<java-version>1.8</java-version>		
-		<org.springframework.version>4.2.6.RELEASE</org.springframework.version>
+		<org.springframework.version>4.3.1.RELEASE</org.springframework.version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.7.21</org.slf4j-version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -122,11 +123,20 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.36</version>
+
+		<!-- Connection Pool Using ojdbc14 + C3PO -->
+		<!--<dependency>
+			<groupId>ojdbc</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc14.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.5.1</version>
+		</dependency>-->
 
 		<!-- Json dependency -->
 		<dependency>
@@ -144,11 +154,11 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.6.1</version>
 		</dependency>
-		<!--		<dependency>
+		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20140107</version>
-		</dependency>-->
+		</dependency>
 
 
 		<!-- Servlet -->
@@ -169,6 +179,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.3.Final</version>
+		</dependency>
+
+		<!--Spring Security Crypto-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+			<version>3.2.0.RELEASE</version>
 		</dependency>
 
 

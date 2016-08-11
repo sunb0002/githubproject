@@ -1,0 +1,192 @@
+{
+  "environemnt": "UAT",
+  "category_filters": {
+    "medium": {
+      "content": [
+        {
+          "name": "pi-objectionable",
+          "description": "Objectionable"
+        },
+        {
+          "name": "pi-adult",
+          "description": "Adult content"
+        },
+        {
+          "name": "pi-cults",
+          "description": "Cults"
+        },
+        {
+          "name": "pi-mature",
+          "description": "Mature content"
+        },
+        {
+          "name": "pi-hacking",
+          "description": "Sites that promote hacking and other illegal online activities"
+        },
+        {
+          "name": "pi-anonymizers",
+          "description": "Anonymizers"
+        }
+      ],
+      "total": 6,
+      "limit": 6
+    },
+    "strict": {
+      "content": [
+        {
+          "name": "pi-objectionable",
+          "description": "Objectionable"
+        },
+        {
+          "name": "pi-adult",
+          "description": "Adult content"
+        },
+        {
+          "name": "pi-cults",
+          "description": "Cults"
+        },
+        {
+          "name": "pi-mature",
+          "description": "Mature content"
+        },
+        {
+          "name": "pi-hacking",
+          "description": "Sites that promote hacking and other illegal online activities"
+        },
+        {
+          "name": "pi-anonymizers",
+          "description": "Anonymizers"
+        },
+        {
+          "name": "pi-dating",
+          "description": "Dating sites"
+        },
+        {
+          "name": "pi-drugs-and-alcohol",
+          "description": "Sites promoting the use of drugs and alcohol"
+        },
+        {
+          "name": "pi-file-sharing",
+          "description": "File sharing sites"
+        },
+        {
+          "name": "pi-gambling",
+          "description": "Gambling sites"
+        },
+        {
+          "name": "pi-shopping",
+          "description": "Online shopping and auction sites"
+        },
+        {
+          "name": "pi-ads",
+          "description": "Advertisement networks and sites"
+        },
+        {
+          "name": "pi-entertainment",
+          "description": "Entertainment sites"
+        },
+        {
+          "name": "pi-politics",
+          "description": "Politics sites"
+        },
+        {
+          "name": "pi-streaming",
+          "description": "Online streaming sites"
+        },
+        {
+          "name": "pi-weapons-and-violence",
+          "description": "Sites promoting weapons and violence"
+        }
+      ],
+      "total": 16,
+      "limit": 16
+    },
+    "all": {
+      "content": [
+        {
+          "name": "pi-objectionable",
+          "description": "Objectionable"
+        },
+        {
+          "name": "pi-adult",
+          "description": "Adult content"
+        },
+        {
+          "name": "pi-cults",
+          "description": "Cults"
+        },
+        {
+          "name": "pi-mature",
+          "description": "Mature content"
+        },
+        {
+          "name": "pi-hacking",
+          "description": "Sites that promote hacking and other illegal online activities"
+        },
+        {
+          "name": "pi-anonymizers",
+          "description": "Anonymizers"
+        },
+        {
+          "name": "pi-dating",
+          "description": "Dating sites"
+        },
+        {
+          "name": "pi-drugs-and-alcohol",
+          "description": "Sites promoting the use of drugs and alcohol"
+        },
+        {
+          "name": "pi-file-sharing",
+          "description": "File sharing sites"
+        },
+        {
+          "name": "pi-gambling",
+          "description": "Gambling sites"
+        },
+        {
+          "name": "pi-shopping",
+          "description": "Online shopping and auction sites"
+        },
+        {
+          "name": "pi-ads",
+          "description": "Advertisement networks and sites"
+        },
+        {
+          "name": "pi-entertainment",
+          "description": "Entertainment sites"
+        },
+        {
+          "name": "pi-politics",
+          "description": "Politics sites"
+        },
+        {
+          "name": "pi-streaming",
+          "description": "Online streaming sites"
+        },
+        {
+          "name": "pi-weapons-and-violence",
+          "description": "Sites promoting weapons and violence"
+        },
+        {
+          "name": "pi-webmail",
+          "description": "Online webmail services"
+        },
+        {
+          "name": "pi-games",
+          "description": "Online gaming sites"
+        },
+        {
+          "name": "pi-forums",
+          "description": "Online forums"
+        },
+        {
+          "name": "pi-social-networking",
+          "description": "Social networking sites"
+        }
+      ],
+      "total": 20,
+      "limit": 20
+    }
+  },
+  "test": "madoka"
+}
