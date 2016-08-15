@@ -43,8 +43,7 @@
 	<context:component-scan base-package="com.ufinity.madoka.service" />
 	<context:component-scan base-package="com.ufinity.madoka.controller" />
 	<context:annotation-config />
-
-
+	
 	<!--	<import resource="./database/Spring-Datasource.xml"/>-->
 
 </beans>

@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<sec:authentication-manager />
+
+	<!-- CSRF Configuration -->
+	<bean id="CsrfHeaderFilter" class="com.ufinity.madoka.common.filter.CsrfHeaderFilter" />
+	<bean id="HttpDefaultEP" class="org.springframework.security.web.authentication.HttpStatusEntryPoint" >
+		<constructor-arg value="OK"/>
+	</bean>
+
+	<!-- Specify the AngularJS CSRF header name -->
+	<bean id="csrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository">
+		<property name="headerName" value="X-XSRF-TOKEN" />
+	</bean>
+
+	<sec:http pattern="/json" auto-config="false" entry-point-ref="HttpDefaultEP">
+		<!--<access-denied-handler error-page="/CustomizedErrorPage" />-->
+		<sec:csrf token-repository-ref="csrfTokenRepository" />
+		<sec:custom-filter ref="CsrfHeaderFilter" after="CSRF_FILTER" />
+	</sec:http>
+
+</beans>

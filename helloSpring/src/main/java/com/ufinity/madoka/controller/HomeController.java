@@ -18,8 +18,17 @@ public class HomeController {
 	@RequestMapping(value = "/json", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<JsonGeneral> allhail() {
 
-		JsonGeneral jg = new JsonGeneral(1000, "All hail madokami");
+		JsonGeneral jg = new JsonGeneral(1000, "All hail madoka");
 		LogHelper.info("waifu here.");
+		return ResponseEntity.ok(jg);
+
+	}
+
+	@RequestMapping(value = "/postjson", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<JsonGeneral> allhail2() {
+
+		JsonGeneral jg = new JsonGeneral(1000, "Protected madoka");
+		LogHelper.info("protected waifu here.");
 		return ResponseEntity.ok(jg);
 
 	}
