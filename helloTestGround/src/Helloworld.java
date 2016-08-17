@@ -1,4 +1,5 @@
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -26,16 +27,15 @@ public class Helloworld {
 
 	public static void testtemp(){
 
-		String coolString = "cool string alala";
-
-		byte[] byteArray = coolString.getBytes();
-
-		System.out.println(byteArray);
-		System.out.println(byteArray.toString());
-		
-		String reconstitutedString = new String(byteArray);
-
-		System.out.println(reconstitutedString);
+		try {
+			String coolString = "cool string alala";
+			String encodedURL = URLEncoder.encode(coolString, "UTF-8");
+					
+			System.out.println(encodedURL);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
