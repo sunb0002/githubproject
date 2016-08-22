@@ -73,11 +73,9 @@ if __name__ == "__main__":
             if optk in ('-v', '--VALUE'):
                 testValue = optv
                 continue
-
         if (not testEndPoint):
             make_return(
                 'The endpoint_URL is mandatory.', False, codeGeneralErrorClient)
-
     except getopt.GetoptError as err:
         make_return(err, True, codeGeneralErrorClient)
 
@@ -85,7 +83,7 @@ if __name__ == "__main__":
     # str(testKey) + ' testValue='+ str(testValue)
 
     # Negative value means HTTP call failed
-    deltaSeconds = -10
+    deltaSeconds = 0
     httpContentTestOKFlag = False
     httpTooLongFlag = False
     httpRetriedFlag = False
@@ -108,8 +106,8 @@ if __name__ == "__main__":
             pass
         except Exception as internalex:
             make_return(internalex, True, codeGeneralErrorInternal)
-
-    if (deltaSeconds < 0):
+    else:
+        # No break message, fail the test.
         make_return("HTTP request failed after " +
                     str(retryLimit) + " retries", False, codeTestFail)
 
