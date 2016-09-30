@@ -96,7 +96,7 @@
                                     <ul>
                                         <div class="category-list-column" ng-repeat="(halfIndex, halfCatlf) in allCategoryFilter">
                                             <li ng-repeat="(index, catflt) in halfCatlf">
-                                                <span class="checkbox" style="background-position: 0px {{selection.indexOf(catflt.name) > -1 ? -50 : 0}}px;" ng-click="toggleSelection(catflt.name)"></span>
+                                                <span class="checkbox" ng-attr-style="background-position: 0px {{selection.indexOf(catflt.name) > -1 ? -50 : 0}}px;" ng-click="toggleSelection(catflt.name)"></span>
                                                 <input type="checkbox" id="cat{{index+1+halfIndex*half_length}}" name="cat{{index+1}}" class="styled" value="{{catflt}}" ng-checked="selection.indexOf(catflt.name) > -1" ng-click="toggleSelection(catflt.name)" style="display:none">
                                                 <label for="cat{{index+1+halfIndex*half_length}}">{{catflt.description}}</label>
                                             </li>
