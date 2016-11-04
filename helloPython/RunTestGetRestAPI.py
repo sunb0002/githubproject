@@ -8,12 +8,14 @@ import sys
 import requests
 
 ##########Configs##########
-short_args = 'u:k:v:h'
-long_args = ['URL=', 'KEY=', 'VALUE=']
+short_args = 'h:u:k:v:a:t:r'
+long_args = ['URL=', 'KEY=', 'VALUE=', 'ALERT=', 'TIMEOUT=', 'RETRY=']
 
+# Default
 alertSeconds = 30
 timeoutSeconds = 80
 retryLimit = 3
+
 #########Constants###########
 codeGeneralErrorClient = 201
 codeGeneralErrorInternal = 202
@@ -32,17 +34,18 @@ def toInt(s):
 
 def usage():
     print "~~~How to use this script~~~"
-    print 'Usage1: '+sys.argv[0]+' -u <endpoint_url> -k <key_to_test> -v <value_to_test>'
-    print 'Usage2: '+sys.argv[0]+' --URL <endpoint_url> --KEY <key_to_test> --VALUE <value_to_test>'
-    print "<endpoint_url> is mandatory"
+    print 'Usage1: '+sys.argv[0]+' -u <endpoint_url> -v <value_to_test>'
+    print 'Usage2: '+sys.argv[0]+' -u <endpoint_url> -k <key_to_test> -v <value_to_test> -a <alert_seconds> -t <timeout_seconds> -r <retry_limit>'
+    print 'Usage3: '+sys.argv[0]+' --URL <endpoint_url> --KEY <key_to_test> --VALUE <value_to_test> -ALERT <alert_seconds> -TIMEOUT <timeout_seconds> -RETRY <retry_limit>'
+    print "<endpoint_url> is mandatory. <alert_seconds> default 30. <timeout_seconds> default 80. <retry_limit> default 3."
     return
 
 
-def make_return(msg, addUsage, exitcode):
+def make_return(msg, showUsage, exitcode):
     if (msg):
         print 'Message=' + str(msg)
 
-    if (addUsage == True):
+    if (showUsage == True):
         usage()
 
     code = toInt(exitcode)
@@ -51,6 +54,7 @@ def make_return(msg, addUsage, exitcode):
 
 ###########################################
 if __name__ == "__main__":
+
     testEndPoint = None
     testKey = None
     testValue = None
@@ -62,6 +66,7 @@ if __name__ == "__main__":
             make_return('No options supplied', True, codeGeneralErrorClient)
 
         for optk, optv in opts:
+            opti = toInt(optv)
             if optk in ('-h', '--help'):
                 make_return(None, True, None)
             if optk in ('-u', '--URL'):
@@ -73,6 +78,16 @@ if __name__ == "__main__":
             if optk in ('-v', '--VALUE'):
                 testValue = optv
                 continue
+            if optk in ('-a', '--ALERT') and opti > 0:
+                alertSeconds = opti
+                continue
+            if optk in ('-t', '--TIMEOUT') and opti > 0:
+                timeoutSeconds = opti
+                continue
+            if optk in ('-r', '--RETRY') and opti > 0:
+                retryLimit = opti
+                continue
+
         if (not testEndPoint):
             make_return(
                 'The endpoint_URL is mandatory.', False, codeGeneralErrorClient)
