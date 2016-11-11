@@ -34,9 +34,9 @@ def toInt(s):
 
 def usage():
     print "~~~How to use this script~~~"
-    print 'Usage1: '+sys.argv[0]+' -u <endpoint_url> -v <value_to_test>'
-    print 'Usage2: '+sys.argv[0]+' -u <endpoint_url> -k <key_to_test> -v <value_to_test> -a <alert_seconds> -t <timeout_seconds> -r <retry_limit>'
-    print 'Usage3: '+sys.argv[0]+' --URL <endpoint_url> --KEY <key_to_test> --VALUE <value_to_test> -ALERT <alert_seconds> -TIMEOUT <timeout_seconds> -RETRY <retry_limit>'
+    print 'Usage1: ' + sys.argv[0] + ' -u <endpoint_url> -v <value_to_test>'
+    print 'Usage2: ' + sys.argv[0] + ' -u <endpoint_url> -k <key_to_test> -v <value_to_test> -a <alert_seconds> -t <timeout_seconds> -r <retry_limit>'
+    print 'Usage3: ' + sys.argv[0] + ' --URL <endpoint_url> --KEY <key_to_test> --VALUE <value_to_test> -ALERT <alert_seconds> -TIMEOUT <timeout_seconds> -RETRY <retry_limit>'
     print "<endpoint_url> is mandatory. <alert_seconds> default 30. <timeout_seconds> default 80. <retry_limit> default 3."
     return
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
             timeEnd = dt.datetime.now()
 
             if (200 <= r.status_code < 300):
-                deltaSeconds = (timeEnd-timeStart).seconds
+                deltaSeconds = (timeEnd - timeStart).seconds
                 httpTooLongFlag = (deltaSeconds > alertSeconds)
                 break
             else:
@@ -148,9 +148,9 @@ if __name__ == "__main__":
 
     if (httpTooLongFlag == True):
         make_return("OK but took longer than " +
-                    str(alertSeconds)+" seconds", False, codeTestOKButTooLong)
+                    str(alertSeconds) + " seconds", False, codeTestOKButTooLong)
     elif (httpRetriedFlag == True):
         make_return(
-            "OK but took " + str(i+1)+" retries", False, codeTestOKButRetry)
+            "OK but took " + str(i + 1) + " retries", False, codeTestOKButRetry)
     else:
         make_return("OK", False, None)
