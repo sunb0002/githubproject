@@ -1,0 +1,937 @@
+{
+  "slides": [
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 191,
+          "y": 184,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<div style=\"text-align: left;\">Spring Framework</div><font><div style=\"text-align: left;\">&amp; our StarHub Projects</div></font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 643,
+          "y": 387,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "Nov 2016, Sun Bo<br>",
+          "size": 36,
+          "selected": false
+        },
+        {
+          "src": "http://hortonworks.com/wp-content/uploads/2013/09/logo-spring-103x60.png",
+          "type": "Image",
+          "x": 668,
+          "y": 459,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "imageType": "PNG",
+          "selected": false
+        },
+        {
+          "src": "http://logonoid.com/images/starhub-logo.png",
+          "type": "Image",
+          "x": 665,
+          "y": 549,
+          "scale": {
+            "x": 0.3125,
+            "y": 0.3125,
+            "width": 250,
+            "height": 86.5625
+          },
+          "imageType": "PNG",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 0,
+      "selected": true,
+      "active": true,
+      "x": 182,
+      "y": 182
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 198,
+          "y": 322,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 48,
+          "text": "<font>- Why use Spring<br><br>- How are our Spring projects<br><br>- QnA<br></font>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 201,
+          "y": 144,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 72,
+          "text": "<font>Agenda</font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 1,
+      "selected": false,
+      "active": false,
+      "x": 466,
+      "y": 181
+    },
+    {
+      "components": [
+        {
+          "src": "http://n1image.hjfile.cn/mh/2016/09/22/552338691f77c1b505772b115057e971.jpg",
+          "type": "Image",
+          "x": 172.70707154290324,
+          "y": 25,
+          "scale": {
+            "x": 0.8254545454545454,
+            "y": 0.8254545454545454,
+            "width": 454,
+            "height": 213.79272727272726
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "http://static.wixstatic.com/media/1d92f6_b68f6a4010161118da0eae4d0e046db0.jpg",
+          "type": "Image",
+          "x": -184,
+          "y": 27,
+          "scale": {
+            "x": 0.7966903073286052,
+            "y": 0.7966903073286052,
+            "width": 337,
+            "height": 199.17257683215132
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "http://s12.sinaimg.cn/bmiddle/001skDNnzy6OtjbzPET2b&690",
+          "type": "Image",
+          "x": -163,
+          "y": 290,
+          "scale": {
+            "x": 0.685,
+            "y": 0.685,
+            "width": 274,
+            "height": 358.94000000000005
+          },
+          "imageType": "CN/BMIDDLE/001SKDNNZY6OTJBZPET2B&690",
+          "selected": false
+        },
+        {
+          "src": "https://img3.doubanio.com/lpic/s6978633.jpg",
+          "type": "Image",
+          "x": 931,
+          "y": 310,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "https://upload.wikimedia.org/wikipedia/commons/0/02/T%C5%8Dg%C5%8D_Heihachir%C5%8D.jpg",
+          "type": "Image",
+          "x": 653,
+          "y": 341,
+          "scale": {
+            "x": 0.44583333333333336,
+            "y": 0.44583333333333336,
+            "width": 214,
+            "height": 305.39583333333337
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "https://s-media-cache-ak0.pinimg.com/236x/f5/d7/3e/f5d73ebc7b8dc767a18f389f48b1c6fb.jpg",
+          "type": "Image",
+          "x": 364.70707154290324,
+          "y": 377,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "https://images-na.ssl-images-amazon.com/images/I/41cGr3VMC3L.jpg",
+          "type": "Image",
+          "x": 122,
+          "y": 304,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": -124,
+          "y": 243,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "Black Ships (1853)&nbsp;<br>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 261,
+          "y": 258,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "<font>\"Escape from Asia\" (1862)</font>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": -30,
+          "y": 674,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "<font>Meiji Revolution&nbsp;(1860-1890)</font>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 634,
+          "y": 669,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "Battle of Tsushima (1905)<br>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 971,
+          "y": 668,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "<font>WWII (1937)</font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 2,
+      "selected": false,
+      "active": false,
+      "x": 805,
+      "y": 181
+    },
+    {
+      "components": [
+        {
+          "src": "http://www.navalaviationmuseum.org/nnam-wp/wp-content/uploads/2014/07/SIA2010-0974_large.jpg",
+          "type": "Image",
+          "x": 646,
+          "y": 25,
+          "scale": {
+            "x": 0.5047732696897375,
+            "y": 0.5047732696897375,
+            "width": 423,
+            "height": 258.4439140811456
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 693,
+          "y": 295,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "<font>Hiroshima Atomic Bomb&nbsp;(1945)</font>",
+          "selected": false
+        },
+        {
+          "src": "http://static.wixstatic.com/media/1d92f6_b68f6a4010161118da0eae4d0e046db0.jpg",
+          "type": "Image",
+          "x": -184,
+          "y": 27,
+          "scale": {
+            "x": 0.7966903073286052,
+            "y": 0.7966903073286052,
+            "width": 337,
+            "height": 199.17257683215132
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": -124,
+          "y": 243,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 24,
+          "text": "Black Ships (1853)&nbsp;<br>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 3,
+      "selected": false,
+      "active": false,
+      "x": 805,
+      "y": 181
+    },
+    {
+      "components": [
+        {
+          "src": "http://tech.qq.com/a/20160623/001524.htm",
+          "type": "WebFrame",
+          "x": 149,
+          "y": 16.009198847494915,
+          "scale": {
+            "x": 0.6645833333333333,
+            "y": 0.6645833333333333,
+            "width": 638,
+            "height": 510.4
+          },
+          "selected": false
+        },
+        {
+          "src": "http://www.hindustantimes.com/rf/image_size_640x362/HT/p2/2016/02/06/Pictures/blackberry_1e157d82-ccd7-11e5-83ed-24f59eb81169.jpg",
+          "type": "Image",
+          "x": 379,
+          "y": 567,
+          "scale": {
+            "x": 0.3671875,
+            "y": 0.3671875,
+            "width": 235,
+            "height": 133.2890625
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "http://allenmeyerdesign.com/wp-content/uploads/2013/09/new-yahoo-logo.jpg",
+          "type": "Image",
+          "x": 670,
+          "y": 585,
+          "scale": {
+            "x": 0.6331967213114754,
+            "y": 0.6331967213114754,
+            "width": 309,
+            "height": 109.54303278688525
+          },
+          "imageType": "JPG",
+          "selected": false
+        },
+        {
+          "src": "http://company.nokia.com/sites/default/files/gallery/images/nokia_white_logo.png",
+          "type": "Image",
+          "x": 101,
+          "y": 582,
+          "scale": {
+            "x": 0.793103448275862,
+            "y": 0.793103448275862,
+            "width": 229.99999999999997,
+            "height": 111.03448275862068
+          },
+          "imageType": "PNG",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0.79,
+      "index": 4,
+      "selected": false,
+      "active": false,
+      "x": 778,
+      "y": 369
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 107,
+          "y": 34,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 64,
+          "text": "Where is Spring in Java EE<br>",
+          "selected": false
+        },
+        {
+          "src": "http://i.imgur.com/gSuTPIu.jpg",
+          "type": "Image",
+          "x": 108,
+          "y": 147,
+          "scale": {
+            "x": 1.2431192660550459,
+            "y": 1.2431192660550459,
+            "width": 813,
+            "height": 492.27522935779814
+          },
+          "imageType": "JPG",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 5,
+      "selected": false,
+      "active": false,
+      "x": 178,
+      "y": 432
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 25,
+          "y": 46,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 36,
+          "text": "<b><i>[Client Tier]</i></b><br>HTML, CSS, JavaScript, <font color=\"#2110f1\">Java Applet, Flash<br></font><br><b><i>[Application Tier]<br>Presentation (VO-&gt;DTO):</i></b><br>Jersey, JSP, <font color=\"#1b09f7\">Struts1/2, FreeMarker, Velocity,</font> <font color=\"#1de80b\">SpringMVC</font><br><i><b>Business (BO):</b></i><br><font color=\"#1b09f7\">EJB,</font> <font color=\"#1de80b\">Spring</font><br><i><b>Data Access (DAO/PO+POJO):</b></i><br><font color=\"#1b09f7\">Hibernate,</font> JPA, iBatis, <font color=\"#1de80b\">SpringJDBC+SpringCache</font><br><font color=\"#1de80b\">SpringREST, SpringLDAP, SpringHadoop...</font><br><br><b><i>[Data Tier]</i></b><br>RDBMS -&gt; NoSQL -&gt; Memcached/Redis -&gt; HBase (Hadoop) <br>--&gt;NewSQL<br><br><br><br><br>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0.14,
+      "rotateZ": 0,
+      "index": 6,
+      "selected": false,
+      "active": false,
+      "x": 192,
+      "y": 541
+    },
+    {
+      "components": [
+        {
+          "src": "http://munichresearch.com/imgs/logos/springxd.png",
+          "type": "Image",
+          "x": 518,
+          "y": 230,
+          "scale": {
+            "x": 1.0466666666666666,
+            "y": 1.0466666666666666,
+            "width": 314,
+            "height": 314
+          },
+          "imageType": "PNG",
+          "selected": false
+        },
+        {
+          "src": "https://stocklogos-pd.s3.amazonaws.com/styles/logo-medium-alt/logos/image/1398937767-b70129ba6592929d32c0337c3eea2880.png",
+          "type": "Image",
+          "x": 148,
+          "y": 237,
+          "scale": {
+            "x": 0.7675,
+            "y": 0.7675,
+            "width": 307,
+            "height": 307
+          },
+          "imageType": "PNG",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 97,
+          "y": 97,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 64,
+          "text": "Spring is everywhere in Java EE<br>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 7,
+      "selected": false,
+      "active": false,
+      "x": 447,
+      "y": 438
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 102,
+          "y": 72,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 72,
+          "text": "<font color=\"#000000\">That's why use Spring</font><br>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 106,
+          "y": 238,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 48,
+          "text": "<font color=\"#000000\">\"Spring is the most popular<br>Application Development Framework<br>For Enterprise Java.\"&nbsp;</font>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 519,
+          "y": 467,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 36,
+          "text": "<font color=\"#000000\"><i>http://www.springsource.org</i></font>",
+          "selected": false
+        },
+        {
+          "src": "http://www.stepbystep.com/wp-content/uploads/2013/04/Difference-between-Lord-of-the-Rings-and-the-Hobbit.jpg",
+          "type": "Image",
+          "x": 110,
+          "y": 463,
+          "scale": {
+            "x": 0.259375,
+            "y": 0.259375,
+            "width": 332,
+            "height": 221.24687500000002
+          },
+          "imageType": "JPG",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 1.57,
+      "rotateZ": 0,
+      "index": 8,
+      "selected": false,
+      "active": false,
+      "x": 468,
+      "y": 587
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 82,
+          "y": 42,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 72,
+          "text": "<font color=\"#000000\">How are our Spring projects</font>",
+          "selected": false
+        },
+        {
+          "src": "http://i.imgur.com/gSuTPIu.jpg",
+          "type": "Image",
+          "x": 110,
+          "y": 168,
+          "scale": {
+            "x": 1.2431192660550459,
+            "y": 1.2431192660550459,
+            "width": 813,
+            "height": 492.27522935779814
+          },
+          "imageType": "JPG",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 9,
+      "selected": false,
+      "active": false,
+      "x": 1279,
+      "y": 337
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 341.3333333333333,
+          "y": 256,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 72,
+          "text": "<br>",
+          "selected": false
+        },
+        {
+          "src": "https://lijinjoseji.files.wordpress.com/2006/10/spring_framework.gif",
+          "type": "Image",
+          "x": 88,
+          "y": 236,
+          "scale": {
+            "x": 1.3135135135135134,
+            "y": 1.3135135135135134,
+            "width": 729,
+            "height": 378.29189189189185
+          },
+          "imageType": "GIF",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 91,
+          "y": 44,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 48,
+          "text": "<font color=\"#000000\">More about Spring:<br>- 7 core modules<br>- 3 core concepts &nbsp;(DI, AOP, IOC)<br></font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 10,
+      "selected": false,
+      "active": false,
+      "x": 1513,
+      "y": 338
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 101,
+          "y": 6,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 36,
+          "text": "<font color=\"#000000\">Our development tools:<br></font>- Maven<br>- Eclipse<br>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 106,
+          "y": 202,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 36,
+          "text": "<font color=\"#000000\">Most important project config files:<br>- pom.xml<br>- web.xml<br>- root-context.xml<br></font>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 108,
+          "y": 428,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 36,
+          "text": "<font color=\"#000000\">Recommended folder structure:<br>- controller: the thinner the better<br>- service: business logics must be reusable<br>- dao: can copy from other projects<br>- domain: apply validator<br>- common: help to simplify service layer<br></font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 11,
+      "selected": false,
+      "active": false,
+      "x": 1743,
+      "y": 336
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 143,
+          "y": 71,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 36,
+          "text": "<font color=\"#000000\">More about our Spring project <br>Documentation walk through:<br><br>(1) Maven build SOP.doc ---- by Prem<br><br>(2) New Spring project SOP.doc ---- by Prem<br><br>(3) MSSO project experiences<br><br></font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 12,
+      "selected": false,
+      "active": false,
+      "x": 1287,
+      "y": 543
+    },
+    {
+      "components": [
+        {
+          "src": "https://static-cdn.jtvnw.net/jtv_user_pictures/panel-8046702-image-5366b0de3db9f862-320.jpeg",
+          "type": "Image",
+          "x": 324,
+          "y": 308,
+          "scale": {
+            "x": 1.128125,
+            "y": 1.128125,
+            "width": 361,
+            "height": 322.64375
+          },
+          "imageType": "JPEG",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 352,
+          "y": 177,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 77,
+          "text": "<font color=\"#000000\">Q and A</font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 13,
+      "selected": false,
+      "active": false,
+      "x": 1482,
+      "y": 668
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 129,
+          "y": 101,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 64,
+          "text": "<font color=\"#000000\">Programmers are...<br></font>",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 132,
+          "y": 215,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "size": 48,
+          "text": "<font color=\"#000000\">- Lazy (in a good way!)<br><br>- Temperamental tinkerers\n<br>(obsessed with details)<br><br>- Spoiled kids who wants to have fun<br>(and sometimes create Fortune100 companies)<br><br></font>",
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 14,
+      "selected": false,
+      "active": false,
+      "x": 1772,
+      "y": 668
+    }
+  ],
+  "activeSlide": {
+    "components": [
+      {
+        "TextBox": {},
+        "x": 191,
+        "y": 184,
+        "scale": {
+          "x": 1,
+          "y": 1
+        },
+        "type": "TextBox",
+        "text": "<div style=\"text-align: left;\">Spring Framework</div><font><div style=\"text-align: left;\">&amp; our StarHub Projects</div></font>",
+        "size": 72,
+        "selected": false
+      },
+      {
+        "TextBox": {},
+        "x": 643,
+        "y": 387,
+        "scale": {
+          "x": 1,
+          "y": 1
+        },
+        "type": "TextBox",
+        "text": "Nov 2016, Sun Bo<br>",
+        "size": 36,
+        "selected": false
+      },
+      {
+        "src": "http://hortonworks.com/wp-content/uploads/2013/09/logo-spring-103x60.png",
+        "type": "Image",
+        "x": 668,
+        "y": 459,
+        "scale": {
+          "x": 1,
+          "y": 1
+        },
+        "imageType": "PNG",
+        "selected": false
+      },
+      {
+        "src": "http://logonoid.com/images/starhub-logo.png",
+        "type": "Image",
+        "x": 665,
+        "y": 549,
+        "scale": {
+          "x": 0.3125,
+          "y": 0.3125,
+          "width": 250,
+          "height": 86.5625
+        },
+        "imageType": "PNG",
+        "selected": false
+      }
+    ],
+    "z": 0,
+    "impScale": 3,
+    "rotateX": 0,
+    "rotateY": 0,
+    "rotateZ": 0,
+    "index": 0,
+    "selected": true,
+    "active": true,
+    "x": 182,
+    "y": 182
+  },
+  "fileName": "Spring and our StarHub Project.strut",
+  "deckVersion": "1.0",
+  "customBackgrounds": {
+    "bgs": []
+  },
+  "overviewX": 975,
+  "overviewY": 424.5
+}
