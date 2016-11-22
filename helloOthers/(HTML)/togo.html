@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <script language=javascript1.2>
+    function dowork() {
+        //--set cookie first
+        document.cookie = "<!--cookie_value-->; path=/";
+        //--location refresh
+        var current_host = window.location.host;
+        var new_url = "<!--url_to_go-->";
+        var reg = new RegExp("^https?:\/\/" + current_host);
+
+        console.log("HHHHHHHHlocationhost=" + current_host);
+        console.log("HHHHHHHHnew_url=" + new_url);
+        console.log("HHHHHHHHnew_urltest=" + reg.test(new_url));
+
+        if (!reg.test(new_url)) {
+            console.log("New url doesn't match with origin.");
+            new_url = window.location.href.split('?')[0];
+        }
+
+        window.location = new_url;
+
+    }
+    </script>
+</head>
+
+<body onload="dowork()">
+</body>
+
+</html>
