@@ -1,7 +1,7 @@
 **My Play Ground**
 =====================
 
-<sub><sup><sub><sup>
+<sub><sup>
 <br>
 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　＿_　　　　 　 ＼ <br>
 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 　 　 　 　 　 |! ⌒ヽ＼ 　 　 i|　 |ヽ <br>
@@ -53,4 +53,4 @@
 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 　 　 　 　 　 　 ⌒}／|＼ ￣ 　 / / <br>
 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 └┘　｀ ー≠┘ <br>
 <br>
-</sup></sub></sup></sub>
+</sup></sub>
