@@ -1,6 +1,6 @@
 **My Play Ground**
 =====================
-<font size=6>
+<font size=3>
 
 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　＿_　　　　 　 ＼ 
 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 　 　 　 　 　 |! ⌒ヽ＼ 　 　 i|　 |ヽ 
