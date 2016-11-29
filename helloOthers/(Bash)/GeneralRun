@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# 2016-Aug-03, upgraded base on OTT cronjob
+
+echo -n "======== GeneralRun Start ==== "; date;
+
+CRONJOB_HOME=/home/hahaha/msso/mssoCronjob
+APP_CONTAINER=/home/hahaha/msso/mssoappserver
+APP_HOME="$APP_CONTAINER"/webapps/msso
+APP_CONTEXT_XML="$APP_HOME"/WEB-INF/spring/appServlet/servlet-context.xml
+
+
+CLASSPATH="$CRONJOB_HOME"/bin/:"$APP_HOME"/WEB-INF/classes/
+for f in "$CRONJOB_HOME"/lib/*.jar "$APP_CONTAINER"/lib/*.jar "$APP_HOME"/WEB-INF/lib/*.jar; do
+        if [ -r "$f" ] ; then
+                CLASSPATH=$CLASSPATH:$f
+                #echo Using $f as classpath
+        fi
+done
+/home/hahaha/jdk/bin/java -Xmx1024m -classpath $CLASSPATH $* "$APP_CONTEXT_XML"
+
+echo -e;
+echo -n "======== GeneralRun Finished ==== "; date;

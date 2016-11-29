@@ -1,0 +1,13 @@
+#How_to_use:
+#./connect_app_server;  //Normal ssh to app server
+#./connect_app_server yourPortNo; // ssh to app server with SFTP tunneling
+
+yourPortNo="$1"
+app_server_ip="1.1.1.1"
+
+if [ -z "$yourPortNo" ]
+then
+ssh -i private_key_app/private_key.pem sbsb@"$app_server_ip"
+else
+ssh -i private_key_app/private_key.pem -C -X sbsb@"$app_server_ip" -L "$yourPortNo":"$app_server_ip":22
+fi
