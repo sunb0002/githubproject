@@ -1,0 +1,95 @@
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<div class='csc'>
+    <p><b>appNo</b>: e.g AHPC-20170303-0011-REG
+        <br/>
+        <input id='appNo' name='appNo' />
+    </p>
+    <p><b>pmtID</b>: e.g 06d2a366390249408ef1309871cb761a
+        <br/>
+        <input id='pmtID' name='pmtID' />
+    </p>
+    <p><b>prs_txn_id</b>: e.g AHPC-TX1703030026
+        <br/>
+        <input id='prs_txn_id' name='prs_txn_id' />
+    </p>
+    <p>T_PRS_PMT_FEE.<b>FEE_TYPE</b>: e.g REG_FEE_TYPE
+        <br/> (Get <b>FEE_TYPE</b> and <b>FEE_TYPE_CD</b> from T_PRS_FEE, seach by description like "(Speech-Language Therapist) Application for registration as an allied health professional under section")
+        <input id='FEE_TYPE' name='FEE_TYPE' />
+    </p>
+    <p>T_PRS_PMT_FEE.<b>FEE_TYPE_CD</b>: e.g REG_FEE_ST
+        <br/>
+        <input id='FEE_TYPE_CD' name='FEE_TYPE_CD' />
+    </p>
+    <p><b>EP_REF_NO</b>: e.g 4885138428546938703578
+        <br/>
+        <input id='EP_REF_NO' name='EP_REF_NO' />
+    </p>
+    <p><b>PAYMENT AMOUNT</b>: e.g 200
+        <br/>
+        <input id='AMOUNT' name='AMOUNT' />
+    </p>
+    <b>CYBS or ENETS</b>:
+    <br/>
+    <select id="COE" name="COE">
+        <option value="CYBERSOURCECREDIT">CYBERSOURCECREDIT</option>
+        <option value="ENETSDEBIT">ENETSDEBIT</option>
+    </select>
+    <p>
+        <input type='submit' id='submit-button' />
+    </p>
+</div>
+<b>Copy the whole section below and submit ESR:</b>
+<br>
+<div id='result' style="color:blue; display:none">
+    <mark>
+        ------------------------------------------
+        <br> prompt --appNo: <span class='rappNo'></span>
+        <br> prompt --pmtID: <span class='rpmtID'></span>, prs_txn_id: <span class='rprs_txn_id'></span>
+        <br> prompt --
+        <span class='rFEE_TYPE'></span> --- <span class='rFEE_TYPE_CD'></span>
+        <br>
+        <br> prompt --INSERT FEE
+        <br> Insert into T_PRS_PMT_FEE values ((select lower(sys_guid()) from dual),'<span class='rpmtID'></span>','<span class='rFEE_TYPE_CD'></span>',1,<span class='rAMOUNT'></span>,<span class='rAMOUNT'></span>,null,sysdate,'epayment_datapatch',sysdate,'epayment_datapatch',1,'<span class='rFEE_TYPE'></span>',null);
+        <br>
+        <br> prompt --Insert Mode
+        <br> Insert into T_PRS_PMT_FEE_PMT_MODE values ((select lower(sys_guid()) from dual),(select fee_id from T_PRS_PMT_FEE where pmt_id='<span class='rpmtID'></span>'),<span class='rAMOUNT'></span>,'<span class='rCOE'></span>',null,'<span class='rEP_REF_NO'></span>',null,sysdate,null,null,null,null,null,'PS',null,sysdate,'epayment_datapatch',sysdate,'epayment_datapatch',1,null,null,null);
+        <br>
+        <br> prompt --Start workflow
+        <br> UPDATE t_prs_app
+        <br> SET updated_by = 'epayment_datapatch',
+        <br> submit_ts = sysdate,
+        <br> workflow_stage_cd = 'PEND_SUB',
+        <br> app_status_cd = 'PP'
+        <br> WHERE app_no = '<span class='rappNo'></span>';
+        <br> ------------------------------------------
+        <br>
+    </mark>
+</div>
+<script>
+$('#submit-button').click(function() {
+    var appNo = $('#appNo').val().trim();
+    var pmtID = $('#pmtID').val().trim();
+    var prs_txn_id = $('#prs_txn_id').val().trim();
+    var FEE_TYPE = $('#FEE_TYPE').val().trim();
+    var FEE_TYPE_CD = $('#FEE_TYPE_CD').val().trim();
+    var EP_REF_NO = $('#EP_REF_NO').val().trim();
+    var AMOUNT = $('#AMOUNT').val().trim();
+    var COE = $('#COE').val().trim();
+
+    if (!appNo || !pmtID || !prs_txn_id || !FEE_TYPE || !FEE_TYPE_CD || !EP_REF_NO || !AMOUNT || !COE) {
+        alert('All fields are mandatory.');
+        return;
+    }
+
+    $('.rappNo').text(appNo);
+    $('.rpmtID').text(pmtID);
+    $('.rprs_txn_id').text(prs_txn_id);
+    $('.rFEE_TYPE').text(FEE_TYPE);
+    $('.rFEE_TYPE_CD').text(FEE_TYPE_CD);
+    $('.rEP_REF_NO').text(EP_REF_NO);
+    $('.rAMOUNT').text(AMOUNT);
+    $('.rCOE').text(COE);
+
+    $('#result').slideDown();
+});
+</script>
