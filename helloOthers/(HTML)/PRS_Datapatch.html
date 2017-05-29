@@ -12,14 +12,6 @@
         <br/>
         <input id='prs_txn_id' name='prs_txn_id' />
     </p>
-    <p>T_PRS_PMT_FEE.<b>FEE_TYPE</b>: e.g REG_FEE_TYPE
-        <br/> (Get <b>FEE_TYPE</b> and <b>FEE_TYPE_CD</b> from T_PRS_FEE, seach by description like "(Speech-Language Therapist) Application for registration as an allied health professional under section")
-        <input id='FEE_TYPE' name='FEE_TYPE' />
-    </p>
-    <p>T_PRS_PMT_FEE.<b>FEE_TYPE_CD</b>: e.g REG_FEE_ST
-        <br/>
-        <input id='FEE_TYPE_CD' name='FEE_TYPE_CD' />
-    </p>
     <p><b>EP_REF_NO</b>: e.g 4885138428546938703578
         <br/>
         <input id='EP_REF_NO' name='EP_REF_NO' />
@@ -34,6 +26,14 @@
         <option value="CYBERSOURCECREDIT">CYBERSOURCECREDIT</option>
         <option value="ENETSDEBIT">ENETSDEBIT</option>
     </select>
+    <p>T_PRS_PMT_FEE.<b>FEE_TYPE</b>: e.g REG_FEE_TYPE
+        <br/> (Get <b>FEE_TYPE</b> and <b>FEE_TYPE_CD</b> from T_PRS_FEE, seach by description like "(Speech-Language Therapist) Application for registration as an allied health professional under section")
+        <input id='FEE_TYPE' name='FEE_TYPE' />
+    </p>
+    <p>T_PRS_PMT_FEE.<b>FEE_TYPE_CD</b>: e.g REG_FEE_ST
+        <br/>
+        <input id='FEE_TYPE_CD' name='FEE_TYPE_CD' />
+    </p>
     <p>
         <input type='submit' id='submit-button' />
     </p>
