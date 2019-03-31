@@ -7,7 +7,9 @@
       command: echo 'the world~~~~'
       register: info
     - name: hello jojo
+      when: ansible_pkg_mgr == 'apt'
       debug:
         msg: 'oraoraoraora!!!!'
     - debug:
         var: info
+      when: ansible_pkg_mgr == 'yum'
