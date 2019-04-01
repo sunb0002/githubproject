@@ -1,6 +1,6 @@
 #!/usr/bin/env ansible-playbook
 
-- name: stardust crusaders 
+- name: stardust crusaders
   hosts: all
   tasks:
     - name: hello dio
@@ -13,3 +13,20 @@
     - debug:
         var: info
       when: ansible_pkg_mgr == 'yum'
+
+- name: diamond unbreakable
+  hosts: dev
+  vars:
+    dynamic_word: 'dorarararara!!'
+  tasks:
+    - name: generate wry file
+      template:
+        src: templates/jojotemplate.j2
+        dest: /tmp/wry.txt
+    - name: show wry file
+      command: cat /tmp/wry.txt
+      register: wry_result
+    - name: print wry stdout
+      debug:
+        msg: 'wry_result: {{ wry_result.stdout_lines }}'
+
