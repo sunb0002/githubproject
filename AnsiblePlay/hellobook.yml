@@ -9,7 +9,7 @@
     - name: hello jojo
       when: ansible_pkg_mgr == 'apt'
       debug:
-        msg: 'oraoraoraora!!!!'
+        msg: "oraoraoraora!!!!"
     - debug:
         var: info
       when: ansible_pkg_mgr == 'yum'
@@ -17,7 +17,9 @@
 - name: diamond unbreakable
   hosts: dev
   vars:
-    dynamic_word: 'dorarararara!!'
+    dynamic_word: "dorarararara!!"
+  # vars_files:
+  #   - /vars/external_vars.yml
   tasks:
     - name: generate wry file
       template:
@@ -28,5 +30,4 @@
       register: wry_result
     - name: print wry stdout
       debug:
-        msg: 'wry_result: {{ wry_result.stdout_lines }}'
-
+        msg: "wry_result: {{ wry_result.stdout_lines }}"

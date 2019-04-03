@@ -1,21 +1,25 @@
-## 
+##
 
-version: '3.7'
+x-common-constants:
+  intranet_proxies: &intranet_proxies
+    HTTP_PROXY: 10.1.2.3:8080
+    HTTPS_PROXY: 10.1.2.3:8080
+
+version: "3.7"
 services:
   s1: &default_config
     image: chusiang/ansible-managed-node:ubuntu-14.04
     container_name: server1
     ports:
-      - '2221:22'
+      - "2221:22"
     restart: always
-    networks: 
+    networks:
       - my-ansible-play
   s2:
     <<: *default_config
     container_name: server2
     ports:
-      - '2222:22'
-  
+      - "2222:22"
+
 networks:
   my-ansible-play:
-
