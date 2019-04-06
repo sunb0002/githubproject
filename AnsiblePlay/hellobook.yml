@@ -28,6 +28,17 @@
     - name: show wry file
       command: cat /tmp/wry.txt
       register: wry_result
+      notify: 'echos action 1'
     - name: print wry stdout
       debug:
         msg: "wry_result: {{ wry_result.stdout_lines }}"
+  post_tasks:
+    - name: echos action finale
+      debug:
+        msg: "echos finale~~~~~"
+  handlers:
+    - name: echos action 1
+      debug:
+        msg: "echos handler, only executed once after all tasks~~~~~~"
+  
+
