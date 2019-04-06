@@ -6,6 +6,8 @@
     - name: hello dio
       command: echo 'the world~~~~'
       register: info
+      tags:
+        - prefer-role-over-tag
     - name: hello jojo
       when: ansible_pkg_mgr == 'apt'
       debug:
@@ -13,6 +15,8 @@
     - debug:
         var: info
       when: ansible_pkg_mgr == 'yum'
+
+
 
 - name: diamond unbreakable
   hosts: dev
@@ -31,11 +35,15 @@
       notify: 'echos action 1'
     - name: print wry stdout
       debug:
-        msg: "wry_result: {{ wry_result.stdout_lines }}"
+        msg: "wryyyy count={{ item }}, {{ wry_result.stdout_lines }}"
+      with_sequence: start=1 end=4 stride=2
   post_tasks:
-    - name: echos action finale
+    - name: ed credits
       debug:
-        msg: "echos finale~~~~~"
+        msg: ~~~~ name={{ item.name }}, stand={{ item.stand }} ~~~~
+      with_items:
+        - { name: 'Koichi Hirose', stand: 'Echoes'}
+        - { name: 'Okuyasu Nijimura', stand: 'The Hand'}
   handlers:
     - name: echos action 1
       debug:
