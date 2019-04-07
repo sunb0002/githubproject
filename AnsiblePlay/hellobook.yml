@@ -6,6 +6,7 @@
   hosts: local
   roles:
     - new-stand
+    - print-author
   tasks:
     - name: hello dio
       command: echo 'the world~~~~'
@@ -24,6 +25,8 @@
 # this is 2nd play
 - name: diamond unbreakable
   hosts: dev
+  roles:
+    - print-author
   vars:
     dynamic_word: "dorarararara!!"
   # vars_files:

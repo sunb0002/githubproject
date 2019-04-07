@@ -1,0 +1,5 @@
+---
+
+- name: print the author
+  debug:
+    msg: The author of this play is {{ author }}
