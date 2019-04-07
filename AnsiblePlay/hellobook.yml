@@ -1,7 +1,11 @@
 #!/usr/bin/env ansible-playbook
 
+---
+# this is 1st play
 - name: stardust crusaders
-  hosts: all
+  hosts: local
+  roles:
+    - new-stand
   tasks:
     - name: hello dio
       command: echo 'the world~~~~'
@@ -9,15 +13,15 @@
       tags:
         - prefer-role-over-tag
     - name: hello jojo
-      when: ansible_pkg_mgr == 'apt'
       debug:
         msg: "oraoraoraora!!!!"
+      when: ansible_pkg_mgr == 'apt'
     - debug:
         var: info
       when: ansible_pkg_mgr == 'yum'
 
 
-
+# this is 2nd play
 - name: diamond unbreakable
   hosts: dev
   vars:
