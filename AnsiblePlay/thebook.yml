@@ -7,6 +7,7 @@
   roles:
     - new-stand
     - print-author
+    - best-enemy
   tasks:
     - name: hello dio
       command: echo 'the world~~~~'
@@ -27,6 +28,7 @@
   hosts: dev
   roles:
     - print-author
+    - best-enemy
   vars:
     dynamic_word: "dorarararara!!"
   # vars_files:
@@ -44,6 +46,7 @@
       debug:
         msg: "wryyyy count={{ item }}, {{ wry_result.stdout_lines }}"
       with_sequence: start=1 end=4 stride=2
+      when: not ansible_check_mode
   post_tasks:
     - name: ed credits
       debug:

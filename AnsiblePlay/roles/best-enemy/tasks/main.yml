@@ -1,0 +1,8 @@
+---
+
+# Definately Stroheim :)
+
+- name: print the best ever enemy
+  debug:
+    msg: JoJo's best ever enemy is {{ enemy }}
+  when: enemy is defined
