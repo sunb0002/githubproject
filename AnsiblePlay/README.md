@@ -6,15 +6,27 @@
 ├── docker-compose.yml
 ├── files
 ├── group_vars
-├── hellobook.yml
+│   ├── all
+│   │   └── vars.yml
+│   └── dev
+│       ├── vars.yml
+│       └── vault-vars.yml
 ├── hosts
 ├── inventories
 ├── roles
-│   └── new-stand
-│       ├── README.md
+│   ├── best-enemy
+│   │   └── tasks
+│   │       └── main.yml
+│   ├── new-stand
+│   │   ├── README.md
+│   │   └── tasks
+│   │       └── main.yml
+│   └── print-author
 │       └── tasks
 │           └── main.yml
+├── secret.txt
 ├── tasks
 ├── templates
 │   └── jojotemplate.j2
-└── tests
+├── tests
+└── thebook.yml
