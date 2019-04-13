@@ -1,0 +1,16 @@
+#!/usr/bin/env docker-compose -f 
+
+---
+version: '3.7'
+services:
+
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    ports:
+      - '9000:9000'
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    
+
