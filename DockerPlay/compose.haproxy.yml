@@ -1,0 +1,27 @@
+#!/usr/bin/env docker-compose --compatibility -f 
+
+---
+version: '3.7'
+services:
+
+  web:
+    image: dockercloud/hello-world
+    ports:
+      - '8080'
+    # deploy key is ignored if not running on swarm.
+    # workaround: docker-compose --compatibility up 
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 20M
+
+  lb:
+    image: dockercloud/haproxy
+    ports:
+      - '80:80'
+    links:
+      - 'web:web-alias'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
