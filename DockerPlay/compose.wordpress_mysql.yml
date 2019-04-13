@@ -1,3 +1,6 @@
+#!/usr/bin/env docker-compose -f 
+
+---
 version: "3"
 services:
 
@@ -23,5 +26,7 @@ services:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
+
+       
 volumes:
     db_data:
