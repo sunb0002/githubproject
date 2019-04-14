@@ -10,19 +10,15 @@
     - new-stand
     - print-author
     - best-enemy
-  tasks:
+  pre_tasks:
     - name: hello dio
       command: echo 'the world~~~~'
       register: info
       tags:
         - prefer-role-over-tag
-    - name: hello jojo
-      debug:
-        msg: "oraoraoraora!!!!"
-      when: ansible_pkg_mgr == 'apt'
+  tasks:
     - debug:
-        var: info
-      when: ansible_pkg_mgr == 'yum'
+        msg: "hello jojo~~~{{ info.stdout if ansible_pkg_mgr == 'apt' else 'oraoraoraora~~~~' }}"
 
 
 # this is 2nd play
