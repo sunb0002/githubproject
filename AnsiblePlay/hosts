@@ -7,4 +7,6 @@ server1
 [dev]
 server2
 
-[sit]
+[non-prod:children]
+local
+dev
