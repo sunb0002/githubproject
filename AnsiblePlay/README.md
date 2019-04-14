@@ -5,7 +5,9 @@
 ./site.yml
 ./site.yml -i hosts
 ./site.yml --check --diff --limit local
-
+./site.yml --syntax-check
+./site.yml --list-hosts
+./site.yml --step 
 ```
 
 .

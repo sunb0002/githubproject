@@ -11,3 +11,6 @@
 - name: print the author
   debug:
     msg: The author of this play is {{ author }}
+  # this environment is only available for this task.
+  environment:
+    AUTHOR: "{{ author }}"
