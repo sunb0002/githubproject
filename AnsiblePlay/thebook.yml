@@ -4,6 +4,8 @@
 # this is 1st play
 - name: stardust crusaders
   hosts: local
+  # become: true
+  become_user: root
   roles:
     - new-stand
     - print-author

@@ -10,3 +10,5 @@ server2
 [non-prod:children]
 local
 dev
+
+[prod]
