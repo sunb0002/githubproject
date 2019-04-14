@@ -19,7 +19,8 @@
   tasks:
     - debug:
         # tenary, using ansible setup module facts
-        msg: "hello jojo~~~{{ info.stdout if ansible_pkg_mgr == 'apt' else 'oraoraoraora~~~~' }}"
+        msg: "hello jojo~~~{{ info.stdout if ansible_pkg_mgr is defined and ansible_pkg_mgr == 'apt' 
+              else 'oraoraoraora~~~~' }}"
 
 
 # this is 2nd play

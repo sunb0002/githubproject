@@ -12,8 +12,8 @@
 │   └── dev
 │       ├── vars.yml
 │       └── vault-vars.yml
+├── host_vars
 ├── hosts
-├── inventories
 ├── roles
 │   ├── best-enemy
 │   │   └── tasks
@@ -28,10 +28,10 @@
 │       └── tasks
 │           └── main.yml
 ├── secret.txt
+├── site.yml
 ├── tasks
 │   ├── new-stand.yml
 │   └── wryyy.yml
-├── templates
-│   └── jojotemplate.j2
-├── tests
-└── thebook.yml
+└── templates
+    └── jojotemplate.j2
+    
