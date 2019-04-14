@@ -3,7 +3,7 @@
 ---
 # this is 1st play
 - name: stardust crusaders
-  hosts: local
+  hosts: prod
   # become: true
   become_user: root
   roles:
@@ -56,6 +56,8 @@
       with_items:
         - { name: 'Koichi Hirose', stand: 'Echoes'}
         - { name: 'Okuyasu Nijimura', stand: 'The Hand'}
+      # detect changes of status
+      when: wry_result.changed
   handlers:
     - name: echos action 1
       debug:
