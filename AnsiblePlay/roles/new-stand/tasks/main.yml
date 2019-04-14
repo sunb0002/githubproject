@@ -1,11 +1,11 @@
 ---
 # this is a role's tasks part
 
-- name: new stand 1
-  debug:
-    msg: Polnareff!!!!
+- include: tasks/new-stand.yml
+  vars:
+    stand_name: Polnareff
 
-- name: new stand 2
-  debug:
-    msg: Silver Chariot!!!!
+- include: tasks/new-stand.yml
+  vars:
+    stand_name: Silver Chariot
 

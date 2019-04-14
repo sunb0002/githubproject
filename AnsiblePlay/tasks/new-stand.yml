@@ -1,0 +1,4 @@
+---
+- name: new stand
+  debug:
+    msg: "Behold the new stand: {{ stand_name }}!!!!"

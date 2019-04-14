@@ -3,7 +3,7 @@
 ---
 # this is 1st play
 - name: stardust crusaders
-  hosts: prod
+  hosts: local
   # become: true
   become_user: root
   roles:
