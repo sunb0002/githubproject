@@ -1,5 +1,13 @@
 ---
 
+- name: simulate long running op, allow to run for 10 sec
+  command: /bin/sleep 3
+  async: 10
+  # 0 means fire and forget, if not 0, it still executes in sync way but not using SSH keepalive. 
+  # check mode and async cannot be used on same task.
+  poll: 0
+  when: not ansible_check_mode
+
 - name: print the author
   debug:
     msg: The author of this play is {{ author }}

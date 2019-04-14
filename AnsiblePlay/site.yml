@@ -3,7 +3,7 @@
 ---
 # this is 1st play
 - name: stardust crusaders
-  hosts: local
+  hosts: non-prod
   # become: true
   become_user: root
   roles:
@@ -21,6 +21,10 @@
         # tenary, using ansible setup module facts
         msg: "hello jojo~~~{{ info.stdout if ansible_pkg_mgr is defined and ansible_pkg_mgr == 'apt' 
               else 'oraoraoraora~~~~' }}"
+      when: info.stdout is defined
+  # if set to 50%, this play will run 1 server at a time.
+  serial: "100%"
+  max_fail_percentage: 30
 
 
 # this is 2nd play

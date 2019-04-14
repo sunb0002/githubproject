@@ -1,5 +1,13 @@
 # Following Ansible officially recommended folder structure
 
+### Useful commands
+```
+./site.yml
+./site.yml -i hosts
+./site.yml --check --diff --limit local
+
+```
+
 .
 ├── LICENCE
 ├── README.md
