@@ -1,6 +1,7 @@
 # Following Ansible officially recommended folder structure
 
 .
+├── LICENCE
 ├── README.md
 ├── ansible.cfg
 ├── docker-compose.yml
@@ -19,13 +20,16 @@
 │   │       └── main.yml
 │   ├── new-stand
 │   │   ├── README.md
-│   │   └── tasks
-│   │       └── main.yml
+│   │   ├── handlers
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   └── vars
 │   └── print-author
 │       └── tasks
 │           └── main.yml
 ├── secret.txt
 ├── tasks
+│   └── new-stand.yml
 ├── templates
 │   └── jojotemplate.j2
 ├── tests
