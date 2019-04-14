@@ -29,7 +29,8 @@
 │           └── main.yml
 ├── secret.txt
 ├── tasks
-│   └── new-stand.yml
+│   ├── new-stand.yml
+│   └── wryyy.yml
 ├── templates
 │   └── jojotemplate.j2
 ├── tests

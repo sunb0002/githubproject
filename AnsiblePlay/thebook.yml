@@ -32,26 +32,12 @@
   # vars_files:
   #   - /vars/external_vars.yml
   tasks:
-    - name: generate wry file
-      template:
-        src: templates/jojotemplate.j2
-        dest: /tmp/wry.txt
-    - name: show wry file
-      command: cat /tmp/wry.txt
-      register: wry_result
-      notify: 'echos action 1'
-    - name: print wry stdout
-      debug:
-        msg: "wryyyy count={{ item }}, {{ wry_result.stdout_lines }}"
-      with_sequence: start=1 end=4 stride=2
-      when: not ansible_check_mode
+    - include: tasks/wryyy.yml
   post_tasks:
     - name: ed credits
       debug:
-        msg: ~~~~ name={{ item.name }}, stand={{ item.stand }} ~~~~
-      with_items:
-        - { name: 'Koichi Hirose', stand: 'Echoes'}
-        - { name: 'Okuyasu Nijimura', stand: 'The Hand'}
+        msg: ~~~~ name={{ item.key }}, stand={{ item.value }} ~~~~
+      with_dict: "{{ stand_users }}"
       # detect changes of status
       when: wry_result.changed
   handlers:
