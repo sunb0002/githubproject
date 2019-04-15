@@ -1,11 +1,11 @@
 # Configure the Docker provider
 provider "docker" {
-  host = "tcp://localhost:2375/"
+  host = "unix:///var/run/docker.sock"
 }
 
 # Create a container
 resource "docker_container" "foo" {
-  image   = "dockercloud/hello-world:latest"
+  image   = "${docker_image.dockercloud.latest}"
   name    = "foo_container_by_tf"
   restart = "always"
 
@@ -14,4 +14,8 @@ resource "docker_container" "foo" {
     external = 8080
     ip       = "127.0.0.1"
   }
+}
+
+resource "docker_image" "dockercloud" {
+  name = "dockercloud/hello-world:latest"
 }
