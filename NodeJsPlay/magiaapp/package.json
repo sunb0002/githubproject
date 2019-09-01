@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "npm run open && nodemon ./bin/www",
+    "open": "open http://localhost:3000"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
