@@ -7,8 +7,3 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
-// TODO:
-// nodemon
-// ejs
-// open
-// mongoose
