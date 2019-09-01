@@ -6,7 +6,11 @@ npm start
 ```
 
 ### Service Url
-`http://localhost:3000`
+```
+http://localhost:3000
+http://localhost:3000/pray
+http://localhost:3000/qb-not-found
+```
 
 
 ### Folder Structure
