@@ -1,11 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index.js');
 var prayerRouter = require('./routes/prayer.js');
+var incubatorRouter = require('./routes/incubator.js');
 
 var app = express();
 
@@ -16,11 +16,11 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/pray', prayerRouter);
+app.use('/qbey', incubatorRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,6 +40,3 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-
-// TODO:
-// mongoose
