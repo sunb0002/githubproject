@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const JSONStream = require('JSONStream');
 
 const router = express.Router();
 const MahouShoujo = require('../models/mahou-shoujo.js');
@@ -18,6 +19,12 @@ mongoose.connect(
 
 router.get('/', (req, res, next) => {
     qbSays(res, getAllMagia);
+});
+
+router.get('/all', (req, res, next) => {
+    streamAllMagia()
+        .pipe(JSONStream.stringify())
+        .pipe(res);
 });
 
 router.get('/get/:name', (req, res, next) => {
@@ -53,6 +60,10 @@ function getAllMagia() {
     return MahouShoujo.find({}).exec();
 }
 
+function streamAllMagia() {
+    return MahouShoujo.find({}).cursor();
+}
+
 function getMagiaByName(name) {
     const query = MahouShoujo.find({
         $or: [
@@ -86,5 +97,4 @@ function getRandom() {
 module.exports = router;
 
 //TODO: 
-//Get with Mongoose Streaming
 //ejs page with links
