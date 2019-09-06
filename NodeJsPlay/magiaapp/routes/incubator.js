@@ -95,6 +95,3 @@ function getRandom() {
 }
 
 module.exports = router;
-
-//TODO: 
-//ejs page with links
