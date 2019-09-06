@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
     qbSays(res, getAllMagia);
 });
 
-router.get('/:name', (req, res, next) => {
+router.get('/get/:name', (req, res, next) => {
     qbSays(res, getMagiaByName, req.params.name);
 });
 
@@ -28,13 +28,20 @@ router.get('/post/:firstname', (req, res, next) => {
     qbSays(res, createMagia, req.params.firstname);
 });
 
-// router.get('/delete/:name', (req, res, next) => {
-// });
+router.get('/delete/:firstname', (req, res, next) => {
+    qbSays(res, deleteMagia, req.params.firstname);
+});
 
+/**
+ * 
+ * @param {*} res 
+ * @param {*} fn 
+ * @param {*} param 
+ */
 async function qbSays(res, fn, param) {
     try {
         const result = await fn(param);
-        console.log(`Qbey executed function: ${fn.name}() with params: ${param}, result is ${result}`);
+        console.log(`Qbey executed function: ${fn.name}() with params: ${param}, result is:`, result);
         res.json(GeneralResponse.ok(result));
     } catch (err) {
         console.error("Encountered error:", err);
@@ -65,6 +72,13 @@ function createMagia(firstname) {
     return newMagia.save();
 }
 
+function deleteMagia(firstname) {
+    const query = MahouShoujo.deleteOne({
+        firstname
+    });
+    return query.exec();
+}
+
 function getRandom() {
     return Math.floor((Math.random() * 1000) + 1);
 }
@@ -72,6 +86,5 @@ function getRandom() {
 module.exports = router;
 
 //TODO: 
-//Delete
 //Get with Mongoose Streaming
 //ejs page with links
