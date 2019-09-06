@@ -24,8 +24,9 @@ router.get('/:name', (req, res, next) => {
     qbSays(res, getMagiaByName, req.params.name);
 });
 
-// router.get('/post/:name', (req, res, next) => {
-// });
+router.get('/post/:firstname', (req, res, next) => {
+    qbSays(res, createMagia, req.params.firstname);
+});
 
 // router.get('/delete/:name', (req, res, next) => {
 // });
@@ -55,10 +56,22 @@ function getMagiaByName(name) {
     return query.exec();
 }
 
+function createMagia(firstname) {
+    const newMagia = new MahouShoujo({
+        firstname,
+        "lastname": `MagiaRecordMobile-${getRandom()}`,
+        "class": "faker"
+    });
+    return newMagia.save();
+}
+
+function getRandom() {
+    return Math.floor((Math.random() * 1000) + 1);
+}
+
 module.exports = router;
 
 //TODO: 
-//Save
 //Delete
 //Get with Mongoose Streaming
 //ejs page with links
