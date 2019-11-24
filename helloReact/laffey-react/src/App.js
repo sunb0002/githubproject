@@ -25,8 +25,10 @@ function App() {
       </header> */}
 
       {/* Laffey's greetings */}
-      <Greet />
-      <Welcome />
+      <Welcome>#azurlane_anime #azurlane_official</Welcome>
+      <Greet name="Laffey" type="DD" />
+      <Greet name="Javelin" type="DD" />
+      <Greet name="Z23" type="DD" />
     </div>
   );
 }

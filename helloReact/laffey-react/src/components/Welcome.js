@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Welcome extends Component {
   render() {
-    return <h1>Azur Lane~~ www</h1>;
+    return (
+      <div>
+        <h1>Azur Lane~~</h1>
+        a.k.a {this.props.children}
+      </div>
+    );
   }
 }
 
