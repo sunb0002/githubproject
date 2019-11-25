@@ -15,13 +15,13 @@ class Welcome extends Component {
   }
 
   render() {
+    const { children } = this.props;
+    const { counter } = this.state;
     return (
       <div>
         <h1>Azur Lane~~</h1>
-        {this.props.children}
-        <button onClick={() => this.incrementCounter()}>
-          Like!+{this.state.counter}
-        </button>
+        {children}
+        <button onClick={() => this.incrementCounter()}>Like!+{counter}</button>
       </div>
     );
   }
