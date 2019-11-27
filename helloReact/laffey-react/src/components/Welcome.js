@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import ClassClick from "./ClassClick";
+import FunctionClick from "./FunctionClick";
+
 class Welcome extends Component {
   constructor() {
     super();
@@ -20,8 +23,12 @@ class Welcome extends Component {
     return (
       <div>
         <h1>Azur Lane~~</h1>
-        {children}
+        <div>{children}</div>
+        {/* 下面button的event binding性能很差，参考ClassClick.js的解释 */}
         <button onClick={() => this.incrementCounter()}>Like!+{counter}</button>
+        <FunctionClick />
+        <ClassClick />
+        <ClassClick />
       </div>
     );
   }
