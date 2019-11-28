@@ -17,6 +17,8 @@ class Welcome extends Component {
     }));
   }
 
+  parentCounter = () => console.log(`Parent counter is: ${this.state.counter}`);
+
   render() {
     const { children } = this.props;
     const { counter } = this.state;
@@ -24,9 +26,12 @@ class Welcome extends Component {
       <div>
         <h1>Azur Lane~~</h1>
         <div>{children}</div>
+
         {/* 下面button的event binding性能很差，参考ClassClick.js的解释 */}
         <button onClick={() => this.incrementCounter()}>Like!+{counter}</button>
-        <FunctionClick />
+
+        {/* Child components */}
+        <FunctionClick parentHandler={this.parentCounter} />
         <ClassClick />
         <ClassClick />
       </div>

@@ -1,7 +1,13 @@
 import React from "react";
 
-function FunctionClick() {
-  const clickHandler = () => console.log("Button Clicked.");
+function FunctionClick(props) {
+
+  const { parentHandler } = props;
+  const clickHandler = () => {
+    console.log("Button Clicked.");
+    parentHandler();
+  };
+
   return (
     <div>
       <button onClick={clickHandler}>Event-console!</button>
