@@ -8,7 +8,9 @@ function HMSNameList() {
   ];
 
   return ships.map(({ name, type }, index) => (
-    <div key={index}>
+    <div>
+      {/* Generally, using index as key is anti-pattern in React. 
+      It may cause rendering problem because of VirtualDOM diff. */}
       {index + 1}: {name}, {type}
     </div>
   ));
