@@ -7,9 +7,9 @@ function HMSNameList() {
     new Ship("Formidable", "CV")
   ];
 
-  return ships.map((s, index) => (
+  return ships.map(({ name, type }, index) => (
     <div key={index}>
-      {index + 1}: {s.name}, {s.type}
+      {index + 1}: {name}, {type}
     </div>
   ));
 }
