@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Form extends Component {
   constructor(props) {
@@ -13,15 +13,19 @@ class Form extends Component {
     this.baseState = this.state;
   }
 
-  handleNameChange = event => {
+  //   handleNameChange = event => {
+  //     this.setState({
+  //       taskname: event.target.value
+  //     });
+  //   };
+  //   handleRewardChange = event => {
+  //     this.setState({
+  //       reward: event.target.value
+  //     });
+  //   };
+  handleAnyChange = key => event => {
     this.setState({
-      taskname: event.target.value
-    });
-  };
-
-  handleRewardChange = event => {
-    this.setState({
-      reward: event.target.value
+      [key]: event.target.value
     });
   };
 
@@ -43,12 +47,15 @@ class Form extends Component {
           <input
             type="text"
             value={this.state.taskname}
-            onChange={this.handleNameChange}
+            onChange={this.handleAnyChange("taskname")}
           />
         </div>
         <div>
           <label>Reward: </label>
-          <select value={this.state.reward} onChange={this.handleRewardChange}>
+          <select
+            value={this.state.reward}
+            onChange={this.handleAnyChange("reward")}
+          >
             <option value="oil">OIL</option>
             <option value="gold">GOLD</option>
             <option value="loli">LOLI</option>
