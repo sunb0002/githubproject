@@ -1,10 +1,11 @@
-import "./App.css";
+import './App.css';
 
-import React from "react";
+import React from 'react';
 
-import Greet from "./components/Greet";
-import HMSNameList from "./components/HMSNameList";
-import Welcome from "./components/Welcome";
+import Greet from './components/Greet';
+import HMSNameList from './components/HMSNameList';
+import Stylesheet from './components/stylesheet/Stylesheet';
+import Welcome from './components/Welcome';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <hr />
       {/* The Royal Navy */}
       <HMSNameList />
+      <hr />
+      <Stylesheet />
       <hr />
     </div>
   );

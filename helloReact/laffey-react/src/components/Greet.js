@@ -1,9 +1,9 @@
 import React from "react";
 
 const Greet = props => (
-  <h1>
+  <h2>
     Azur Lane~~ {props.name}, {props.type || "Special"}
-  </h1>
+  </h2>
 );
 
 export default Greet;
