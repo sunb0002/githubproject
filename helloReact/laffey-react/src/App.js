@@ -1,12 +1,13 @@
-import "./App.css";
+import './App.css';
 
-import React from "react";
+import React from 'react';
 
-import Form from "./components/form/Form";
-import Greet from "./components/Greet";
-import HMSNameList from "./components/HMSNameList";
-import Stylesheet from "./components/stylesheet/Stylesheet";
-import Welcome from "./components/Welcome";
+import Form from './components/form/Form';
+import Greet from './components/Greet';
+import HMSNameList from './components/HMSNameList';
+import LifecycleParent from './components/lifecycle/LifecycleParent';
+import Stylesheet from './components/stylesheet/Stylesheet';
+import Welcome from './components/Welcome';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       <hr />
 
       <Form />
+      <hr />
+
+      <LifecycleParent />
       <hr />
     </div>
   );

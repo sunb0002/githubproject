@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import ClassClick from "./ClassClick";
-import FunctionClick from "./FunctionClick";
+import ClassClick from './ClassClick';
+import FunctionClick from './FunctionClick';
 
 class Welcome extends Component {
   constructor() {
