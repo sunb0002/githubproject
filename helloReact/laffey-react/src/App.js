@@ -6,6 +6,7 @@ import Form from './components/form/Form';
 import Greet from './components/Greet';
 import HMSNameList from './components/HMSNameList';
 import LifecycleParent from './components/lifecycle/LifecycleParent';
+import Misc from './components/misc/Misc';
 import Stylesheet from './components/stylesheet/Stylesheet';
 import Welcome from './components/Welcome';
 
@@ -33,6 +34,9 @@ function App() {
       <hr />
 
       <LifecycleParent />
+      <hr />
+
+      <Misc />
       <hr />
     </div>
   );

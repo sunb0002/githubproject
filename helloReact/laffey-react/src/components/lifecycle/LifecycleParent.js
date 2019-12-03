@@ -30,6 +30,7 @@ class LifecycleParent extends Component {
   // Child state/prop change WILL NOT trigger Parent lifecycle (componentDidUpdate)
   //    But Parent state/prop change WILL trigger ALL-Child componentDidUpdate,
   //    though it doesnt necessarily re-render VirtualDOM (diff)
+  // Note: except that Child is PureComponent, or customized shouldComponentUpdate()
   componentDidUpdate() {
     console.log("LifecycleParent componentDidUpdate");
   }
