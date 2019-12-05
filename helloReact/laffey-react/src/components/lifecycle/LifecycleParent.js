@@ -24,6 +24,7 @@ class LifecycleParent extends Component {
   }
 
   handleBtnClick = () => {
+    // Also can: this.forceUpdate();
     this.setState({});
   };
 
