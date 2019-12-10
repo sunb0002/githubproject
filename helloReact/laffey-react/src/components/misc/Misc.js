@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import FragmentDemo from './FragmentDemo';
 import MemoComp from './MemoComp';
+import PortalDemo from './PortalDemo';
 import PureComp from './PureComp';
 import RefDemo from './RefDemo';
 
@@ -13,6 +14,7 @@ class Misc extends Component {
         <PureComp />
         <MemoComp cheer="Watashi wa numba one!" />
         <RefDemo />
+        <PortalDemo />
       </div>
     );
   }
