@@ -5,6 +5,7 @@ import React from 'react';
 import Form from './components/form/Form';
 import Greet from './components/Greet';
 import HMSNameList from './components/HMSNameList';
+import HocDemo from './components/hoc/HocDemo';
 import LifecycleParent from './components/lifecycle/LifecycleParent';
 import Misc from './components/misc/Misc';
 import Stylesheet from './components/stylesheet/Stylesheet';
@@ -34,6 +35,9 @@ function App() {
       <hr />
 
       <LifecycleParent />
+      <hr />
+
+      <HocDemo />
       <hr />
 
       <Misc />
