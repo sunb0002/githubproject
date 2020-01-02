@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ErrorBoundary from './ErrorBoundary';
 import LifecycleA from './LifecycleA';
 import LifecycleB from './LifecycleB';
 
@@ -19,6 +20,7 @@ class LifecycleParent extends Component {
         <LifecycleA />
         <LifecycleB />
         <button onClick={this.handleBtnClick}>Like!</button>
+        <ErrorBoundary />
       </div>
     );
   }
@@ -50,7 +52,7 @@ class LifecycleParent extends Component {
   // error - The error that was thrown.
   // info - An object with a componentStack (stacktrace)
   componentDidCatch(error, info) {
-    console.log("LifecycleParent componentDidCatch", error, info);
+    console.warn("LifecycleParent componentDidCatch", error, info);
   }
 }
 
