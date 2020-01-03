@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { UserProvider } from '../context/UserContext';
 import FragmentDemo from './FragmentDemo';
 import MemoComp from './MemoComp';
 import PortalDemo from './PortalDemo';
@@ -10,11 +11,13 @@ class Misc extends Component {
   render() {
     return (
       <div>
-        <FragmentDemo />
-        <PureComp />
-        <MemoComp cheer="Watashi wa numba one!" />
-        <RefDemo />
-        <PortalDemo />
+        <UserProvider value="manjuu">
+          <FragmentDemo />
+          <PureComp />
+          <MemoComp cheer="Watashi wa numba one!" />
+          <RefDemo />
+          <PortalDemo />
+        </UserProvider>
       </div>
     );
   }
