@@ -20,7 +20,18 @@ class LifecycleA extends Component {
   // GOOD to cause side-effects
   // Similar to Angular "afterViewInit()"
   componentDidMount() {
-    console.log("LifecycleA componentDidMount");
+    console.log("LifecycleA componentDidMount, calling HTTP fetch.");
+
+    // Fetch API
+    // Note1: Fetch promises only reject with a TypeError when a network error occurs.
+    //    Since 4xx and 5xx responses aren't network errors, there's nothing to catch.
+    //    You'll need to throw an error yourself, checking "response.ok" or "response.status==404"
+    // Note2: Fetch基本可以取代Axios，但是没有内置HTTP Interceptor。
+    //    需要改fetch的prototype，或者用三方库"fetch-intercept"
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then(resp => resp.json())
+      .then(body => console.warn("Ajax fetched response body:", body))
+      .catch(err => console.warn("Ajax fetch error! Details:", err));
   }
 }
 
