@@ -1,6 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import React from 'react';
+
+import GreetBtn from './components/GreetBtn';
+import logo from './logo.svg';
 
 const App = () => {
   return (
@@ -10,6 +13,7 @@ const App = () => {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <GreetBtn />
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -21,6 +25,6 @@ const App = () => {
       </header>
     </div>
   );
-}
+};
 
 export default App;
