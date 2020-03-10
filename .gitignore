@@ -2,6 +2,7 @@
 RemoteSystemsTempFiles
 target
 .recommenders
+.terraform
 TerraformPlay/local/terraform.tfstate
 TerraformPlay/local/terraform.tfstate.backup
 TerraformPlay/local/.terraform/plugins/darwin_amd64/lock.json
