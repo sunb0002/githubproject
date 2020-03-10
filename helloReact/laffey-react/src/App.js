@@ -8,6 +8,7 @@ import HMSNameList from './components/HMSNameList';
 import HocDemo from './components/hoc/HocDemo';
 import LifecycleParent from './components/lifecycle/LifecycleParent';
 import Misc from './components/misc/Misc';
+import MobxDemo from './components/mobx/MobxDemo';
 import Stylesheet from './components/stylesheet/Stylesheet';
 import Welcome from './components/Welcome';
 
@@ -42,6 +43,10 @@ function App() {
 
       <Misc />
       <hr />
+
+      <MobxDemo />
+      <hr />
+
     </div>
   );
 }

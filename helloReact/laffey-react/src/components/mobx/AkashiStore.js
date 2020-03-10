@@ -1,4 +1,4 @@
-import { computed, decorate, observable, autorun } from 'mobx';
+import { autorun, computed, decorate, observable } from 'mobx';
 
 class AkashiStore {
 
@@ -17,9 +17,9 @@ class AkashiStore {
 
 	get report() {
 		if (this.todos.length === 0)
-			return "<none>";
+			return "(none)";
 		const nextTodo = this.todos.find(todo => todo.completed === false);
-		return `Next todo: "${nextTodo ? nextTodo.task : "<none>"}". ` +
+		return `Next todo: "${nextTodo ? nextTodo.task : "(none)"}". ` +
 			`Progress: ${this.completedTodosCount}/${this.todos.length}`;
 	}
 
@@ -42,4 +42,5 @@ decorate(AkashiStore, {
 	report: computed,
 });
 
-export default AkashiStore;
+const observableTodoStore = new AkashiStore();
+export default observableTodoStore;
