@@ -9,6 +9,7 @@ import HocDemo from './components/hoc/HocDemo';
 import LifecycleParent from './components/lifecycle/LifecycleParent';
 import Misc from './components/misc/Misc';
 import MobxDemo from './components/mobx/MobxDemo';
+import RouterDemo from './components/router/RouterDemo';
 import Stylesheet from './components/stylesheet/Stylesheet';
 import Welcome from './components/Welcome';
 
@@ -47,6 +48,8 @@ function App() {
       <MobxDemo />
       <hr />
 
+      <RouterDemo />
+      <hr />
     </div>
   );
 }
