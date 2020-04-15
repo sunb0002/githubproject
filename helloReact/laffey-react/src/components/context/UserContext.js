@@ -12,4 +12,4 @@ const UserContext = React.createContext("some default value");
 const UserProvider = UserContext.Provider;
 const UserConsumer = UserContext.Consumer;
 
-export { UserProvider, UserConsumer };
+export { UserContext, UserProvider, UserConsumer };

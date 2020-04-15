@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { UserConsumer } from '../context/UserContext';
+import { UserContext } from '../context/UserContext';
 
 function FragmentDemo() {
   return (
-    // <React.Fragment></React.Fragment>
     <>
       <span>San Diego is numba one!</span>
-      {/* React context.consumer */}
-      <UserConsumer>
+      <FragmentDemoChild />
+      {/* React context.consumer, after ReactV16.6 replaced by static-contextType */}
+      {/* <UserConsumer>
         {val => console.warn(`Context consumer received value: ${val}`)}
-      </UserConsumer>
+      </UserConsumer> */}
     </>
   );
+}
+
+class FragmentDemoChild extends Component {
+  static contextType = UserContext;
+
+  render() {
+    console.warn("Context consumer received value:", this.context);
+    return <></>;
+  }
 }
 
 export default FragmentDemo;
