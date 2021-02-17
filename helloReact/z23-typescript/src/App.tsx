@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 
 import GreetBtn from './components/GreetBtn';
+import Z23 from './components/hook-play/Z23';
 import logo from './logo.svg';
 
 const App = () => {
@@ -10,18 +11,9 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+
         <GreetBtn />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Z23 />
       </header>
     </div>
   );
