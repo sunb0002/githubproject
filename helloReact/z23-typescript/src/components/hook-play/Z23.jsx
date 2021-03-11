@@ -1,4 +1,5 @@
 import React, { useDebugValue, useEffect, useReducer, useState } from 'react';
+import ImportScript from './custom-hooks/ImportScript';
 
 function Z23() {
 
@@ -24,6 +25,9 @@ function Z23() {
         setCount(count + 1);
         dispatch({});
     }
+
+    ImportScript("https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js");
+
     return (
         <div>
             <button onClick={clickHandler}>ClickNimi {flag && `*Married!*`} {`+${count} ${count2}`}</button>
