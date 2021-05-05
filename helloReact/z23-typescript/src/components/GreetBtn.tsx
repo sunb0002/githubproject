@@ -26,7 +26,7 @@ export default class GreetBtn extends Component<Props, State> {
             ? "Guten tag, commander~ "
             : "My new skin, commander? "}
         </span>
-        <button onClick={this.clickHandler}>ClickZ404</button>
+        <button onClick={this.clickHandler}>Click Z404</button>
       </div>
     );
   }

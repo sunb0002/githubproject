@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function ImportScript(url) {
+function useImportScript(url) {
 
     useEffect(() => {
 
@@ -17,4 +17,4 @@ function ImportScript(url) {
 
 }
 
-export default ImportScript;
+export default useImportScript;
