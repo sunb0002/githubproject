@@ -8,6 +8,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "start": "lerna run --scope my-app start"
+    "start:app": "lerna run --scope sunb0002-my-app start",
+    "sb": "lerna run --scope sunb0002-my-lib storybook"
   }
 }
