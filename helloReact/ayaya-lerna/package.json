@@ -8,9 +8,11 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "build:lib": "lerna run --scope sunb0002-my-lib build",
-    "start:app": "lerna run --scope sunb0002-my-app start",
+    "build:lib": "lerna run build --scope sunb0002-my-lib",
+    "test:lib": "lerna run test --scope sunb0002-my-lib",
+    "coverage:lib": "lerna run test:coverage --scope sunb0002-my-lib",
+    "start:app": "lerna run start --scope sunb0002-my-app",
     "update": "lerna exec -- yarn upgrade --latest",
-    "sb": "lerna run --scope sunb0002-my-lib storybook"
+    "sb": "lerna run storybook --scope sunb0002-my-lib"
   }
 }

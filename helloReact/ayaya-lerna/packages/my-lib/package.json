@@ -5,7 +5,8 @@
   "module": "dist/my-lib.esm.js",
   "browser": "dist/my-lib.umd.js",
   "dependencies": {
-    "ms": "^2.0.0"
+    "ms": "^2.0.0",
+    "ts-jest": "^26.5.6"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",
@@ -16,8 +17,10 @@
     "@storybook/node-logger": "^6.2.9",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.9",
+    "@testing-library/react": "^11.2.7",
     "@types/ms": "^0.7.30",
     "babel-loader": "8.1.0",
+    "jest": "^26.6.3",
     "rollup": "^1.0.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
@@ -29,7 +32,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "ts-node test/test.ts",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "pretest": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -37,6 +41,11 @@
   "files": [
     "dist"
   ],
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
+    }
+  },
   "eslintConfig": {
     "overrides": [
       {

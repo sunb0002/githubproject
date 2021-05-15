@@ -16,6 +16,7 @@ Ayaya uses this monorepo scaffold for frontend projects.
     `lerna ls --graph`
 - To add my-lib to my-app (one-time)
     `lerna add sunb0002-my-lib --scope=sunb0002-my-app`
+    `lerna add (any-package, e.g jest) --scope=sunb0002-my-lib --dev`
 - To publish latest packages
     `git commit ...`
     `lerna updated`
@@ -23,6 +24,9 @@ Ayaya uses this monorepo scaffold for frontend projects.
 - To pull latest packages
     `lerna exec -- yarn upgrade --latest` or 
     `npm run update`
+- To run my-lib test & coverage:
+    `npm run test:lib`
+    `npm run coverage:lib`
 - To run my-lib storybook:
     `npm run sb`
 

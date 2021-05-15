@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
 interface Props {
-    txt: string;
+    txt?: string;
 }
 
 function MyButton(props: Props): ReactElement {
