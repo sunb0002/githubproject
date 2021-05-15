@@ -1,6 +1,6 @@
 {
   "name": "sunb0002-my-lib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/my-lib.cjs.js",
   "module": "dist/my-lib.esm.js",
   "browser": "dist/my-lib.umd.js",
