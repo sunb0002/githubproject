@@ -8,7 +8,7 @@ export default [
 	{
 		input: 'src/main.ts',
 		output: {
-			name: 'howLongUntilLunch',
+			name: 'myButton',
 			file: pkg.browser,
 			format: 'umd'
 		},
