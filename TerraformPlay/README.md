@@ -1,7 +1,5 @@
 # Terraform play
 
-### (Very good example) Two-Tier AWS Architecture
-* https://github.com/terraform-providers/terraform-provider-aws/tree/master/examples/two-tier
 
 ### Useful Commands
 ```
@@ -34,3 +32,19 @@ terraform destroy -target docker_container;
 │   └── variables.tf
 ├── mac_expose_docker.sh
 └── vpc
+
+
+### Useful References
+
+* https://www.youtube.com/watch?v=SLB_c_ayRMo
+Basic TF commands, syntax and examples
+
+* https://www.youtube.com/watch?v=LVgP63BkhKQ
+TF module;
+TF module public registry (support versioning);
+TF industry naming conventions;
+TF module testing - no UT, only integration testing. Simple Golang testing wrappers over TF apply/destroy.
+
+* https://github.com/terraform-providers/terraform-provider-aws/tree/master/examples/two-tier
+A sample Two-Tier AWS architecture
+
