@@ -8,3 +8,7 @@ TerraformPlay/local/terraform.tfstate.backup
 TerraformPlay/local/.terraform/plugins/darwin_amd64/lock.json
 TerraformPlay/local/.terraform/plugins/darwin_amd64/terraform-provider-docker_v1.1.1_x4
 **/.vscode/**
+helloSpringBoot2/precure/gradlew
+helloSpringBoot2/precure/gradlew.bat
+helloSpringBoot2/precure/gradle/wrapper/gradle-wrapper.jar
+*.jar
