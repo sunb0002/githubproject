@@ -1,5 +1,7 @@
 package com.precure.controllers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class GeneralResponse extends AbstractResponse<String> {
     public GeneralResponse(String data) {
         super(data);

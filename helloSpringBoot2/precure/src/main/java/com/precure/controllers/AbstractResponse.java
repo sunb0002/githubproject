@@ -1,7 +1,9 @@
 package com.precure.controllers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.http.HttpStatus;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class AbstractResponse<T> {
     protected Integer status;
     protected T data;

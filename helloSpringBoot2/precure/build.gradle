@@ -31,6 +31,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.integration:spring-integration-http'
 	implementation 'org.springframework.integration:spring-integration-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
@@ -39,7 +40,6 @@ dependencies {
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
 	implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
-	implementation "org.springframework.boot:spring-boot-starter-webflux"
 }
 
 dependencyManagement {

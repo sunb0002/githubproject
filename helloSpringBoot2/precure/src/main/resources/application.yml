@@ -7,7 +7,7 @@ spring:
     devtools:
         restart:
             additional-paths: src/main/resources
-            poll-interval: 2000
+            poll-interval: 10000
 
 app:
     service-name: PrecureApp
