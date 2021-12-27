@@ -52,12 +52,37 @@ fun main() {
     println(userList.groupBy { it.age })
     println(userList.groupBy(User::age, User::name))
 
-    
+    // let, apply; run, with, also;
+    // https://play.kotlinlang.org/byExample/06_scope_functions/01_let
+    fun printIfNotNull(str: String?): Int =
+            str?.let {
+                println("In Let, not null: $it")
+                it.length
+            }
+                    ?: 999
+    printIfNotNull("not null")
+    val user1x =
+            user1
+                    .apply {
+                        name = "u1b"
+                        println("newname=$name, age=$age")
+                    }
+                    .apply {
+                        name = "u1c"
+                        println("newname=$name, age=$age")
+                    }
+    println(user1x) // name=u1c
 
+    // delegation: when you don't want to manually implement all methods of HashSet
+    // lazy function: delegation
+    // https://blog.csdn.net/baidu_39589150/article/details/111908226
+
+    // More TODO: typealias, Coroutines, this@ expression, Annotations(like SpringBoot)
+    // https://kotlinlang.org/docs/coroutines-overview.html
 
 }
 
-data class User(val name: String, val age: Int)
+data class User(var name: String, val age: Int)
 
 enum class Color {
     RED,

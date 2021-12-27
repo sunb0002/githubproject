@@ -87,9 +87,9 @@ fun main() {
     var unzippedList = zippedList.flatMap { pair -> listOf(pair.first, pair.second) }
     println(unzippedList)
 
-
-
-    
+    // Destructuring. underscore to skip.
+    val (x, _, z) = arrayOf(1, 2, 3)
+    println("x=$x, z=$z")
 }
 
 class C1(val id: Number, var email: String) {

@@ -10,13 +10,10 @@ fun main() {
 
     FreshPrecure().dance()
 
-    var pred: ((String) -> Boolean) = { it ->
-        it.length > 2
-    }
+    var pred: ((String) -> Boolean) = { it -> it.length > 2 }
 
     val list = listOf("Java", "Javascript", "Kotlin", "Go")
     list.filterNotNull().take(3).forEach { println(it) }
-
 
     var s: String? = null
     app.greeting = s ?: "www"
@@ -26,7 +23,6 @@ fun main() {
     list.forEachIndexed { index, s -> println("www $index - $s") }
 
     test(*list.toTypedArray())
-
 }
 
 fun test(vararg tests: String) {
@@ -63,52 +59,6 @@ open class FreshPrecure : PrecureProvider {
     override fun dance() = println("FreshPrecureOP")
 }
 
-
-
-//fun main(args: Array<String>) {
-//    println(App().greeting)
-
-//    var x = if ("aaaa"==="aaaa") "a" else  "b"
-//    println("Name is $x")
-//
-//    for ((i, e) in ('a'..'e').withIndex()) {
-//        println("$i : $e")
-//    }
-
-//    var x = HashMap<String, Int>()
-//    x["a"]=12
-//    for ((k,v) in x) {
-//        println("$k is $v")
-//    }
-
-//    val a1=Alien("A1")
-//    val a2=Alien("A2")
-//    val result=a1 plus a2
-//    println(result.think())
-
-//    val dc1= DC(200)
-//    val dc2= dc1.copy(price = 250)
-//    println(dc1==dc2)
-//
-//    val list=ArrayList<String>()
-//    val list2= arrayListOf<String>()
-
-//    var values=listOf(1,-2,3,4)
-//    var v2=values.filter { it%2===0 }.map { it*3 }
-//    println(v2)
-
-//    var list = listOf<String>("a", "b")
-//
-//
-//
-//}
-
-
 class Empty
 
 data class DC(val price: Int)
-
-
-// infix fun Alien.plus(a: Alien): Alien {
-//     return Alien("${this.name}--${a.name}")
-// }
