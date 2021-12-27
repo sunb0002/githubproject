@@ -77,7 +77,7 @@ fun main() {
     // lazy function: delegation
     // https://blog.csdn.net/baidu_39589150/article/details/111908226
 
-    // More TODO: typealias, Coroutines, this@ expression, Annotations(like SpringBoot)
+    // More TODO: typealias, Coroutines, this@ qualifier, Annotations(like SpringBoot)
     // https://kotlinlang.org/docs/coroutines-overview.html
 
 }
