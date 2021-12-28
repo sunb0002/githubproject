@@ -1,17 +1,18 @@
-import './App.css';
+import React from "react";
+import "./App.css";
+import Form from "./components/form/Form";
+import Greet from "./components/Greet";
+import HMSNameList from "./components/HMSNameList";
+import HocDemo from "./components/hoc/HocDemo";
+import LifecycleParent from "./components/lifecycle/LifecycleParent";
+import Misc from "./components/misc/Misc";
+import MobxDemo from "./components/mobx/MobxDemo";
+import ReduxApp from "./components/redux-play/ReduxApp";
+import RouterDemo from "./components/router/RouterDemo";
+import Stylesheet from "./components/stylesheet/Stylesheet";
+import Welcome from "./components/Welcome";
 
-import React from 'react';
 
-import Form from './components/form/Form';
-import Greet from './components/Greet';
-import HMSNameList from './components/HMSNameList';
-import HocDemo from './components/hoc/HocDemo';
-import LifecycleParent from './components/lifecycle/LifecycleParent';
-import Misc from './components/misc/Misc';
-import MobxDemo from './components/mobx/MobxDemo';
-import RouterDemo from './components/router/RouterDemo';
-import Stylesheet from './components/stylesheet/Stylesheet';
-import Welcome from './components/Welcome';
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
       <hr />
 
       <RouterDemo />
+      <hr />
+
+      <ReduxApp />
       <hr />
     </div>
   );
