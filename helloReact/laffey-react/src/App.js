@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Form from "./components/form/Form";
 import Greet from "./components/Greet";
@@ -12,50 +12,49 @@ import RouterDemo from "./components/router/RouterDemo";
 import Stylesheet from "./components/stylesheet/Stylesheet";
 import Welcome from "./components/Welcome";
 
-
-
 function App() {
-  return (
-    <div className="App">
-      {/* Laffey's greetings */}
-      <Welcome>#azurlane_anime #azurlane_official</Welcome>
-      <hr />
+    useEffect(() => (document.title = "AzurLane~ React App"), []); // componentDidMount
+    return (
+        <div className="App">
+            {/* Laffey's greetings */}
+            <Welcome>#azurlane_anime #azurlane_official</Welcome>
+            <hr />
 
-      {/* The Starter fleet */}
-      <Greet name="Laffey" type="DD" />
-      <Greet name="Javelin" type="DD" />
-      <Greet name="Z23" type="DD" />
-      <hr />
+            {/* The Starter fleet */}
+            <Greet name="Laffey" type="DD" />
+            <Greet name="Javelin" type="DD" />
+            <Greet name="Z23" type="DD" />
+            <hr />
 
-      {/* The Royal Navy */}
-      <HMSNameList />
-      <hr />
+            {/* The Royal Navy */}
+            <HMSNameList />
+            <hr />
 
-      <Stylesheet />
-      <hr />
+            <Stylesheet />
+            <hr />
 
-      <Form />
-      <hr />
+            <Form />
+            <hr />
 
-      <LifecycleParent />
-      <hr />
+            <LifecycleParent />
+            <hr />
 
-      <HocDemo />
-      <hr />
+            <HocDemo />
+            <hr />
 
-      <Misc />
-      <hr />
+            <Misc />
+            <hr />
 
-      <MobxDemo />
-      <hr />
+            <MobxDemo />
+            <hr />
 
-      <RouterDemo />
-      <hr />
+            <RouterDemo />
+            <hr />
 
-      <ReduxApp />
-      <hr />
-    </div>
-  );
+            <ReduxApp />
+            <hr />
+        </div>
+    );
 }
 
 export default App;
