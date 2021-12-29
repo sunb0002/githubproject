@@ -9,7 +9,7 @@ jest.mock("./store");
 describe("should work", () => {
     let rendered;
     beforeEach(() => {
-        useMappedState.mockImplementation(() => ({ count: 10 }));
+        useMappedState.mockImplementation(() => ({ COUNTER: { count: 10 } }));
         useDispatch.mockImplementation(() => function () {});
         rendered = render(<ReduxComp />);
     });
