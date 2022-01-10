@@ -6,24 +6,24 @@ import useCounter from './useCounter';
 describe("should use counter", () => {
     it("should init", () => {
         const { result } = renderHook(() => useCounter());
-        expect(result.current.count).toBe(1);
-        expect(typeof result.current.increment).toEqual("function");
+        expect(result.current[0]).toBe(1);
+        expect(typeof result.current[1]).toEqual("function");
     });
 
     it("should increment", () => {
         const { result } = renderHook(() => useCounter(23));
-        act(() => result.current.increment());
-        expect(result.current.count).toBe(24);
+        act(() => result.current[1]());
+        expect(result.current[0]).toBe(24);
     });
 
     test("should reset", () => {
         const { result, rerender } = renderHook(() => useCounter(23));
         act(() => {
-            result.current.increment();
-            result.current.increment();
+            result.current[1]();
+            result.current[1]();
         });
-        expect(result.current.count).toBe(25);
-        act(() => result.current.reset());
-        expect(result.current.count).toBe(23);
+        expect(result.current[0]).toBe(25);
+        act(() => result.current[2]());
+        expect(result.current[0]).toBe(23);
     });
 });

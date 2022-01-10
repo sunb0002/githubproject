@@ -11,10 +11,10 @@ describe("should work", () => {
     const useCounterMock = useCounter as jest.Mock;
 
     beforeEach(() => {
-        useCounterMock.mockReturnValue({
-            count: 10,
-            increment: incrementMock,
-        });
+        useCounterMock.mockReturnValue([
+            10,
+            incrementMock,
+        ]);
     });
 
     afterEach(() => jest.resetAllMocks());
@@ -31,10 +31,10 @@ describe("should work", () => {
     });
 
     test("should render with mock", () => {
-        useCounterMock.mockReturnValue({
-            count: 23,
-            increment: incrementMock,
-        });
+        useCounterMock.mockReturnValue([
+            23,
+            incrementMock,
+        ]);
 
         const { container, debug } = render(<Z46 />);
         debug();
