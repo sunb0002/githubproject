@@ -1,17 +1,24 @@
-import './appStyles.css';
+import "./appStyles.css";
 
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 
-import styles from './appStyles.module.css';
+import styles from "./appStyles.module.css";
 
-function Stylesheet() {
-  return (
-    <div>
-      <h2 className="error">Hard Mode</h2>
-      {/* In React, xxx.module.css will become localized/scoped css after compiling */}
-      <h2 className={styles.success}>Easy Mode</h2>
-    </div>
-  );
+export default function Stylesheet() {
+    return (
+        <div>
+            <div className="error">Hard Mode</div>
+            {/* In React, xxx.module.css will become localized/scoped css after compiling */}
+            <div className={styles.success}>Easy Mode</div>
+            <SomeDivWrapper>
+                <div>Ex Mode</div>
+            </SomeDivWrapper>
+        </div>
+    );
 }
 
-export default Stylesheet;
+const SomeDivWrapper = styled.div`
+    color: yellow;
+    font-weight: bold;
+`;
