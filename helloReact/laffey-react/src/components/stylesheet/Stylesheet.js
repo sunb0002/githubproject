@@ -12,7 +12,7 @@ export default function Stylesheet() {
             {/* In React, xxx.module.css will become localized/scoped css after compiling */}
             <div className={styles.success}>Easy Mode</div>
             <SomeDivWrapper>
-                <div>Ex Mode</div>
+                <div>{process.env.REACT_APP_EX_MODE}</div>
             </SomeDivWrapper>
         </div>
     );
