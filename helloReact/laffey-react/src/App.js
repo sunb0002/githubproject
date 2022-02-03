@@ -13,7 +13,7 @@ import Stylesheet from "./components/stylesheet/Stylesheet";
 import Welcome from "./components/Welcome";
 
 function App() {
-    useEffect(() => (document.title = "AzurLane~ React App"), []); // componentDidMount
+    useEffect(() => {document.title = "AzurLane~ React App"}, []); // componentDidMount
     return (
         <div className="App">
             {/* Laffey's greetings */}

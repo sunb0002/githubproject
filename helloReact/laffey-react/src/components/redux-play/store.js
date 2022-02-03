@@ -1,4 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
+import logger from "redux-logger";
 import { create } from "redux-react-hook";
 import thunk from "redux-thunk";
 
@@ -8,14 +9,12 @@ export const INIT_STATE = { count: 10 };
 const countReducer = (state = INIT_STATE, action) => {
     switch (action.type) {
         case COUNTER_ACTION.ADD: {
-            console.log("ADD triggered", state);
             return {
                 ...state,
                 count: state.count + 1,
             };
         }
         case COUNTER_ACTION.MINUS:
-            console.log("MINUS triggered", state);
             return {
                 ...state,
                 count: state.count - 1,
@@ -40,6 +39,6 @@ const rootReducer = combineReducers({
 
 // use thunk middleware to handle function-type actions.
 export function makeStore() {
-    return createStore(rootReducer, applyMiddleware(thunk));
+    return createStore(rootReducer, applyMiddleware(thunk, logger));
 }
 export const { StoreContext, useDispatch, useMappedState } = create();
