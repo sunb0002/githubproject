@@ -15,6 +15,7 @@ const countReducer = (state = INIT_STATE, action) => {
             };
         }
         case COUNTER_ACTION.MINUS:
+            console.log("MINUS triggered", state);
             return {
                 ...state,
                 count: state.count - 1,
