@@ -5,9 +5,11 @@ export const gqlClient = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-export const PAST_LAUNCHES = (limit = 1) => gql`
-    query PastLaunches {
-        launchesPast(limit: ${limit}) {
+// Use GraphQL variables, not hardcode/function string
+// https://www.apollographql.com/docs/react/data/operation-best-practices/
+export const PAST_LAUNCHES = gql`
+    query PastLaunches($limit: Int!) {
+        launchesPast(limit: $limit) {
             mission_name
             launch_date_local
             rocket {

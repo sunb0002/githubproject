@@ -1,8 +1,8 @@
-import { ApolloProvider, useQuery } from "@apollo/client";
-import React from "react";
-import { useState } from "react";
+import { ApolloProvider, useQuery } from '@apollo/client';
+import React from 'react';
+import { useState } from 'react';
 
-import { gqlClient, PAST_LAUNCHES } from "./api";
+import { gqlClient, PAST_LAUNCHES } from './api';
 
 export const GqlApp = () => (
     <ApolloProvider client={gqlClient}>
@@ -12,12 +12,13 @@ export const GqlApp = () => (
 
 const Rockets = () => {
     const [limit, setLimit] = useState(5);
-    const { loading, error, data, refetch } = useQuery(PAST_LAUNCHES(limit), {
+    const { loading, error, data, refetch } = useQuery(PAST_LAUNCHES, {
         variables: { limit }, // cache
         // pollInterval: 500,
         // https://www.apollographql.com/docs/react/data/queries/
     });
-    const handleInputChange = ({ target: { value } }) => setLimit(value || 1);
+    const handleInputChange = ({ target: { value } }) =>
+        setLimit(Number(value) || 1);
     const handleBtnClick = () => refetch();
 
     if (loading) return <>Rockets Loading!</>;
