@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Home() {
+    const router = useRouter();
     return (
         <div className="container">
             <Head>
@@ -13,12 +15,23 @@ export default function Home() {
                 <h1 className="title">
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
                 </h1>
-                <h1>
+                <h2>
                     Read <Link href="/posts/FirstPost">my first post!</Link>
-                </h1>
-                <h1>
-                    Read <Link href="/posts/SecondPost?id=1">my second post!</Link>
-                </h1>
+                </h2>
+                <h2>
+                    Read{" "}
+                    <Link href="/posts/SecondPost?id=1">my second post!</Link>
+                </h2>
+                <div>
+                    Read{" "}
+                    <button
+                        onClick={() =>
+                            router.push("/posts/pid_ABC/COM321?admin=666")
+                        }
+                    >
+                        my digit post!
+                    </button>
+                </div>
 
                 <p className="description">
                     Get started by editing <code>pages/index.js</code>
