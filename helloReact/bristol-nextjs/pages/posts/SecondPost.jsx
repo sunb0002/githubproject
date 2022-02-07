@@ -25,7 +25,9 @@ const SecondPost = (props) => {
             <PostHeader />
             <h2>Second Post</h2>
             <Layout>
-                {JSON.stringify(player)} - {msg}
+                {JSON.stringify(player)}
+                <br />
+                {msg}
             </Layout>
         </div>
     );

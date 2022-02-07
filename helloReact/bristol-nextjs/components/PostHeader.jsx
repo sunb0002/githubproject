@@ -4,6 +4,8 @@ import Link from "next/link";
 import Script from "next/script";
 import React from "react";
 
+import TimeTag from "./TimeTag";
+
 const PostHeader = () => (
     <div style={{ textAlign: "center" }}>
         <Head>
@@ -18,6 +20,8 @@ const PostHeader = () => (
         <h2>
             <Link href="/">Back to Home</Link>
         </h2>
+        <TimeTag />
+        <br />
         <Image
             src="/images/rance03-topaz.jpg"
             height={180}
