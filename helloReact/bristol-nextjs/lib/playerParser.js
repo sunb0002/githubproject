@@ -3,12 +3,17 @@ import path from "path";
 
 const dataDir = path.join(process.cwd(), "public/data");
 
-export function getPlayersData() {
+export const getAllDataFiles = () => {
     const fileNames = fs.readdirSync(dataDir);
-    const players = fileNames.map((f, i) => {
-        const fullPath = path.join(dataDir, f);
-        const fileContent = fs.readFileSync(fullPath);
-        return { ...JSON.parse(fileContent), id: i };
-    });
-    return players;
-}
+    return fileNames.map((f) => path.join(dataDir, f));
+};
+
+export const getFileContent = (fullPath, index) => {
+    const fileContent = fs.readFileSync(fullPath);
+    return { ...JSON.parse(fileContent), id: index };
+};
+
+export const getPlayersData = () => {
+    const fullPaths = getAllDataFiles();
+    return fullPaths.map(getFileContent);
+};

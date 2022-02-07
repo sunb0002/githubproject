@@ -1,0 +1,42 @@
+import React from "react";
+
+import Layout from "../../components/Layout";
+import PostHeader from "../../components/PostHeader";
+import { getPlayersData } from "../../lib/playerParser";
+
+// "getStaticProps" get static dependencies for build time pre-rendering
+// "getServerSideProps" runs on every request instead of on build time.
+// More request-based SSR functions: https://nextjs.org/docs/basic-features/pages#server-side-rendering
+// For normal ClientSideRendering, just fetch data with fetch/axios/useSWR
+export async function getStaticProps() {
+    const allPlayers = getPlayersData();
+    return {
+        props: {
+            allPlayers,
+        },
+    };
+}
+
+// Only for build time, identify all "dynamic" paths and Nextjs will pre-render only these paths.
+// Useless here. Not for runtime query params.
+// export async function getStaticPaths() {
+//     const paths = getAllDataFiles();
+//     return {
+//         paths,
+//         fallback: false,
+//     };
+// }
+
+const FirstPost = (props) => (
+    <div>
+        <PostHeader />
+        <h2>First Post</h2>
+        <Layout>
+            {props.allPlayers.map((player, i) => (
+                <div key={i}>{JSON.stringify(player)}</div>
+            ))}
+        </Layout>
+    </div>
+);
+
+export default FirstPost;

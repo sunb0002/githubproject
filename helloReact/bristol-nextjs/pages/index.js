@@ -14,7 +14,10 @@ export default function Home() {
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
                 </h1>
                 <h1>
-                    Read <Link href="/posts/first-post">my first post!</Link>
+                    Read <Link href="/posts/FirstPost">my first post!</Link>
+                </h1>
+                <h1>
+                    Read <Link href="/posts/SecondPost?id=1">my second post!</Link>
                 </h1>
 
                 <p className="description">
