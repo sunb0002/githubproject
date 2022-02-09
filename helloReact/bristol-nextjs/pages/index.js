@@ -32,6 +32,12 @@ export default function Home() {
                         my digit post!
                     </button>
                 </div>
+                <div>
+                    Read{" "}
+                    <button onClick={() => router.push("/api/greet?rance=03")}>
+                        my api!
+                    </button>
+                </div>
 
                 <p className="description">
                     Get started by editing <code>pages/index.js</code>
