@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Layout from "../../components/Layout";
 import PostHeader from "../../components/PostHeader";
 import { getPlayersData } from "../../lib/playerParser";
+import { mySleep } from "../../lib/utils";
 
 // You cannot export "getServerSideProps" from non-page components.
 // "getServerSideProps" also runs purely at backend. It will not be compiled into UI bundle.
@@ -22,6 +23,13 @@ export async function getServerSideProps({ query }) {
 }
 
 const SecondPost = (props) => {
+    const [isLoading, setLoading] = useState(true);
+    useEffect(async () => {
+        await mySleep(1000);
+        setLoading(false);
+    }, []);
+    if (isLoading) return <h1>Loading (pure frontend)!</h1>;
+
     const { msg, player } = props;
     return (
         <div>

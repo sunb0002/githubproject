@@ -11,10 +11,14 @@ import { getPlayersData } from "../../lib/playerParser";
 // For normal ClientSideRendering, just fetch data with fetch/axios/useSWR
 export async function getStaticProps() {
     const allPlayers = getPlayersData();
+    console.log("Rebuilding FirstPost at: ", new Date());
     return {
         props: {
             allPlayers,
         },
+        // Incremental Static Regeneration (ISR)
+        //      invalidate static/cache after x seconds
+        revalidate: 5,
     };
 }
 
