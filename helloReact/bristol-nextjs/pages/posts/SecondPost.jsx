@@ -4,8 +4,11 @@ import Layout from "../../components/Layout";
 import PostHeader from "../../components/PostHeader";
 import { getPlayersData } from "../../lib/playerParser";
 
-// You cannot use getServerSideProps in non-page components.
-// You cannot use getStaticProps or getStaticPaths (static) along with getServerSideProps (server-side).
+// You cannot export "getServerSideProps" from non-page components.
+// "getServerSideProps" also runs purely at backend. It will not be compiled into UI bundle.
+// Next.js UI bundle checker: https://next-code-elimination.vercel.app/
+// 可以说"getServerSideProps"是半静态优化版的API Route
+// You cannot use getStaticProps or getStaticPaths (static) along with "getServerSideProps" (by request).
 export async function getServerSideProps({ query }) {
     const allPlayers = getPlayersData();
     const { id = "0" } = query;

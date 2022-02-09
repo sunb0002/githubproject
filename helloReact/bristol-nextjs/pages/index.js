@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 
 export default function Home() {
     const router = useRouter();
+    const handleDynamicRoute1 = () => router.push("/posts/PID1/COM1?admin=666");
+    const handleDynamicRoute2 = () => router.push("/posts/PID2/COM3?admin=777");
+    const handleDynamicRoute3 = () => router.push("/posts/PIDX/COM9?admin=888");
     return (
         <div className="container">
             <Head>
@@ -23,19 +26,17 @@ export default function Home() {
                     <Link href="/posts/SecondPost?id=1">my second post!</Link>
                 </h2>
                 <div>
-                    Read{" "}
-                    <button
-                        onClick={() =>
-                            router.push("/posts/pid_ABC/COM321?admin=666")
-                        }
-                    >
-                        my digit post!
+                    Read my dynamic routes{" "}
+                    <button onClick={handleDynamicRoute1}>Post1</button>
+                    <button onClick={handleDynamicRoute2}>Post2</button>
+                    <button onClick={handleDynamicRoute3}>
+                        PostX (refresh to see Loading)
                     </button>
                 </div>
                 <div>
                     Read{" "}
                     <button onClick={() => router.push("/api/greet?rance=03")}>
-                        my api!
+                        my API!
                     </button>
                 </div>
 

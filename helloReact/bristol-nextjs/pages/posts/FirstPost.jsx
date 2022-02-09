@@ -18,16 +18,6 @@ export async function getStaticProps() {
     };
 }
 
-// Only for build time, identify all "dynamic" paths and Nextjs will pre-render only these paths.
-// Useless here. Not for runtime query params.
-// export async function getStaticPaths() {
-//     const paths = getAllDataFiles();
-//     return {
-//         paths,
-//         fallback: false,
-//     };
-// }
-
 const FirstPost = (props) => (
     <div>
         <PostHeader />
