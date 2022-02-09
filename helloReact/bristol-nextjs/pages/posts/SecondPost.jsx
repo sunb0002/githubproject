@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import Layout from "../../components/Layout";
 import PostHeader from "../../components/PostHeader";
@@ -28,7 +29,7 @@ const SecondPost = (props) => {
         await mySleep(1000);
         setLoading(false);
     }, []);
-    if (isLoading) return <h1>Loading (pure frontend)!</h1>;
+    if (isLoading) return <StyledLoading />;
 
     const { msg, player } = props;
     return (
@@ -36,12 +37,25 @@ const SecondPost = (props) => {
             <PostHeader />
             <h2>Second Post</h2>
             <Layout>
-                {JSON.stringify(player)}
-                <br />
-                {msg}
+                <StyledWrapper>
+                    {JSON.stringify(player)}
+                    <br />
+                    {msg}
+                </StyledWrapper>
             </Layout>
         </div>
     );
 };
+
+const StyledWrapper = styled.div`
+    background-color: green;
+`;
+
+const Loading = ({ className }) => (
+    <h1 className={className}>Loading (pure frontend)!</h1>
+);
+const StyledLoading = styled(Loading)`
+    background-color: deeppink;
+`;
 
 export default SecondPost;
