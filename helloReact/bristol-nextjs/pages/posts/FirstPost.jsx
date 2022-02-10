@@ -11,7 +11,7 @@ import { getPlayersData } from "../../lib/playerParser";
 // For normal ClientSideRendering, just fetch data with fetch/axios/useSWR
 export async function getStaticProps() {
     const allPlayers = getPlayersData();
-    console.log("Rebuilding FirstPost at: ", new Date());
+    console.log("Rebuilding FirstPost at: ", new Date(), process.env.DB_PASS);
     return {
         props: {
             allPlayers,

@@ -26,6 +26,10 @@ export async function getServerSideProps({ query }) {
 const SecondPost = (props) => {
     const [isLoading, setLoading] = useState(true);
     useEffect(async () => {
+        console.log(
+            "Exposed env variable:",
+            process.env.NEXT_PUBLIC_ANALYTICS_HAHA
+        );
         await mySleep(1000);
         setLoading(false);
     }, []);
