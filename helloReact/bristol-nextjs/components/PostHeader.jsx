@@ -27,6 +27,7 @@ const PostHeader = () => (
             height={180}
             width={180}
             alt="Topaz"
+            priority
         />
         <hr />
     </div>

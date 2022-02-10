@@ -5,7 +5,8 @@
     "dev2": "next dev -p 3001",
     "killport": "npx kill-port 3000",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "date-fns": "^2.28.0",
@@ -13,5 +14,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.10"
   }
 }
