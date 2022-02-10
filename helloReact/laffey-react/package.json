@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-old": "react-scripts build",
+    "build": "react-app-rewired build",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject"
   },
@@ -39,5 +40,10 @@
       "not dead",
       "not op_mini all"
     ]
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "^0.8.2",
+    "react-app-rewired": "^2.1.11",
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }

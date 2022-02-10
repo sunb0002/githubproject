@@ -11,7 +11,14 @@ import { mySleep } from "../../lib/utils";
 // Next.js UI bundle checker: https://next-code-elimination.vercel.app/
 // 可以说"getServerSideProps"是半静态优化版的API Route
 // You cannot use getStaticProps or getStaticPaths (static) along with "getServerSideProps" (by request).
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ res, query }) {
+    // dev mode will overwrite to: "Cache-Control: no-cache, no-store, max-age=0, must-revalidate"
+    res.setHeader(
+        "Cache-Control",
+        "maxage=2, stale-while-revalidate=59",
+        "public, s-maxage=10" // shared cache: like CDN/proxy
+    );
+
     const allPlayers = getPlayersData();
     const { id = "0" } = query;
     const player = allPlayers.find((p) => p.id == id);
