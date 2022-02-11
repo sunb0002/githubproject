@@ -15,7 +15,7 @@ export async function getServerSideProps({ res, query }) {
     // dev mode will overwrite to: "Cache-Control: no-cache, no-store, max-age=0, must-revalidate"
     res.setHeader(
         "Cache-Control",
-        "maxage=2, stale-while-revalidate=59",
+        "maxage=2, stale-while-revalidate=59", // use a stale-while-revalidate value that will not overload your backend
         "public, s-maxage=10" // shared cache: like CDN/proxy
     );
 
