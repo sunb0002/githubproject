@@ -6,6 +6,12 @@ import Task from "./Task";
 export default {
     component: Task,
     title: "Example/Task",
+    argTypes: { onClick: { action: "clicked" } },
+    parameters: {
+        actions: {
+            handles: ["click button"],
+        },
+    },
 };
 
 const buildTemplate = (state) => () => {
