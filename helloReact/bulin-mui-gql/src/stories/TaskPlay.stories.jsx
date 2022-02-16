@@ -9,6 +9,7 @@ export default {
     title: "Example/TaskPlay",
     argTypes: {
         btnBg: {
+            description: "Background color of the button (Autoplay version~)",
             options: ["red", "green", "blue"],
             control: { type: "radio" },
         },

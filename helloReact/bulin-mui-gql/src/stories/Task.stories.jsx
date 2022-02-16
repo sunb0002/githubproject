@@ -8,6 +8,13 @@ export default {
     title: "Example/Task",
     argTypes: {
         btnBg: {
+            description: "Background color of the button (see 'Docs' tab)",
+            table: {
+                type: {
+                    summary: "Something short",
+                    detail: "Something really really long",
+                },
+            },
             options: ["red", "green", "blue"],
             control: { type: "radio" },
         },
