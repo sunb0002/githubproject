@@ -6,7 +6,12 @@ import Task from "./Task";
 export default {
     component: Task,
     title: "Example/Task",
-    argTypes: { onClick: { action: "clicked" } },
+    argTypes: {
+        btnBg: {
+            options: ["red", "green", "blue"],
+            control: { type: "radio" },
+        },
+    },
     parameters: {
         actions: {
             handles: ["click button"],
@@ -14,14 +19,15 @@ export default {
     },
 };
 
-const buildTemplate = (state) => () => {
-    const [title, setTitle] = useState("My Title");
+const buildTemplate = (state) => (argTypes) => {
+    const [title, setTitle] = useState("Default Title");
     const props = {
         task: {
             state,
             title,
         },
         setTitle,
+        btnBg: argTypes.btnBg,
     };
     return <Task {...props} />;
 };

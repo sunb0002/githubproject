@@ -13,7 +13,12 @@ const StyledSpan = styled.span`
     }
 `;
 
-const Task = ({ task: { state, title }, setTitle }) => {
+const Task = (props) => {
+    const {
+        task: { state, title },
+        setTitle,
+        btnBg,
+    } = props;
     const inputRef = useRef();
     const handleClick = () => {
         setTitle(inputRef.current.value);
@@ -41,7 +46,11 @@ const Task = ({ task: { state, title }, setTitle }) => {
                     placeholder="Input title"
                 />
             </div>
-            <button type="button" onClick={handleClick}>
+            <button
+                type="button"
+                onClick={handleClick}
+                style={{ backgroundColor: btnBg }}
+            >
                 Change
             </button>
         </div>
