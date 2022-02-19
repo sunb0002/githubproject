@@ -31,7 +31,7 @@ const user1: User = { name: "u1", age: 1 };
 // ❌, type assertions only prevents "impossible" coercions.
 console.log(user1);
 
-// -- Union Type and iteration/computation: only Type can.
+// -- Union Type and iteration/computation/lookup: only Type can.
 type ID = string | number;
 const id: ID = 1;
 // const id: ID = true; // ❌
@@ -44,8 +44,25 @@ const name1: Name = {
     lastName: "undefined",
 };
 console.log(name1);
+type Route = {
+    from: {
+        city: string;
+        state: string;
+    };
+    to: {
+        city: string;
+        province: string;
+    };
+};
+type USCity = Route["from"];
+type CNCity = Route["to"];
+const city1: CNCity = {
+    city: "chengdu",
+    province: "sichuan",
+};
+// const city2: USCity = { city: "chengdu", province: "sichuan" }; // ❌
 
-// -- Class Implements: Interface/Class/Type are static blueprints, Union Type is not
+// -- Class Implements: Interface/Class/Type are static blueprints, but Union Type is not
 class NameClazz implements Name {
     firstName: string;
     lastName: string;
