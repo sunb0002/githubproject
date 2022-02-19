@@ -31,7 +31,8 @@ const user1: User = { name: "u1", age: 1 };
 // ❌, type assertions only prevents "impossible" coercions.
 console.log(user1);
 
-// -- Union Type and iteration/computation/lookup: only Type can.
+// -- Union Type and iteration/computation/lookup: Type can, Interface cannot.
+// Type computations help to avoid type noise/pollutions.
 type ID = string | number;
 const id: ID = 1;
 // const id: ID = true; // ❌

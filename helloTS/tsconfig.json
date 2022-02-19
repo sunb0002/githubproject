@@ -3,5 +3,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "target": "ES5"
-    }
+    },
+    "sourceMap": true,
+    "removeComments": true
 }
