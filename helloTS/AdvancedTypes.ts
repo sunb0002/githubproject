@@ -120,7 +120,9 @@ type Release = Unarray<typeof backlog["releases"]>;
 
 // --
 // -- keyof: get the String-Literal-Union of type/plain-object keys
+// help to sanitize function input parameters if it's to manipulate an object by its keys
 type ReleaseKeys = keyof Release; // "name" | "tasks"
+const getReleaseProp = (P: ReleaseKeys) => {};
 
 // --
 // -- Partial: make all fields optional
@@ -155,3 +157,38 @@ type T09 = "A" | "b" | "cd" | "1";
 type UString = Uppercase<T09>; // "A" | "B" | "1" | "CD"
 type LString = Lowercase<T09>; // "b" | "cd" | "1" | "a"
 type CString = Capitalize<T09>; // "A" | "B" | "1" | "Cd"
+
+// --
+// -- Mapped Types (Type computation. Creating new types by iteration through a union of keys.)
+// We can easily use +,- to implement Readonly/Partial/Required utility types (built-in mapped types).
+type Point = {
+    x: number;
+    y?: number;
+};
+type Readonly2<T> = {
+    readonly [P in keyof T]-?: T[P];
+};
+type PointType2 = Readonly2<Point>; // both x,y are readonly and non-optional
+type PointType3 = {
+    -readonly [P in keyof Point]?: Point[P]; // both x,y are non-readonly and optional
+};
+// -- Mapped type with recursive (DeepReadonly)
+type DeepReadonly<T> = {
+    readonly [P in keyof T]: DeepReadonly<T[P]>;
+};
+type StarShip4 = DeepReadonly<StarShip>;
+const starShip4: StarShip4 = { name: "ship3", tag: { age: 100 } };
+// starShip4.tag.age = 101; // ❌ no longer shallow, compared with starShip3
+
+// --
+// -- Template Literal Type
+// Very useful for restricting input parameters
+type CSSValue = number | `${number}px` | `${number}rem`;
+const paint = (css: CSSValue) => {};
+paint("20px"); // ✅
+// paint("20ex"); // ❌
+type Size = "small" | "large";
+type Color = "primary" | "secondary";
+type MyStyle = `${Size}-${Color}`;
+const myStyle1: MyStyle = "small-secondary"; // ✅
+// const myStyle1: MyStyle = "small2-secondary"; // ❌

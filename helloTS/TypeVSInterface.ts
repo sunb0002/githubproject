@@ -1,4 +1,4 @@
-// -- Generally, prefer Interface over Type.
+// -- Generally, big teams/projects prefer Interface over Type.
 // functional programming users use "type", object-oriented programing users choose "interface"
 // =========SIMILARITY=================
 // -- Interface extension / Type intersection
@@ -15,6 +15,7 @@ console.log(point1, point2);
 
 // =========DIFFERENCE=================
 // -- Declaration Merging: only Interface can, Type alias cannot.
+// very important for Nodejs Middleware design pattern.
 interface User {
     name: string;
 }
