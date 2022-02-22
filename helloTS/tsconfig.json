@@ -2,11 +2,12 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "target": "es6"
-        // "declaration": true,
+        "target": "es6",
+        "removeComments": true,
+        "sourceMap": false,
+        "pretty": false,
+        "declaration": false
         // "allowJs": true, // Must add along with outDir, otherwise compiled.js|mjs will overwrite source.js
         // "outDir": "./dist",
-    },
-    "sourceMap": true,
-    "removeComments": true
+    }
 }
