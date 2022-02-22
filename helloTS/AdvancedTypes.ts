@@ -225,7 +225,8 @@ const ms2 = companies["Bill Gates2"]; // Type: any (companies's index was not st
 function adder(a: number): number;
 function adder(a: string): string;
 function adder(a: any): any {
-    return `a is ${a}`;
+    return typeof a === "number" ? 999 : "666";
 }
 const adderResult1 = adder(1); // number
 const adderResult2 = adder("1"); // string
+console.log(adderResult1, adderResult2);
