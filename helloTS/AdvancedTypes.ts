@@ -10,9 +10,13 @@ type Task<T = TaskType> = {
     type: T;
 };
 type FeatureTask = Task<TaskType.FEATURE>;
+type BugFixTask = Task<TaskType.BUGFIX>;
 const feature1: FeatureTask = { name: "new button", type: TaskType.FEATURE };
 // feature1.type = TaskType.BUGFIX; // ❌
 console.log(feature1);
+// -- Functions' Generic Type Variables: no need to specify type, auto inference
+const swapTask = <T1, T2>(t1: T1, t2: T2): [T2, T1] => [t2, t1];
+const swapTaskResult = swapTask(feature1, feature1); // [FeatureTask, FeatureTask]
 
 // --
 // -- Type Extraction
@@ -30,6 +34,12 @@ const trip1: TripWithInfo = { from: "chengdu", to: "chongqing" };
 // const trip1: TripWithInfo = { from: "chengdu" }; // ❌ missing field
 const trip2: TripWithID = { uuid: 10 };
 console.log(trip1, trip2);
+type PowerTrip = TripWithInfo | { to: number }; // overwriting type field
+const trip3: PowerTrip = { from: "chengdu", to: 3 };
+
+// --
+// -- Typed Destructure (syntax)
+const [trip4, trip5]: [TripWithID, object] = [{ uuid: 10 }, { uuid: 11 }];
 
 // --
 // -- Type Predicate: a function which tells TS compiler to narrow down a variable's type
@@ -45,8 +55,8 @@ if (isNumberArray(xArr)) {
 }
 const isTripWithID = (trip: unknown): trip is TripWithID =>
     typeof trip === "object" && "uuid" in trip;
-const trip3: unknown = { uuid: 11 };
-isTripWithID(trip3) && console.log("trip3 is TripWithID.");
+const trip9: unknown = { uuid: 11 };
+isTripWithID(trip9) && console.log("trip9 is TripWithID.");
 console.log(typeof isTripWithID); // "function"
 
 // --
@@ -89,7 +99,7 @@ type T05 = ReturnType<typeof parseInt>; // number. ReturnType only accepts a fun
 
 // --
 // -- Pick / Omit (deal with keys/properties)
-type TripFrom = Pick<TripWithInfo, "from">; // {from: string;}
+type TripFrom = Pick<TripWithInfo, "from" | "to">; // {from: string, to: string;}
 type TripTo = Omit<TripWithInfo, "from">; // {to: string;}
 
 // --
@@ -192,3 +202,30 @@ type Color = "primary" | "secondary";
 type MyStyle = `${Size}-${Color}`;
 const myStyle1: MyStyle = "small-secondary"; // ✅
 // const myStyle1: MyStyle = "small2-secondary"; // ❌
+
+// --
+// -- const assertion ("as const", helper for Union Types)
+// Since TypeScript is just a compiler, none of the typing information is present at runtime.
+// This means that unfortunately you cannot iterate through a type.
+const helloVar = "hello" as const; // Type: '"hello"'
+const names = ["Bill Gates", "Steve Jobs", "Linus Torvalds"] as const; // Type: readonly ['xx','xx']
+type Names = typeof names[number]; // Type: 'xx'|'xx'
+const companies = {
+    "Bill Gates": "Microsoft",
+    "Steve Jobs": "Apple",
+    "Linus Torvalds": "Linux",
+} as const; // Type: readonly {}
+const ms1 = companies["Bill Gates"]; // Type: "Microsoft"
+const ms2 = companies["Bill Gates2"]; // Type: any (companies's index was not strictly specified)
+
+// --
+// -- Typescript function overloading
+// Must write in old function format. Must not have implementation for "sub" function.
+// No overloading in Javascript.
+function adder(a: number): number;
+function adder(a: string): string;
+function adder(a: any): any {
+    return `a is ${a}`;
+}
+const adderResult1 = adder(1); // number
+const adderResult2 = adder("1"); // string
