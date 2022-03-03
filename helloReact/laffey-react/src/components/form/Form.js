@@ -1,4 +1,4 @@
-import React, { Component, useRef, useState } from "react";
+import React, { Component, useMemo, useRef, useState } from "react";
 
 class Form extends Component {
     constructor(props) {
@@ -87,6 +87,16 @@ const FunForm = () => {
     const clickHandler = () => {
         setText(inputRef.current.value);
     };
+
+    const expensiveCalculation = () => {
+        console.log("Expensive! Use Memo!");
+        return 0;
+    };
+    const [x] = useState(0);
+    // When "text" state updates, this caculation also re-runs, even it doesn't depend on "text".
+    // So we should useMemo, which specifies "x" as dependent state.
+    // const totalX = expensiveCalculation(x);
+    const totalX = useMemo(() => expensiveCalculation(x), [x]);
 
     return (
         <div>
