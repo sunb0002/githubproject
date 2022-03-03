@@ -95,8 +95,9 @@ const FunForm = () => {
     const [x] = useState(0);
     // When "text" state updates, this caculation also re-runs, even it doesn't depend on "text".
     // So we should useMemo, which specifies "x" as dependent state.
-    // const totalX = expensiveCalculation(x);
-    const totalX = useMemo(() => expensiveCalculation(x), [x]);
+    // useMemo返回一个memoized值, useCallback返回一个memoized function，例如xxxHandler.
+    // const totalX = expensiveCalculation(x); ❌
+    const totalX = useMemo(() => expensiveCalculation(x), [x]); // ✅
 
     return (
         <div>
