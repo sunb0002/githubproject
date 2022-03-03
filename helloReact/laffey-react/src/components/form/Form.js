@@ -81,6 +81,8 @@ export default Form;
 
 // If we want to pass input value without using onChange,
 // we need to either use uncontrolled form (and handle submit), or references
+// useRef的另一个经典用法是always scroll to bottom after update
+// dummyRef.current.scrollIntoView({behavior: 'smooth'});
 const FunForm = () => {
     const inputRef = useRef("");
     const [text, setText] = useState("");
