@@ -14,6 +14,8 @@ function Z23() {
         console.log(`Marry me Nimi! x ${state}`)
         return state + 1;
     }
+    // useReducer很像useState, 99 is initial state.
+    // 关键不同是reducer fn, 一般是因为要用到switch-case
     const [state, dispatch] = useReducer(reducer, 99);
 
     const clickHandler = () => {

@@ -96,6 +96,7 @@ const FunForm = () => {
     // When "text" state updates, this caculation also re-runs, even it doesn't depend on "text".
     // So we should useMemo, which specifies "x" as dependent state.
     // useMemo返回一个memoized值, useCallback返回一个memoized function，例如xxxHandler.
+    // useCallback不仅帮助memoize，更重要是防止child comp always rerender when xxxHandler changes.
     // const totalX = expensiveCalculation(x); ❌
     const totalX = useMemo(() => expensiveCalculation(x), [x]); // ✅
 
