@@ -4,19 +4,22 @@ export enum TaskType {
     FEATURE,
     BUGFIX,
 }
-// T default to TaskType. Also can use <T extends TaskType>
+// T default to TaskType.
+// Normally can <T extends TaskType>
 type Task<T = TaskType> = {
     name: string;
-    type: T;
+    type: T; // restricted "type" field
 };
 type FeatureTask = Task<TaskType.FEATURE>;
 type BugFixTask = Task<TaskType.BUGFIX>;
 const feature1: FeatureTask = { name: "new button", type: TaskType.FEATURE };
 // feature1.type = TaskType.BUGFIX; // ❌
 console.log(feature1);
-// -- Functions' Generic Type Variables: no need to specify type, auto inference
+// -- Functions' Generics: auto inference arguments' types
 const swapTask = <T1, T2>(t1: T1, t2: T2): [T2, T1] => [t2, t1];
-const swapTaskResult = swapTask(feature1, feature1); // [FeatureTask, FeatureTask]
+const feature2: BugFixTask = { name: "new div", type: TaskType.BUGFIX };
+// Function swapTaskResult's type is [BugFixTask, FeatureTask]
+const swapTaskResult = swapTask(feature1, feature2);
 
 // --
 // -- Type Extraction
@@ -31,11 +34,12 @@ type Trip =
 type TripWithInfo = Extract<Trip, { from: string }>; // match by any one field
 type TripWithID = Extract<Trip, { uuid: number }>;
 const trip1: TripWithInfo = { from: "chengdu", to: "chongqing" };
-// const trip1: TripWithInfo = { from: "chengdu" }; // ❌ missing field
+// const trip1: TripWithInfo = { from: "chengdu" }; // ❌ missing "to" field
 const trip2: TripWithID = { uuid: 10 };
 console.log(trip1, trip2);
-type PowerTrip = TripWithInfo | { to: number }; // overwriting type field
-const trip3: PowerTrip = { from: "chengdu", to: 3 };
+type PowerTrip = TripWithInfo | { to: number }; // alternative "to" field
+type PowerTrip2 = Omit<TripWithInfo, "to"> & { to: number }; // overwriting "to" field
+const trip3: PowerTrip2 = { from: "chengdu", to: 3 };
 
 // --
 // -- Typed Destructure (syntax)
@@ -51,12 +55,12 @@ const xArr: unknown = [1, 2];
 if (isNumberArray(xArr)) {
     const nArr: number[] = xArr; // ✅ xArr is narrowed down to number[]
 } else {
-    // const nArr: number[] = xArr; // ❌ xArr is still unknown
+    // const nArr: number[] = xArr; // ❌ xArr is still unknown type
 }
+const trip9: unknown = { uuid: 11 };
 const isTripWithID = (trip: unknown): trip is TripWithID =>
     typeof trip === "object" && "uuid" in trip;
-const trip9: unknown = { uuid: 11 };
-isTripWithID(trip9) && console.log("trip9 is TripWithID.");
+isTripWithID(trip9) && console.log("trip9 is now 'TripWithID' type.");
 console.log(typeof isTripWithID); // "function"
 
 // --
@@ -92,8 +96,7 @@ const eng2: CarEngine = { type: 90 }; // ✅
 type T01 = Extract<"A" | "B" | "C", "A" | "E">; // "A"
 type T02 = Exclude<"A" | "B" | "C", "A" | "E">; // "B"|"C"
 type T03a = T01 & T02; // never
-type T03b = T01 | T02; // "A" | T02, but actually equals to "A"|"B"|"C"
-const t03b: T03b = "B"; // ✅
+type T03b = T01 | T02; // "A"|"B"|"C"
 type T04 = NonNullable<T01 | null | undefined>; // "A"
 type T05 = ReturnType<typeof parseInt>; // number. ReturnType only accepts a function which infers a type.
 
@@ -116,8 +119,8 @@ type shipFnParaType = Parameters<typeof shipFn>; // [a: number, b: string]
 // --
 // -- Type inference
 // quite useful for GraphQL
-type Unarray<T> = T extends Array<infer U> ? U : never;
-type Tinf1 = Unarray<string[]>; //"string"
+type UnArray<T> = T extends Array<infer U> ? U : never;
+type TypeInf1 = UnArray<string[]>; //"string"
 const backlog = {
     releases: [
         {
@@ -126,7 +129,7 @@ const backlog = {
         },
     ],
 };
-type Release = Unarray<typeof backlog["releases"]>;
+type Release = UnArray<typeof backlog["releases"]>;
 
 // --
 // -- keyof: get the String-Literal-Union of type/plain-object keys
@@ -145,14 +148,14 @@ type StarShip1 = Partial<StarShip>; // {name?: string;}
 type StarShip2 = Required<StarShip1>; // {name: string;}
 
 // --
-// -- Readonly: all fields readonly, i.e, cannot overwrite
+// -- Readonly: make all fields readonly, i.e, cannot overwrite
 type StarShip3 = Readonly<StarShip>;
 const starShip3: StarShip3 = { name: "ship3", tag: { age: 100 } };
 // starShip3.name = "another name"; // ❌ name is readonly field
 starShip3.tag.age = 101; // ✅ readonly is shallow
 
 // --
-// -- Record (just a plain object with specified key-type)
+// -- Record (just a plain object / HashMap with specified key-type)
 const starShipRecords: Record<number, StarShip> = {
     1: starShip3,
     2: starShip3,
@@ -169,7 +172,7 @@ type LString = Lowercase<T09>; // "b" | "cd" | "1" | "a"
 type CString = Capitalize<T09>; // "A" | "B" | "1" | "Cd"
 
 // --
-// -- Mapped Types (Type computation. Creating new types by iteration through a union of keys.)
+// -- Mapped Types (i.e Type Computation. Creating new types by iteration through a union of keys.)
 // We can easily use +,- to implement Readonly/Partial/Required utility types (built-in mapped types).
 type Point = {
     x: number;
@@ -220,8 +223,8 @@ const ms2 = companies["Bill Gates2"]; // Type: any (companies's index was not st
 
 // --
 // -- Typescript function overloading
-// Must write in old function format. Must not have implementation for "sub" function.
-// No overloading in Javascript.
+// Must write in non-arrow function format. Must not have implementation.
+// No overloading in JS/ES6.
 function adder(a: number): number;
 function adder(a: string): string;
 function adder(a: any): any {

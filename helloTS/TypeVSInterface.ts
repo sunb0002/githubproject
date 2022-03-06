@@ -5,11 +5,11 @@
 interface PartialPointX {
     x: number;
 }
-interface Point extends PartialPointX {
+interface Point1 extends PartialPointX {
     y: number;
 }
 type Point2 = PartialPointX & { y: number };
-const point1: Point = { x: 1, y: 2 };
+const point1: Point1 = { x: 1, y: 2 };
 const point2: Point2 = point1;
 console.log(point1, point2);
 
@@ -29,7 +29,7 @@ const user1: User = { name: "u1", age: 1 };
 // Like a type annotation, type assertions are removed by the compiler and won’t affect the runtime behavior.
 // You can also use the angle-bracket syntax (except in .tsx file), which is equivalent
 // (2.5) const user2 = { name: "u1", age: "a" } as User;
-// ❌, type assertions only prevents "impossible" coercions.
+// ❌, age must be number. "as" Type assertions only prevents "impossible" coercions.
 console.log(user1);
 
 // -- Union Type and iteration/computation/lookup: Type can, Interface cannot.
@@ -42,8 +42,8 @@ type Name = {
     [key in keys]: string;
 };
 const name1: Name = {
-    firstName: "undefined",
-    lastName: "undefined",
+    firstName: "Alice",
+    lastName: "Margatroid",
 };
 console.log(name1);
 type Route = {
@@ -69,7 +69,7 @@ class NameClazz implements Name {
     firstName: string;
     lastName: string;
 }
-// class IDClazz implements ID {} // ❌
+// class IDClazz implements ID {} // ❌, since ID is a Union Type
 
 // =========MISC=================
 // -- Interface for function

@@ -14,9 +14,10 @@ ic.addTopping(ic.flavor);
 ic.addTopping("sparkle");
 console.log(ic.toppings);
 
-// Property
+// Property Anno: Manipulate the property's descriptors
 function Emoji() {
-    // key: annotated property name; target: class-object that the key belongs to.
+    // key: annotated property name ("flavor")
+    // target: instance of that class (ic)
     return function (target: any, key: string) {
         let val = target[key];
         const getter = () => val;
@@ -30,22 +31,24 @@ function Emoji() {
     };
 }
 
-// Method
+// Method Anno: Manipulate "descriptor.value"
 function Portable(msg: string) {
-    // key: annotated method name; target: class-object that the key belongs to.
+    // key: annotated method name ("addTopping")
+    // target: instance of that class (ic)
     return function (
-        target: IceCream, // specified class type
+        target: IceCream, // specified class type (can't be reused by other classes)
         key: string,
         descriptor: PropertyDescriptor
     ) {
+        console.time(msg);
         const original = descriptor.value;
         descriptor.value = function (...args: any[]) {
-            const revArgs = (args || []).map((arg) =>
-                arg.split("").reverse().join("")
-            );
+            const revStrFn = (s: string) => s.split("").reverse().join("");
+            const revArgs = (args || []).map(revStrFn);
             const result = original.apply(this, revArgs);
             return result;
         };
+        console.timeEnd(msg);
         return descriptor;
     };
 }
