@@ -27,10 +27,10 @@ export default function Home() {
                 </h2>
                 <div>
                     Read my dynamic routes{" "}
-                    <button onClick={handleDynamicRoute1}>Post1</button>
-                    <button onClick={handleDynamicRoute2}>Post2</button>
+                    <button onClick={handleDynamicRoute1}>Comment1</button>
+                    <button onClick={handleDynamicRoute2}>Comment2</button>
                     <button onClick={handleDynamicRoute3}>
-                        PostX (refresh to see Loading)
+                        CommentX (refresh to see Loading)
                     </button>
                 </div>
                 <div>

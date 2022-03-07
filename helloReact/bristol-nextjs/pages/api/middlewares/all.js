@@ -7,7 +7,8 @@ export const cors = Cors({
 export function runMiddleware(req, res, fn) {
     return new Promise((resolve, reject) => {
         fn(req, res, (result) =>
-            !(result instanceof Error)
+            // !(result instanceof Error)
+            result instanceof Error
                 ? reject(`ERR with ${fn.name}`)
                 : resolve(result)
         );
