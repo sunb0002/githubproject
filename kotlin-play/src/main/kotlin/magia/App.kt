@@ -20,7 +20,7 @@ fun main() {
 
     println(app.greeting)
 
-    list.forEachIndexed { index, s -> println("www $index - $s") }
+    list.forEachIndexed { index, s2 -> println("www $index - $s2") }
 
     test(*list.toTypedArray())
 }

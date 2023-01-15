@@ -20,7 +20,7 @@ fun main() {
     // infix
     infix fun Int.times(s: String) = s.repeat(this)
     println(5 times "hi")
-    println("a" to 1)
+    println("a" to 1) // create a tuple
 
     // ternary, elvis operator
     println(if (true) "true" else "false")
@@ -60,10 +60,10 @@ fun main() {
     val mset2 = mset.map { it - 1 }
     println(mset2.filter { it <= 3 })
     // any, all, none
-    println((mset.all { it > 0 }))
+    println(mset.all { it > 0 })
     // find, findLast, count
-    println((mset.find { it % 2 == 0 }))
-    println((mset.count { it == 1 }))
+    println(mset.find { it % 2 == 0 })
+    println(mset.count { it == 1 })
     // partition: make 2 sub lists. True sublist comes first.
     val (odds, evens) = mset.partition { it % 2 == 1 }
     println(odds)
