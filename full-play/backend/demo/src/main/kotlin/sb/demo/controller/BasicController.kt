@@ -5,7 +5,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import sb.demo.model.BankThree
+import sb.demo.model.BankDTO
+import sb.demo.model.BankOne
 
 @RestController
 @RequestMapping("/basic")
@@ -21,11 +22,12 @@ class BasicController {
     @GetMapping("hello2")
     fun hello2(): String {
         logger.info("Hi {} Log{}", "Info", 2)
-        return "Hello2"
+        val bank = BankOne("id", 22)
+        return "Hello2 $bank.bankId"
     }
 
     // DTO.
     @GetMapping("hello3")
-    fun hello3() = BankThree("scb01", 20)
+    fun hello3() = BankDTO("scb01", 20)
 
 }
