@@ -1,6 +1,6 @@
 package sb.demo.model
 
-typealias BankDTO = BankThree
+import com.fasterxml.jackson.annotation.JsonProperty
 
 // Plain old Java style DTO. Rarely used.
 class BankOne {
@@ -23,3 +23,7 @@ class BankTwo(val bankId: String, private val fee: Int)
 // Note: data classes can't be inherited
 data class BankThree(val bankId: String, val fee: Int)
 
+
+typealias BankDTO = BankThree
+
+data class BankUserDTO(val userName: String, val age: Int, @JsonProperty("homeTown") val city: String)
