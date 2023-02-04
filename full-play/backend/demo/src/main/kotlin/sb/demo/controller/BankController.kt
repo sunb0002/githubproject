@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import sb.demo.repository.entities.Bank
+import sb.demo.model.BankDTO
 import sb.demo.service.BankService
 
 @RestController
@@ -17,14 +17,14 @@ class BankController(
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     @GetMapping
-    fun getAllBanks(): List<Bank> {
-        return bankSvc.fetchBanks()
+    fun getAllBanks(): List<BankDTO> {
+        return bankSvc.fetchBanks().map { BankDTO(it) } // Or put the mapping logic in entity class then { ::toDTO }
     }
 
     @GetMapping("/{bankId}")
     fun getBankById(@PathVariable bankId: String): String {
-        bankSvc.saveBank()
-        return "Temp $bankId"
+        val dto = bankSvc.saveBank()
+        return "Done $bankId ---- $dto"
     }
 
 }

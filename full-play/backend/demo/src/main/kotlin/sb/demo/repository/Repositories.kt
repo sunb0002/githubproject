@@ -1,6 +1,7 @@
 package sb.demo.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
+import sb.demo.repository.entities.Account
 import sb.demo.repository.entities.Bank
 import sb.demo.repository.entities.BankUser
 
@@ -10,3 +11,4 @@ interface BankRepository : JpaRepository<Bank, Long> {
 }
 
 interface UserRepository : JpaRepository<BankUser, Long>
+interface AccountRepository : JpaRepository<Account, Long>
