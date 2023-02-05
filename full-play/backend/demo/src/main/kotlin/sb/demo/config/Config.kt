@@ -1,8 +1,10 @@
 package sb.demo.config
 
+import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.http.HttpStatus
+import org.springframework.scheduling.annotation.EnableAsync
 import org.springframework.transaction.annotation.EnableTransactionManagement
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -14,7 +16,12 @@ import sb.demo.model.GeneralError
 @Configuration
 @EnableJpaAuditing
 @EnableTransactionManagement
-class DBConfig
+class DataSourceConfig
+
+@Configuration
+@EnableAsync
+@EnableCaching
+class WebConfig
 
 @ControllerAdvice
 class ExceptionHandler {
