@@ -4,11 +4,11 @@ import java.util.stream.Collectors;
 class Solution {
 
   static class ListNode {
+
     int val;
     ListNode next;
 
-    ListNode() {
-    }
+    ListNode() {}
 
     ListNode(int val) {
       this.val = val;
@@ -21,12 +21,12 @@ class Solution {
   }
 
   static class TreeNode {
+
     int val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {
-    }
+    TreeNode() {}
 
     TreeNode(int val) {
       this.val = val;
@@ -36,6 +36,19 @@ class Solution {
       this.val = val;
       this.left = left;
       this.right = right;
+    }
+  }
+
+  static class Node {
+
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+      this.val = val;
+      this.next = null;
+      this.random = null;
     }
   }
 
@@ -62,8 +75,7 @@ class Solution {
 
   private static void logArray(int[] arr) {
     StringBuilder sb = new StringBuilder();
-    for (int n : arr)
-      sb.append(n).append(',');
+    for (int n : arr) sb.append(n).append(',');
     log(sb.toString());
   }
 
@@ -93,5 +105,4 @@ class Solution {
     // =================
     log("Hello");
   }
-
 }
