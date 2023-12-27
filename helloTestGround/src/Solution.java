@@ -96,13 +96,18 @@ class Solution {
     arr[b] = tmp;
   }
 
+  // ===========
+  // ===========
+  // ===========
   public static void main(String[] args) {
     Solution sol = new Solution();
-    // String[] sArray = new String[] { "flower", "flow", "flight" };
-    // int[] arr = new int[] { 1, 3, 5 };
+    String[] sArray = new String[] { "flower", "flower" };
+    int[] arr = new int[] { 1, 3, 5, 6 };
     // ListNode listNode = makeListNode(new int[] { 1, 1, 2, 3, 3, 3, 4, 4 });
     // =================
     // =================
-    log("Hello");
+    // log(sol.mySqrt(8192));
   }
+
+  public int minDepth(TreeNode root) {}
 }

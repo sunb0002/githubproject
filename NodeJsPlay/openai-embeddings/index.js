@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
     input: text,
   });
 
-  const output = JSON.stringify(response.data);
+  const output = JSON.stringify(response?.data?.data?.[0]?.embedding);
   res.send(`<p>Input text: ${text}</p><p>Embedding: ${output}</p>`);
 });
 
