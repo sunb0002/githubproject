@@ -16,6 +16,7 @@ AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 AZURE_OPENAI_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT") or "blah"
 AZURE_OPENAI_API_VERSION = r"2023-05-15"
+AUDIO_FILE_NAME = r"speech.wav"
 
 
 # image to text
@@ -49,7 +50,7 @@ def text2audio(text):
     API_URL = "https://api-inference.huggingface.co/models/facebook/mms-tts-eng"
     headers = {"Authorization": f"Bearer {HUGGINGFACE_API_TOKEN}"}
     audio_bytes = requests.post(API_URL, headers=headers, json={"inputs": text}).content
-    with open("speech.wav", mode="wb") as f:
+    with open(AUDIO_FILE_NAME, mode="wb") as f:
         f.write(audio_bytes)
     return
 
@@ -79,7 +80,7 @@ async def main():
 
         with st.spinner("Generating audio with story..."):
             text2audio(story)
-            st.audio("speech.wav")
+            st.audio(AUDIO_FILE_NAME)
 
         st.balloons()
         st.success("Completed!", icon="✅")

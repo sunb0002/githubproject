@@ -4,8 +4,8 @@
 conda activate ML
 conda install streamlit
 
-python -m streamlit run main.py
+py -m streamlit run main.py
 
-python -m isort main.py
-python -m pipreqsnb.pipreqsnb --force
+py -m isort main.py
+py -m pipreqsnb.pipreqsnb --force
 ```
