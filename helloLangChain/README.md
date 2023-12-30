@@ -6,6 +6,6 @@ conda install streamlit
 
 py -m streamlit run main.py
 
-py -m isort main.py
-py -m pipreqsnb.pipreqsnb --force
+python -m isort main.py
+python -m pipreqsnb.pipreqsnb --force
 ```
