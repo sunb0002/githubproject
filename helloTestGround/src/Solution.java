@@ -39,19 +39,6 @@ class Solution {
     }
   }
 
-  static class Node {
-
-    int val;
-    Node next;
-    Node random;
-
-    public Node(int val) {
-      this.val = val;
-      this.next = null;
-      this.random = null;
-    }
-  }
-
   private static void log(Object msg) {
     System.out.println(msg);
   }
@@ -74,8 +61,12 @@ class Solution {
   }
 
   private static void logArray(int[] arr) {
+    log(Arrays.toString(arr));
+  }
+
+  private static void logArray(double[] arr) {
     StringBuilder sb = new StringBuilder();
-    for (int n : arr) sb.append(n).append(',');
+    for (double n : arr) sb.append(n).append(',');
     log(sb.toString());
   }
 
@@ -101,13 +92,19 @@ class Solution {
   // ===========
   public static void main(String[] args) {
     Solution sol = new Solution();
-    String[] sArray = new String[] { "flower", "flower" };
-    int[] arr = new int[] { 1, 3, 5, 6 };
+    String[] sArray = new String[] { "This", "is", "justification." };
+
+    int[] arr = new int[] { 2, 6, 8 };
+    List<String> list = new ArrayList<>();
+    for (String s : sArray) list.add(s);
     // ListNode listNode = makeListNode(new int[] { 1, 1, 2, 3, 3, 3, 4, 4 });
     // =================
     // =================
-    // log(sol.mySqrt(8192));
-  }
 
-  public int minDepth(TreeNode root) {}
+    // log(sol.getSpecialString(6, "abccde"));
+
+    var x = list.stream().distinct().collect(Collectors.toList());
+
+    log(x);
+  }
 }
