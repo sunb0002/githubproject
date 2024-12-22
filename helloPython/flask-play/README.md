@@ -14,4 +14,7 @@ python app.py
 
 python -m isort app.py
 python -m pipreqs.pipreqs --force
+
+python -m spacy download en_core_web_trf
+python -m spacy validate
 ```
